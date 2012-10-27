@@ -1,0 +1,86 @@
+﻿@model SwissKip.Web.Models.AccountEditModel
+@{
+    ViewBag.Title = "My Account";
+}
+<style type="text/css" title="text/css">
+    .custom-input-file {
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+    .custom-input-file .input-file {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        font-size: 10000px;
+        border: 10000px solid transparent;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        position: absolute;
+        right: -1000px;
+        top: -1000px;
+        cursor: pointer;
+    }
+</style>
+
+<div id="contenido">
+    <div style="float:left; padding-left:100px;">
+        <div class="rojo25" style="width:738px;">
+            <div style="float:left;">@ViewBag.Title</div>
+            <div style="float:right; padding-top:10px;" class="negro12">
+                @Html.ActionLink("[+] My Account", "Index", "MyAccount")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("[+] Change Password", "ChangePassword", "Owner")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("[+] Witness", "EditWitness", "Owner")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink(" [+] Recipient","AddRecipient","Owner")
+            </div>
+        </div>
+        <div style="float:left; width:738px; height:1px; z-index:1; margin-top:-3px; background:#b5b5b3;"></div>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div style="float:left; padding-top:20px;">
+                <div style="float:left; width:130px;">
+                    <div class="custom-input-file" style="float:left;"><img id="photo" runat="server" src='@Model.fileName' alt="" width="119" height="130" /><br />
+                    <input type="file" name="file" id="file" class="input-file" /></div>
+                </div>
+                <div style="float:left; width:580px;">
+                    <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px; padding-top:8px;" class="negro13b">First Name:</div>
+                        <div style="float:left;">@Html.TextBoxFor(x => x.FirstName, new { @class = "caja400x23" })</div>
+                        <div style="float:left;">@Html.ValidationMessageFor(x => x.FirstName)</div>
+                    </div>
+                    <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px;" class="negro13b">Last Name:</div>
+                        <div style="float:left;">@Html.TextBoxFor(x => x.LastName, new { @class = "caja400x23" })</div>
+                        <div style="float:left;">@Html.ValidationMessageFor(x => x.LastName)</div>
+                    </div>
+                    <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px;" class="negro13b">Birthday:</div>
+                        <div style="float:left;">@Html.EditorFor(x => x.Birthday)
+                        </div>
+                        <div style="float:left;">@Html.ValidationMessageFor(x => x.Birthday)</div>
+                    </div>
+                    <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px;" class="negro13b">Country:</div>
+                        <div style="float:left;">@Html.DropDownList("CountryId", null, "", new { @class = "caja400x23" })</div>
+                    </div>
+                </div>
+            </div>
+            <div style="float:left; width:738px; margin-top:15px; height:1px; background:#b5b5b3;"></div>
+            <div style="float:left; width:738px; padding-top:4px;">
+                <div id="Enviar" style="float:right;">
+                    <input type="image" id="Enviar" name="Enviar" value="Enviar" src="~/Content/images/guardar.png" />
+                </div>
+                <div style="float:right; padding-right:5px;">
+                    <a href="@Url.Action("Index")"><img src="~/Content/images/volver.png" border="0"></a>
+                </div>
+            </div>
+        }
+        @section scripts
+        {
+            <script src="~/Scripts/App/MyAccount.Index.js"></script>
+        }
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.SignInModel
+@{
+    ViewBag.Title = "Log In";
+    ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+
+<div class="logueo-contenido">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true);
+    <div class="logueo-form-1">
+        <div class="logueo-form-1-tx rojo25">Username</div>
+        <div class="logueo-form-1-in">
+            <div class="logueo-input-1">@Html.TextBoxFor(x => x.Username, new{ @class="cajausername" })</div>
+            <!--div class="textoform logueo-texto-1">Forgot username</div-->
+        </div>
+    </div>
+    <div class="logueo-form-2">
+        <div class="rojo25 logueo-form-1-tx">Password</div>
+        <div class="logueo-form-1-in">
+            <div class="logueo-input-1">@Html.PasswordFor(x => x.Password, new{ @class="cajausername" })</div>
+            <!--div class="textoform logueo-texto-2">Forgot password</div-->
+        </div>
+    </div>
+    <div class="logueo-form-3">
+        <div class="rojo25 logueo-form-1-tx">Code</div>
+        <div class="logueo-captcha">
+            @ReCaptcha.GetHtml(theme:"red")
+            @Html.ValidationMessage("Catpcha")
+        </div>
+    </div>
+    <div class="logueo-enviar">
+        <div class="logueo-enviar-img"><input type="image" value="Log In" src="~/Content/images/log-in.png"/></div>
+        <div class="textoform logueo-enviar-tex">Don't have an account? @Html.ActionLink("Sign Up", "Create", "NewAccount", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "" })</div>
+    </div>
+}
+</div>

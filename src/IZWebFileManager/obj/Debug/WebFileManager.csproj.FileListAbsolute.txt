@@ -1,0 +1,10 @@
+C:\Users\Ernesto\Downloads\manishma-IZWebFileManager-v2.7.2-4-g563d0b3\manishma-IZWebFileManager-563d0b3\IZWebFileManager\bin\Debug\IZ.WebFileManager.dll
+C:\Users\Ernesto\Downloads\manishma-IZWebFileManager-v2.7.2-4-g563d0b3\manishma-IZWebFileManager-563d0b3\IZWebFileManager\bin\Debug\IZ.WebFileManager.pdb
+C:\Users\Ernesto\Downloads\manishma-IZWebFileManager-v2.7.2-4-g563d0b3\manishma-IZWebFileManager-563d0b3\IZWebFileManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ernesto\Downloads\manishma-IZWebFileManager-v2.7.2-4-g563d0b3\manishma-IZWebFileManager-563d0b3\IZWebFileManager\obj\Debug\IZ.WebFileManager.dll
+C:\Users\Ernesto\Downloads\manishma-IZWebFileManager-v2.7.2-4-g563d0b3\manishma-IZWebFileManager-563d0b3\IZWebFileManager\obj\Debug\IZ.WebFileManager.pdb
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\bin\Debug\IZ.WebFileManager.dll
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\bin\Debug\IZ.WebFileManager.pdb
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.dll
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.pdb

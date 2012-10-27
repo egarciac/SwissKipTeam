@@ -1,0 +1,28 @@
+﻿@model SwissKip.Web.Models.Birthday
+@using System.Threading
+@using SwissKip.Web.Helpers.Extensions
+
+@Html.DropDownList("", Enumerable.Range(1, 12).Select(i => new SelectListItem
+{
+    Value = i.ToString(),
+    Text = Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetMonthName(i).FirstCharToUpper(),
+    Selected = (i == this.Model.Month)
+}), "Month",new {@class="Month"})
+
+@Html.DropDownList("", Enumerable.Range(1, 31).Select(i => new SelectListItem
+{
+    Value = i.ToString(),
+    Text = i.ToString(),
+    Selected = (i == Model.Day)
+}), "Day", new { @class = "Day" })
+
+@Html.DropDownList("", Enumerable.Range(DateTime.Now.Year - 110, 110).Select(i => new SelectListItem
+{
+    Value = i.ToString(),
+    Text = i.ToString(),
+    Selected = (i == Model.Year)
+}), "Year", new { @class = "Year" })
+
+@Html.Hidden("Day")
+@Html.Hidden("Month")
+@Html.Hidden("Year")

@@ -1,0 +1,25 @@
+﻿@model SwissKip.Web.Models.WitnessAddModel
+@using SwissKip.Web.Helpers.Extensions
+
+
+<div class="interior2-form-1">
+@using (Html.BeginCollectionItem("witnesses"))
+{
+    <div class="interior2-form-1-tx rojo18">First Name</div>
+    <div class="interior2-form-1-ip">@Html.TextBoxFor(x => x.FirstName, new { @class = "caja190x23" })<br />
+    @Html.ValidationMessageFor(x => x.FirstName)</div>
+    
+    <div class="interior2-form-1-tx rojo18">Last Name</div>
+    <div class="interior2-form-1-ip">@Html.TextBoxFor(x => x.LastName, new { @class = "caja190x23" })<br />
+    @Html.ValidationMessageFor(x => x.LastName)</div>
+    
+    <div class="interior2-form-1-tx rojo18">Email</div>
+    <div class="interior2-form-1-ip">@Html.TextBoxFor(x => x.Email, new { @class = "caja190x23" })<br />
+    @Html.ValidationMessageFor(x => x.Email)</div>
+    
+    <div class="interior2-form-1-tx" style="padding-top:8px;">
+        <a href="#" class="deleteRow">delete</a>
+    </div>
+    
+}
+</div>

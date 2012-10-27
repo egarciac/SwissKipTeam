@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultvalue="Server=g6mh8zr8as.database.windows.net;Database=swisskiAD5TSFEHJ;User ID=swisskipadmin@g6mh8zr8as;Password=p@ssw0rd;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ernesto\\Documents\\GitHub\\SwissKip\\src\\SwissKip\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,66 @@
+@using Mvc.Mailer
+@{
+    this.Layout = null;
+    ViewBag.CreateAccountUrl = Url.Abs(Url.Action("Create", "NewAccount",new {invitationId=ViewBag.InvitationId}));
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html;charset=utf-8" />
+</head>
+<body>
+<font face="arial">
+    <table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td colspan="3"><img src='@Url.Abs(Url.Content("~/Content/images/logoemail.png"))' border="0"/><br /><br /></td>
+    </tr>
+    <tr>
+        <td width="25"></td>
+        <td width="550">
+            <h3 style="color:#cb0c1b;">
+                SwissKip Recipient Invitation
+            </h3>
+            <div>
+                Hi @ViewBag.RecipientFirstName,
+                <br />
+                <br />
+                @ViewBag.OwnerFullName wants you to be your recipient, please click the following link:
+                <br />
+                <br />
+                <a href="@ViewBag.CreateAccountUrl" target="_blank" style="text-decoration:none;"><font color="#000"><strong>@ViewBag.CreateAccountUrl</strong></font></a>
+                <br />
+                <br />
+                Thanks,
+                <br />
+                <strong>The SwissKip Team</strong>
+                <br />
+                <br />
+                Do not forward this email. The verify link is private.<br /><br />
+            </div>
+        </td>
+        <td width="25"></td>
+    </tr>
+
+    <tr><td height="10" bgcolor="#e5e5e5" colspan="3"></td></tr>
+    <tr>
+        <td width="25" bgcolor="#e5e5e5"></td>
+        <td width="550" bgcolor="#e5e5e5">
+            <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td width="50"><a href="@Url.Abs(Url.Content("/Home/We"))" style="text-decoration:none;"><font size="1" color="#000">about</font></a></td>
+                <td width="45"><a href="@Url.Abs(Url.Content("/Home/Faqs"))" style="text-decoration:none;"><font size="1" color="#000">FAQ</font></a></td>
+                <td width="75"><a href="@Url.Abs(Url.Content("/Home/Terms"))" style="text-decoration:none;"><font size="1" color="#000">terms of use</font></a></td>
+                <td width="80"><a href="@Url.Abs(Url.Content("/Home/PrivacyPolicy"))" style="text-decoration:none;"><font size="1" color="#000">privacy policy</font></a></td>
+                <td width="120"><a href="@Url.Abs(Url.Content("/Home/Contact"))" style="text-decoration:none;"><font size="1" color="#000">contact</font></a></td>
+                <td width="180" align="right"><font size="1" color="#000"><strong>© 2012 All Rights Reserved. SwissKip® is a registered trademark</strong></font></td>
+            </tr>
+            </table>
+        </td>
+        <td width="25" bgcolor="#e5e5e5"></td>
+    </tr>
+    <tr><td height="10" bgcolor="#e5e5e5" colspan="3"></td></tr>
+    </table>
+</font>
+
+</body>
+</html>

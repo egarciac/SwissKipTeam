@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissKip.Web", "SwissKip.Web\SwissKip.Web.csproj", "{867E16A2-B6B5-4904-A0B9-65AB08770842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFileManager", "IZWebFileManager\WebFileManager.csproj", "{7B6305F4-FE54-4888-8200-C6D3076FEF0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{867E16A2-B6B5-4904-A0B9-65AB08770842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867E16A2-B6B5-4904-A0B9-65AB08770842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867E16A2-B6B5-4904-A0B9-65AB08770842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867E16A2-B6B5-4904-A0B9-65AB08770842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6305F4-FE54-4888-8200-C6D3076FEF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6305F4-FE54-4888-8200-C6D3076FEF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6305F4-FE54-4888-8200-C6D3076FEF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6305F4-FE54-4888-8200-C6D3076FEF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

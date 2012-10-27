@@ -1,0 +1,45 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.DigitalAccountCreateModel
+@{
+    ViewBag.Title = "Create";
+    ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+
+<div id="contenido">
+  	<div style="float:left; padding-left:100px;">
+    	<div class="rojo25" style="float:left; z-index:0;">
+        	<div style="float:left; padding-bottom:2px;">My stuff</div>
+        	<div style="float:left; padding-left:235px;"><a href="/FileManager/Index" onMouseDown="MM_swapImage('menu11','','/Content/images/documentos.png',1)" onMouseOver="MM_swapImage('menu11','','/Content/images/documentos-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/documentos.png" border="0" name="menu11"></a></div>
+            <div style="float:left; padding-left:8px;"><a href="/BankAccount/Index" onMouseDown="MM_swapImage('menu12','','/Content/images/cuentas-bancarias-off.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/cuentas-bancarias.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/cuentas-bancarias-off.png" border="0" name="menu12"></a></div>
+            <div style="float:left; padding-left:8px;"><img src="/Content/images/cuentas-digitales-on.png"></div>
+        </div>
+        @using (Html.BeginForm())
+        {
+    	<div style="float:left; width:738px; height:1px; z-index:1; margin-top:-7px; background:#b5b5b3;"></div>
+        <div style="float:left; padding-left:190px; width:830px; padding-top:80px;">
+        	<div style="float:left; width:600px;">
+            	<div style="float:left; width:90px;" class="textonegrita15">Website:</div>
+            	<div style="float:left;">@Html.TextBoxFor(x => x.WebSite, new { @class = "caja245x23" })</div>
+        	</div>
+            <div style="float:left; padding-top:7px; width:600px;">
+            	<div style="float:left; width:90px;" class="textonegrita15">User:</div>
+            	<div style="float:left;">@Html.TextBoxFor(x => x.Username, new { @class = "caja245x23" })</div>
+        	</div>
+            <div style="float:left; padding-top:7px; width:600px;">
+            	<div style="float:left; width:90px;" class="textonegrita15">Password:</div>
+            	<div style="float:left;">@Html.PasswordFor(x => x.Password, new { @class = "caja245x23" })</div>
+        	</div>
+            <div style="float:left; padding-top:7px; width:600px;">
+            	<div style="float:left; width:90px;" class="textonegrita15">Código:</div>
+            	@ReCaptcha.GetHtml(theme: "clean")
+                @Html.ValidationMessage("Catpcha")
+        	</div>
+        </div>;
+        <div style="float:left; width:738px; margin-top:40px; height:1px; background:#b5b5b3;"></div>
+        <div style="float:left; width:738px; padding-top:4px;">
+            <div style="float:right;"><input type="image" value="Enviar" src="~/Content/images/guardar.png"/></div>
+            <div style="float:right; padding-right:5px;"><a href="javascript:history.back(-1);"><img src="/Content/images/volver.png" border="0"></a></div>
+        </div>
+        }
+    </div>
+  </div>

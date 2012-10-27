@@ -1,0 +1,3 @@
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\bin\Release\IZ.WebFileManager.dll
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Release\IZ.WebFileManager.dll

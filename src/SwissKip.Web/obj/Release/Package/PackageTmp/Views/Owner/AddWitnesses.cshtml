@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SwissKip.Web.Models.WitnessAddModel>
+@{
+    ViewBag.Title = "Add Witnesses";
+}
+<div id="contenido">
+    <div style="float:left; padding-left:100px;">
+        <div class="rojo25" style="width:738px;">
+            <div style="float:left;">@ViewBag.Title</div>
+            <div style="float:right; padding-top:10px;" class="negro12">
+                @Html.ActionLink("[+] My Account", "Index", "MyAccount")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("[+] Change Password", "ChangePassword", "Owner")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("[+] Witness", "EditWitness", "Owner")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink(" [+] Recipient","AddRecipient","Owner")
+            </div>
+        </div>
+        <div style="float:left; width:738px; height:1px; z-index:1; margin-top:-3px; background:#b5b5b3;"></div>
+        @using (Html.BeginForm())
+        {
+            <div id="witnesses" style="float:left; width:738px;">
+            @foreach (var witness in Model)
+            {
+                Html.RenderPartial("_Witness", witness);
+            }
+            </div>
+            <div style="clear:both;">@Html.ActionLink("Add another witness", "BlanckWitness", null, new { @class = "addRow" }) <br /></div>
+            <div style="float:left; width:738px; margin-top:15px; height:1px; background:#b5b5b3;"></div>
+                <div style="float:left; width:738px; padding-top:4px;">
+                    <div id="Change" style="float:right;">
+                        <input type="image" id="Change" name="Change" value="Change" src="~/Content/images/guardar.png" />
+                    </div>
+                    <div style="float:right; padding-right:5px;">
+                        <a href="@Url.Action("Index")"><img src="~/Content/images/volver.png" border="0"></a>
+                    </div>
+                </div>
+        }
+    </div>    
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".addRow").click(function () {
+                $.ajax({
+                    url: this.href,
+                    success: function (html) {
+                        $("#witnesses").append(html);
+                        $("form").removeData("validator");
+                        $("form").removeData("unobtrusiveValidation");
+                        $.validator.unobtrusive.parse("form");
+                    }
+                });
+                return false;
+            });
+
+            $("a.deleteRow").live("click", function () {
+                $(this).parents("div.interior2-form-1:first").remove();
+                return false;
+            });
+        });
+    </script>
+}
+
+
