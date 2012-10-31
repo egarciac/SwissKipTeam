@@ -1,0 +1,55 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.UserCreateModel
+@{
+    ViewBag.Title = "Registration";
+}
+
+<div style="clear:both; height:25px;"></div>
+
+<div id="cajaregistro">
+    <div class="registrofoto">
+        <div class="foto"><img src="/content/images/sinfoto.gif" /></div>
+        <div>change picture</div>
+    </div>
+
+    <div class="interior1-contenido">
+     @using (Html.BeginForm())
+     {
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">First Name</div>
+                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.FirstName)</div></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Last Name</div>
+                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.LastName)</div></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Email</div>
+                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })
+                <div>@Html.ValidationMessage("Email")</div></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Username</div>
+                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.UserName, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.FirstName)</div></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Password</div>
+                <div class="interior1-form-inpt1">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.Password)</div></div>
+            </div>
+            @*<div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Country</div>
+                <div class="interior1-form-inpt1">@Html.DropDownList(x => x.CountryId, null, null, new { @class = "caja400x23" })</div>
+            </div>*@
+
+            <div>
+                <div style="float:right;"><input type="image" value="NEXT" class="button red" /></div>
+            </div>
+     }
+    </div>
+</div>
+
+  

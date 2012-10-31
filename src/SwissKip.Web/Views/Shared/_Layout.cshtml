@@ -15,7 +15,7 @@
                 <div id="logo"></div>
             </a>
             <div id="bienvenido" class="rojo">
-                @if (this.Context.User.Identity.IsAuthenticated)
+                @*@if (this.Context.User.Identity.IsAuthenticated)
                 {
                     <p>
                         Welcome <strong>@Current.User.FirstName </strong>
@@ -31,10 +31,10 @@
                         </strong>
                         /
                         <strong>
-                            @Html.ActionLink("Create an Account", "Create", "NewAccount", null, new { id = "registerLink", @class = "rojo" })
+                            @Html.ActionLink("Free Sign Up", "Create", "NewAccount", null, new { id = "registerLink", @class = "rojo" })
                         </strong>
                     </p>
-                }
+                }*@
 
             </div>
         </div>
@@ -42,11 +42,11 @@
         <div id="menutop">
             <div id="menucenter">
                 <ul>
-                    <li><a href="/Home/WhatIsIt">What is it?</a></li>
-                    <li><a href="/Home/HowIsTheUse">What's the use?</a></li>
-                    <li><a href="/Home/HowDoesItWork">How does it work?</a></li>
-                    <li><a href="/Home/HowMuch">How much?</a></li>
-                    <li><a href="/Owner"><i>my</i>swisskip</a></li>
+                    <li><a href="/Home/TheIdea">The idea</a></li>
+                    <li><a href="/Home/TheProcess">The Process</a></li>
+                    <!--li><a href="/Home/HowDoesItWork">How does it work?</a></li-->
+                    <li><a href="/Home/HowMuch">Security</a></li>
+                    <li><a href="/Registration/Signin1"><i>my</i>kip</a></li>
                 </ul>
             </div>
         </div>
@@ -60,11 +60,10 @@
                 <div id="menupie">
                     <nav id="mnpie">
                         <ul>
-                            <li><a href="/Home/We">We</a></li>
                             <li><a href="/Home/Faqs">FAQs</a></li>
-                            <li><a href="/Home/Terms">Terms</a></li>
-                            <li><a href="/Home/PrivacyPolicy">Privacy Policy</a></li>
+                            <li><a href="/Home/PrivacyPolicy">Privacy</a></li>
                             <li><a href="/Home/Contact">Contact</a></li>
+                            <li><a href="/Home/We">Free Account</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -72,7 +71,7 @@
                     <div class="pie-all textopie">
                         © 2012 All Rights Reserved. SwissKip® is a registered trademark
                     </div>
-                    <div class="pie-img" align="right">
+                    @*<div class="pie-img" align="right">
                         <a href="#">
                             <img src="~/Content/images/paypar.jpg" border="0" />
                         </a><a href="#">
@@ -80,7 +79,7 @@
                         </a><a href="#">
                             <img src="~/Content/images/visa.jpg" border="0" />
                         </a>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </footer>

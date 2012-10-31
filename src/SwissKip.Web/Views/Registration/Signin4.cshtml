@@ -1,0 +1,40 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.MessageModel
+@{
+    ViewBag.Title = "Customize";
+}
+
+<div style="clear:both; height:25px;"></div>
+
+<div id="cajaregistro" align="center">
+    @using (Html.BeginForm())
+    {
+    <div class="interior-customize">
+            <div style="padding-bottom:10px;padding-top:15px;"><span class="rojo22">Step 4 of 5:</span> <span class="black22">Customize an send communications</span></div>
+            <div class="textcustomize">
+                Swisskip will now proceed to send an email to your Data-Heir and your Passing Witnesses.<br />                Each mail is individual. No one will know who the others are.<br />                You will be informed of the confirmation status of your Data-Heir and Passing Witnesses.<br /><br />                If you want you can add a personal message to this mails:<br /><br />                <a href="" class="rojo17">Customize  your Data-Heir mail</a><br />                @Html.TextAreaFor(x => x.DataheirMsg, new { @class = "caja500x130" })                <br /><br />                <a href="" class="rojo17">Customize the Passing Witnesses mail.</a><br />
+                @Html.TextAreaFor(x => x.WitnessMsg, new { @class = "caja500x130" })<br /><br />
+            </div>
+    </div>
+
+    <div style="float:right; margin-right:200px; margin-top:20px;margin-bottom:70px;">
+        <div style=" float:right;"><input type="image" value="Procced" class="button red"></div>
+        <div style="float:right;margin-right:10px;"><a href="Javascript:history.back(-1);"><input type="button" value="BACK" class="button red"></a></div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="registropasos">
+            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processno.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+    </div>
+    }
+</div>
+
+  

@@ -217,11 +217,14 @@
     <Compile Include="Controllers\DigitalAccountController.cs" />
     <Compile Include="Controllers\FileManagerController.cs" />
     <Compile Include="Controllers\RecipientController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Core\BankAccount.cs" />
     <Compile Include="Core\DigitalAccount.cs" />
     <Compile Include="Core\OwnerRecipient.cs" />
+    <Compile Include="Core\User.cs" />
     <Compile Include="Data\CustomClassMapper.cs" />
     <Compile Include="Handlers\BankAccountCreateHandler.cs" />
+    <Compile Include="Handlers\UsersAddHandler.cs" />
     <Compile Include="Handlers\DigitalAccountCreateHandler.cs" />
     <Compile Include="Handlers\RecipientAddHandler.cs" />
     <Compile Include="Helpers\ActionResults\RedirectToAccountType.cs" />
@@ -266,6 +269,8 @@
     <Compile Include="Helpers\Attributes\BirthdayAttribute.cs" />
     <Compile Include="Models\BankAccountCreateModel.cs" />
     <Compile Include="Models\BankAccountModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\UserCreateModel.cs" />
     <Compile Include="Models\DigitalAccountCreateModel.cs" />
     <Compile Include="Models\DigitalAccountModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
@@ -452,7 +457,7 @@
     <Content Include="Views\NewAccount\_Witness.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Authentication\SignIn.cshtml" />
+    <Content Include="Views\BankAccount\Authentication\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Owner\Index.cshtml" />
@@ -613,6 +618,11 @@
     <Content Include="Views\Owner\AddWitnesses.cshtml" />
     <Content Include="Views\Owner\_Witness.cshtml" />
     <Content Include="Views\Recipient\Index.cshtml" />
+    <Content Include="Views\Registration\Signin1.cshtml" />
+    <Content Include="Views\Registration\Signin2.cshtml" />
+    <Content Include="Views\Registration\Signin3.cshtml" />
+    <Content Include="Views\Registration\Signin4.cshtml" />
+    <Content Include="Views\Registration\Signin5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IZWebFileManager\WebFileManager.csproj">
@@ -620,6 +630,7 @@
       <Name>WebFileManager</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

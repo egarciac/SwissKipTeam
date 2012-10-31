@@ -1,0 +1,100 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.AccountCreateModel
+@{
+    ViewBag.Title = "New Account";
+    ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+<div style="clear:both; height:25px;"></div>
+
+<div id="cajaregistro">
+    <div class="registrofoto">
+        <div class="foto"><img src="/content/images/sinfoto.gif" /></div>
+        <div>change picture</div>
+    </div>
+
+    <div class="interior1-contenido">
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">First Name</div>
+                <div class="interior1-form-inpt1"><input type="text" class="cajausername" /></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Last Name</div>
+                <div class="interior1-form-inpt1"><input type="text" class="cajausername" /></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Email</div>
+                <div class="interior1-form-inpt1"><input type="text" class="cajausername" /></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Username</div>
+                <div class="interior1-form-inpt1"><input type="text" class="cajausername" /></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Password</div>
+                <div class="interior1-form-inpt1"><input type="text" class="cajausername" /></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Country</div>
+                <div class="interior1-form-inpt1"><select></select></div>
+            </div>
+
+            <div>
+                <div style="float:right;"><input type="button" value="NEXT" class="button red"></div>
+            </div>
+    </div>
+</div>
+
+<div class="interior1-contenido">
+
+    @using (Html.BeginForm())
+    {
+        <div class="interior1-form-1">
+            <div class="interior1-form-text1 rojo20">First Name</div>
+            <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.FirstName)</div>
+            </div>
+        </div>
+        
+        <div class="interior1-form-1">
+            <div class="interior1-form-text1 rojo20">Last Name</div>
+            <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.LastName)</div>
+            </div>
+            
+        </div>
+        
+        <div class="interior1-form-2">
+            <div class="interior1-form-text1 rojo20">Email</div>
+            <div class="interior1-form-inpt1">
+                @Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })
+                <div>@Html.ValidationMessage("Email")</div>
+            </div>
+            
+        </div>
+        
+        <div class="interior1-form-2">
+        	<div class="interior1-form-text1 rojo20">Username</div>
+            <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.Username, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.Username)</div>
+            </div>
+            
+        </div>
+        <div class="interior1-form-2">
+            <div class="interior1-form-text1 rojo20">Password</div>
+            <div class="interior1-form-inpt1">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })
+                <div>@Html.ValidationMessageFor(x => x.Password)</div>
+            </div>
+            
+        </div>
+        
+        <div class="interior1-cont-cpt">
+            <div class="interior1-form-text1 rojo20">Code</div>
+            @ReCaptcha.GetHtml(theme: "red")
+            <div style="margin-left:115px;">@Html.ValidationMessage("Catpcha")</div>
+        </div>
+        
+        <div class="interior1-crear-c"><input type="image" value="Enviar" src="~/Content/images/creare-my-account.png"/></div>
+        <div class="interior1-cr-txt textoform">by clicking this button, you agree to SwissKip's <a href="@Url.Action("Terms", "Home")" target="_blank"><strong>Terms of Use</strong></a></div>
+    }
+        
+  </div>

@@ -8,3 +8,8 @@ C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\bin\Debug\IZ.Web
 C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.dll
 C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.pdb
+C:\Users\Ernesto\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Debug\IZ.WebFileManager.dll
+C:\Users\Ernesto\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Debug\IZ.WebFileManager.pdb
+C:\Users\Ernesto\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ernesto\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.dll
+C:\Users\Ernesto\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.pdb

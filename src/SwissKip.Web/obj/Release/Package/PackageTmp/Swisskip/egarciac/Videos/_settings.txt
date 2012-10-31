@@ -1,4 +1,0 @@
-﻿[first]
-setting = value
-[second]
-setting = value
