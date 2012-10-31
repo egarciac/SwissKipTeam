@@ -91,7 +91,13 @@ namespace SwissKip.Web.Controllers
             List<UserCreateModel> witnessData;
             MessageModel messages;
             usersData = (UserCreateModel)Session["Signin1Store"];
+            var user = Core.User.CreateOwner(usersData.FirstName, usersData.LastName, usersData.Email, usersData.UserName, usersData.Password, System.DateTime.Now, 0);
+            UsersAddHandler.Save(user);
+
             dataheirData = (UserCreateModel)Session["Signin2Store"];
+            var dataheir = Core.User.CreateDataheir(dataheirData.FirstName, dataheirData.LastName, dataheirData.Email, dataheirData.UserName, dataheirData.Password, System.DateTime.Now, 0);
+            UsersAddHandler.Save(dataheir);
+
             witnessData = (List<UserCreateModel>)Session["Signin3Store"];
             messages = form;
 

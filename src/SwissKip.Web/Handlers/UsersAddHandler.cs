@@ -24,9 +24,10 @@
             return Current.Connection.GetList<Account>(predicate).SingleOrDefault();
         }
 
-        private static void Save(Account account)
+        public static void Save(User User)
         {
-            Current.Connection.Insert(account);
+            Current.Connection.Insert(User);
+            //Current.Connection.Insert(User);
         }
 
         private static void Update(Account account)
