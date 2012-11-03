@@ -60,5 +60,21 @@
         {
             return View();
         }
+
+        public ActionResult TheIdea()
+        {
+            return View();
+        }
+
+        public ActionResult TheProcess()
+        {
+            return View();
+        }
+
+        public ActionResult Security()
+        {
+            return View();
+        }
+
     }
 }

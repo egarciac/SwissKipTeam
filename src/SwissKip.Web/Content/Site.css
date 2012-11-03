@@ -113,6 +113,12 @@
 	color: #000;
 	font-weight:bold;
 }
+.negro17 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	color: #000;
+	padding-left:25px;
+}
 .rojo20 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
@@ -363,6 +369,14 @@ body {
 	margin-bottom:30px;
 }
 
+.lineagris740 {
+	background: #b5b5b5;
+	height: 1px;
+	width: 740px;
+	margin-top:5px;
+	margin-bottom:30px;
+}
+
 #contenido h1{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 25px;
@@ -419,7 +433,7 @@ body {
 #menucenter{
  margin:0 auto;
  padding:0;
- width:480px;
+ width:430px;
  overflow:hidden;
 }
 #menucenter ul{
@@ -1006,10 +1020,19 @@ color: #FFF;
     line-height: 23px;
 }
 
-
 .interior-witnesses{width:940px; overflow: hidden;}
 .interior-customize{width:670px; overflow: hidden;}
 
+.interior-informacion{width:740px; overflow: hidden;text-align:left;}
+
+.interior-informacion h1
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	color: #cc0b1c;
+	font-weight:bold;  
+	margin: 0;  
+}
 
 .interior-witnesses ul{
     list-style-type: none;

@@ -309,6 +309,8 @@
     <Content Include="Content\images\8.png" />
     <Content Include="Content\images\9.jpg" />
     <Content Include="Content\images\9.png" />
+    <Content Include="Content\images\abc.jpg" />
+    <Content Include="Content\images\addanother.png" />
     <Content Include="Content\images\amarillo.jpg" />
     <Content Include="Content\images\beneficiario.png" />
     <Content Include="Content\images\bot_beneficiario_rojo.gif" />
@@ -323,6 +325,7 @@
     <Content Include="Content\images\btn-seguir.jpg" />
     <Content Include="Content\images\btn-ver-todo.jpg" />
     <Content Include="Content\images\btn-volver.jpg" />
+    <Content Include="Content\images\bullet.gif" />
     <Content Include="Content\images\captcha.jpg" />
     <Content Include="Content\images\captcha.png" />
     <Content Include="Content\images\carpeta.jpg" />
@@ -345,7 +348,14 @@
     <Content Include="Content\images\file.gif" />
     <Content Include="Content\images\foto.jpg" />
     <Content Include="Content\images\guardar.png" />
+    <Content Include="Content\images\idea1.jpg" />
+    <Content Include="Content\images\idea2.jpg" />
+    <Content Include="Content\images\idea3.jpg" />
+    <Content Include="Content\images\idea4.jpg" />
     <Content Include="Content\images\lgo.png" />
+    <Content Include="Content\images\lineahome.jpg" />
+    <Content Include="Content\images\lineprocess.gif" />
+    <Content Include="Content\images\lineprocessok.gif" />
     <Content Include="Content\images\log-in.jpg" />
     <Content Include="Content\images\log-in.png" />
     <Content Include="Content\images\logoswiss.jpg" />
@@ -365,6 +375,11 @@
     <Content Include="Content\images\owner-off.png" />
     <Content Include="Content\images\owner.png" />
     <Content Include="Content\images\paypar.jpg" />
+    <Content Include="Content\images\pdospalotes.jpg" />
+    <Content Include="Content\images\pool.jpg" />
+    <Content Include="Content\images\processno.gif" />
+    <Content Include="Content\images\processok.gif" />
+    <Content Include="Content\images\processvacio.gif" />
     <Content Include="Content\images\registrarse.jpg" />
     <Content Include="Content\images\registrarse.png" />
     <Content Include="Content\images\reportar-muerte-on.png" />
@@ -623,6 +638,9 @@
     <Content Include="Views\Registration\Signin3.cshtml" />
     <Content Include="Views\Registration\Signin4.cshtml" />
     <Content Include="Views\Registration\Signin5.cshtml" />
+    <Content Include="Views\Home\TheIdea.cshtml" />
+    <Content Include="Views\Home\TheProcess.cshtml" />
+    <Content Include="Views\Home\Security.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IZWebFileManager\WebFileManager.csproj">
