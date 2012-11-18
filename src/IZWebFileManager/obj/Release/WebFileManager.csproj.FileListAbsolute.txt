@@ -4,7 +4,6 @@ C:\Users\Ernesto\Documents\GitHub\SwissKip\src\IZWebFileManager\obj\Release\IZ.W
 C:\users\ernesto\documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Release\IZ.WebFileManager.dll
 C:\users\ernesto\documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Release\ResolveAssemblyReference.cache
 C:\users\ernesto\documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Release\IZ.WebFileManager.dll
-C:\Users\Ernesto\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Release\IZ.WebFileManager.XML
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Release\IZ.WebFileManager.dll
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Release\ResolveAssemblyReference.cache
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Release\IZ.WebFileManager.dll

@@ -11,5 +11,12 @@
             var owners = new OwnersByWitnessQuery(Current.UserId).Execute();
             return View(owners);
         }
+
+        //[HttpPost]
+        //public ActionResult Index(int? )
+        //{
+        //    //var owners = new OwnersByWitnessQuery(Current.UserId).Execute();
+        //    return View();
+        //}
     }
 }

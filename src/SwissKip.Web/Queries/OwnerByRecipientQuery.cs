@@ -21,7 +21,7 @@
             var owners = Current.Connection.Query<OwnerByRecipientModel>(
                 "select u.FirstName, u.LastName  " +
                 "from [user] u " +
-                "where a.Id =@recipientId", new { recipientId }).ToList();
+                "where u.Id =@recipientId", new { recipientId }).ToList();
             return owners;
         }
 
