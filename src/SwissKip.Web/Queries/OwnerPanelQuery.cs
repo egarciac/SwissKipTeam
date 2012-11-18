@@ -26,12 +26,9 @@
         private MyAccountWidgetModel MyAccountWidgetQuery()
         {
             return Current.Connection.Query<MyAccountWidgetModel>(
-                "select FirstName,LastName,Email," +
-                "(Select count(1) " +
-                "from OwnerWitness " +
-                "where OwnerId=Account.Id) as Witnesses " +
-                "from Account " +
-                "where Id=@id",
+                "select FirstName, LastName, Email " +
+                "from [User] " +
+                "where Id=@id ",
                 new { id = this.ownerId }).Single();
         }
     }

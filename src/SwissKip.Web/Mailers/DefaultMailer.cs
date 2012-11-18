@@ -5,12 +5,12 @@ namespace SwissKip.Web.Mailers
 {
     public class DefaultMailer : MailerBase
     {
-        public virtual MailMessage NewAccountConfirmation(string accountEmail, int accountId, string accountFirstName)
+        public virtual MailMessage NewAccountConfirmation(string userEmail, int userId, string userFullName)
         {
             var mailMessage = new MailMessage { Subject = "Registration Confirmation" };
-            mailMessage.To.Add(accountEmail);
-            ViewBag.AccountId = accountId;
-            ViewBag.AccountFirstName = accountFirstName;
+            mailMessage.To.Add(userEmail);
+            ViewBag.AccountId = userId;
+            ViewBag.FullName = userFullName;
             PopulateBody(mailMessage, viewName: "NewAccountConfirmation");
 
             return mailMessage;
@@ -28,12 +28,12 @@ namespace SwissKip.Web.Mailers
             return mailMessage;
         }
 
-        public virtual MailMessage CreateAccountRecipientInvitation(string recipientEmail, int invitationId, string recipientFirstName, string ownerFullName)
+        public virtual MailMessage CreateAccountDataheirInvitation(string dataheirEmail, int invitationId, string dataheirFirstName, string ownerFullName)
         {
-            var mailMessage = new MailMessage { Subject = "Invitation to be a Recipient" };
-            mailMessage.To.Add(recipientEmail);
+            var mailMessage = new MailMessage { Subject = "Invitation to be a Dataheir" };
+            mailMessage.To.Add(dataheirEmail);
             ViewBag.InvitationId = invitationId;
-            ViewBag.RecipientFirstName = recipientFirstName;
+            ViewBag.RecipientFirstName = dataheirFirstName;
             ViewBag.OwnerFullName = ownerFullName;
             PopulateBody(mailMessage, viewName: "CreateAccountRecipientInvitation");
 

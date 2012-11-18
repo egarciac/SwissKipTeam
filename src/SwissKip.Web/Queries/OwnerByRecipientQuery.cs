@@ -19,21 +19,18 @@
         public List<OwnerByRecipientModel> Execute()
         {
             var owners = Current.Connection.Query<OwnerByRecipientModel>(
-                "select a.FirstName,a.LastName  " +
-                "from OwnerRecipient ow " +
-                "inner join Account a " +
-                "on ow.OwnerId=a.Id " +
-                "where ow.RecipientId=@recipientId", new { recipientId }).ToList();
+                "select u.FirstName, u.LastName  " +
+                "from [user] u " +
+                "where a.Id =@recipientId", new { recipientId }).ToList();
             return owners;
         }
 
-        public List<WitnessAddModel> ExecuteNew()
+        public List<RecipientAddModel> ExecuteNew()
         {
-            var owners = Current.Connection.Query<WitnessAddModel>(
-                "select Id, FirstName, LastName, Email " +
-                "from dbo.Account where Id in " +
-                "(select WitnessId  from " +
-                "dbo.OwnerWitness where OwnerId=@id )",
+            var owners = Current.Connection.Query<RecipientAddModel>(
+                "SELECT u.Id, u.FirstName, u.LastName, u.Email " +
+                "FROM User_UserType uu INNER JOIN [User] u ON uu.UserId = u.Id " +
+                "WHERE UserIdFather=@id AND UserTypeId=2",
                 new { id = Current.UserId }).ToList();
             return owners;
         }

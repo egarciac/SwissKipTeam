@@ -19,21 +19,18 @@
         public List<OwnerByWitnessModel> Execute()
         {
             var owners = Current.Connection.Query<OwnerByWitnessModel>(
-                "select a.FirstName,a.LastName, ow.Confirmed, ow.OwnerDied " +
-                "from OwnerWitness ow " +
-                "inner join Account a " +
-                "on ow.OwnerId=a.Id " +
-                "where ow.WitnessId=@witnessId", new { witnessId }).ToList();
+                "select a.FirstName, a.LastName " +
+                "from [user] a " +
+                "where a.Id=@witnessId", new { witnessId }).ToList();
             return owners;
         }
 
         public List<WitnessAddModel> ExecuteNew()
         {
             var owners = Current.Connection.Query<WitnessAddModel>(
-                "select Id, FirstName, LastName, Email " +
-                "from dbo.Account where Id in " +
-                "(select WitnessId  from " +
-                "dbo.OwnerWitness where OwnerId=@id )",
+                "select u.Id, u.FirstName, u.LastName, u.Email " +
+                "FROM User_UserType uu INNER JOIN [User] u ON uu.UserId = u.Id " +
+                "WHERE UserIdFather=@id AND UserTypeId=3",
                 new { id = Current.UserId }).ToList();
             return owners;
         }

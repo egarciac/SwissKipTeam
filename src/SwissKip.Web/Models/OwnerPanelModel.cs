@@ -13,7 +13,11 @@
 
         public string Email { get; set; }
 
-        public int Witnesses { get; set; }
+        public string Dataheir { get; set; }
+
+        public string Confirmation { get; set; }
+        
+        public int Witness { get; set; }
 
         public string FullName
         {

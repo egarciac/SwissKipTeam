@@ -16,20 +16,27 @@ namespace SwissKip.Web.Helpers.Attributes
 
         public override bool IsValid(object value)
         {
-            var birthdate = (Birthday)value;
-            var year = birthdate.Year;
-            var month = birthdate.Month;
-            var day = birthdate.Day;
-
-            /* El usuario puede no ingresar una fecha de nacimiento.
-             * Por lo tanto, si todos los campos son nulos, es una fecha vacia pero válida. */
-            if (year == null && month == null && day == null)
-                return true;
-
-            if (year != null && month != null && day != null)
+            try
             {
-                DateTime temp;
-                return DateTime.TryParse(string.Format("{0}-{1}-{2}", year.Value, month.Value, day.Value), out temp);
+                var birthdate = (Birthday)value;
+                var year = birthdate.Year;
+                var month = birthdate.Month;
+                var day = birthdate.Day;
+
+                /* El usuario puede no ingresar una fecha de nacimiento.
+                 * Por lo tanto, si todos los campos son nulos, es una fecha vacia pero válida. */
+                if (year == null && month == null && day == null)
+                    return true;
+
+                if (year != null && month != null && day != null)
+                {
+                    DateTime temp;
+                    return DateTime.TryParse(string.Format("{0}-{1}-{2}", year.Value, month.Value, day.Value), out temp);
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
             }
             return false;
         }

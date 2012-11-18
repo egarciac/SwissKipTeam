@@ -6,7 +6,8 @@
 
     public class BankAccountModel
     {
-        public string BankName { get; set; }
+        
+        public int? BankId { get; set; }
 
         public string BankAccountNumber { get; set; }
 

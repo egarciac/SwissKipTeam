@@ -19,9 +19,9 @@
         public List<DigitalAccountModel> Execute()
         {
             var owners = Current.Connection.Query<DigitalAccountModel>(
-                "select AccountId,WebSite,Username,Password " +
+                "select Id,WebSite,Username,Password " +
                 "from DigitalAccount " + 
-                "where AccountId=@id",
+                "where UserId=@id",
                 new { id = this.AccountId }).ToList();
             return owners;
         }

@@ -13,55 +13,67 @@
 
     public class WitnessesAddHandler
     {
-        public void Handle(Account owner, List<WitnessAddModel> witnessesForm)
+        public void Handle(User owner, User witness)
         {
-            foreach (var witnessForm in witnessesForm)
-            {
-                //TODO: No se puede agregar como testigo a uno mismo
-                var account = this.Find(witnessForm.Email);
-                if (account == null)
-                {
-                    account = Account.CreateWitness(witnessForm.FirstName, witnessForm.LastName, witnessForm.Email, null, null);
-                    Save(account);
-                    AddWitnessToOwner(owner, account);
-                    SendInvitation(owner.FullName(), account);
-                }
-                else
-                {
-                    account.AddRole(AccountRoles.Witness);
-                    Update(account);
-                    AddWitnessToOwner(owner, account);
-                    //TODO: Tambien enviar email indicando que ha sido agregado como testigo
-                }
-            }
+            //foreach (var witnessForm in witnessesForm)
+            //{
+            //    //TODO: No se puede agregar como testigo a uno mismo
+            //    var user = this.Find(witnessForm.Email);
+            //    if (user == null)
+            //    {
+            //        user = User.CreateWitness(witnessForm.FirstName, witnessForm.LastName, null, null, witnessForm.Email, 0, System.DateTime.Now, 1, false, false, true);
+            //        Save(user);
+            //        AddWitnessToOwner(owner, user);
+                    SendInvitation(owner, witness);
+                //}
+                //else
+                //{
+                //    user.AddRole(UserRoles.Witness);
+                //    Update(user);
+                //    AddWitnessToOwner(owner, user);
+                //    //TODO: Tambien enviar email indicando que ha sido agregado como testigo
+                //}
+            //}
         }
 
-        private Account Find(string email)
+        private User Find(string email)
         {
-            var predicate = Predicates.Field<Account>(f => f.Email, Operator.Eq, email);
-            return Current.Connection.GetList<Account>(predicate).SingleOrDefault();
+            var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
-        private static void Save(Account account)
+        public bool ExistsUserWithSameEmail(string email)
         {
-            Current.Connection.Insert(account);
+            var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
+            return Current.Connection.Count<User>(predicate) >= 1;
         }
 
-        private static void Update(Account account)
+        public bool ExistsUserWithSameUserName(string userName)
         {
-            Current.Connection.Update(account);
+            var predicate = Predicates.Field<User>(f => f.UserName, Operator.Eq, userName);
+            return Current.Connection.Count<User>(predicate) >= 1;
         }
 
-        private static void AddWitnessToOwner(Account owner, Account witness)
+        private static void Save(User user)
+        {
+            Current.Connection.Insert(user);
+        }
+
+        private static void Update(User user)
+        {
+            Current.Connection.Update(user);
+        }
+
+        private static void AddWitnessToOwner(User owner, User witness)
         {
             var ownerWitness = new OwnerWitness(owner.Id, witness.Id);
             Current.Connection.Insert(ownerWitness);
         }
 
-        private static void SendInvitation(string ownerFullName, Account witness)
+        private static void SendInvitation(User owner, User witness)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, ownerFullName);
+            var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, owner.FullName());
             msg.Send();
         }
     }

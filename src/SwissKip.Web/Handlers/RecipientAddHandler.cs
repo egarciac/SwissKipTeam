@@ -12,40 +12,40 @@
 
     public class RecipientAddHandler
     {
-        public void Handle(Account owner, RecipientAddModel form)
+        public void Handle(User owner, RecipientAddModel form)
         {
             //TODO: No se puede agregar como beneficiario a uno mismo
-            var account = this.Find(form.Email);
-            if (account == null)
+            var user = this.Find(form.Email);
+            if (user == null)
             {
-                account = Account.CreateRecipient(form.FirstName, form.LastName, form.Email, null, null);
-                Save(account);
-                AddRecipientToOwner(owner.Id, account.Id);
-                SendInvitation(owner.FullName(), account);
+                user = User.CreateDataheir(form.FirstName, form.LastName, null, null, form.Email, 0, System.DateTime.Now, 1, false, true, false);
+                Save(user);
+                AddRecipientToOwner(owner.Id, user.Id);
+                SendInvitation(owner.FullName(), user);
             }
             else
             {
-                account.AddRole(AccountRoles.Recipient);
-                Update(account);
-                AddRecipientToOwner(owner.Id, account.Id);
+                user.AddRole(UserRoles.Dataheir);
+                Update(user);
+                AddRecipientToOwner(owner.Id, user.Id);
                 //TODO: Tambien enviar email indicando que ha sido agregado como testigo
             }
         }
 
-        private Account Find(string email)
+        private User Find(string email)
         {
-            var predicate = Predicates.Field<Account>(f => f.Email, Operator.Eq, email);
-            return Current.Connection.GetList<Account>(predicate).SingleOrDefault();
+            var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
-        private static void Save(Account account)
+        private static void Save(User user)
         {
-            Current.Connection.Insert(account);
+            Current.Connection.Insert(user);
         }
 
-        private static void Update(Account account)
+        private static void Update(User user)
         {
-            Current.Connection.Update(account);
+            Current.Connection.Update(user);
         }
 
         private static void AddRecipientToOwner(int ownerId, int recipientId)
@@ -63,10 +63,10 @@
             }
         }
 
-        private static void SendInvitation(string ownerFullName, Account recipient)
+        private static void SendInvitation(string ownerFullName, User recipient)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.CreateAccountRecipientInvitation(recipient.Email, recipient.Id, recipient.FirstName, ownerFullName);
+            var msg = mailer.CreateAccountDataheirInvitation(recipient.Email, recipient.Id, recipient.FirstName, ownerFullName);
             msg.Send();
         }
     }

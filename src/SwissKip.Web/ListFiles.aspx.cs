@@ -13,7 +13,7 @@ namespace SwissKip.Web
         {
             IZ.WebFileManager.RootDirectory rootNew = new IZ.WebFileManager.RootDirectory(); 
             FileManager1.RootDirectories.Add(rootNew);
-            FileManager1.RootDirectories[0].DirectoryPath = Session["path"].ToString(); 
+            FileManager1.RootDirectories[0].DirectoryPath = "~/SwissKip/" +  Session["username"] + "/"; 
         }
     }
 }

@@ -35,7 +35,7 @@
                     <div style="float:left; width:700px;">
                         <div style="float:left; width:70px;">
                             <div style="float:left; width:70px; padding-top:15px;" class="textonegrita">
-                            @BankAccount.BankName</div>
+                            @BankAccount.BankId</div>
                         </div>
                         <div style="float:left; width:170px; padding-left:60px;">
                             <div style="float:left; width:170px; padding-top:15px;" class="textonegrita13">
@@ -47,7 +47,7 @@
                         </div>
                         <div style="float:left; width:70px; padding-left:40px;">
                             <div style="float:left; width:70px; padding-top:15px;" class="textonegrita">
-                            @BankAccount.Country</div>
+                            @Html.DropDownList("CountryId", null, "", new { @class = "caja400x23" })</div>
                         </div>
                         <div style="float:left; width:70px; padding-left:55px;">
                              <div style="float:left; padding-top:15px;"></div>

@@ -9,20 +9,20 @@
     {
         public void Handle(int id)
         {
-            var account = Find(id);
-            account.ConfirmEmail();
-            Update(account);
-            AuthenticationService.SignIn(account);
+            var user = Find(id);
+            //user.ConfirmEmail();
+            //Update(user);
+            AuthenticationService.SignIn(user);
         }
 
-        private Account Find(int id)
+        private User Find(int id)
         {
-            return Current.Connection.Get<Account>(id);
+            return Current.Connection.Get<User>(id);
         }
 
-        private void Update(Account account)
+        private void Update(User user)
         {
-            Current.Connection.Update(account);
+            Current.Connection.Update(user);
         }
     }
 }

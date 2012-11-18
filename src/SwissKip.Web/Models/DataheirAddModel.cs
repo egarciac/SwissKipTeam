@@ -4,7 +4,7 @@
 
     using DataAnnotationsExtensions;
 
-    public class AccountCreateModel
+    public class DataheirAddModel
     {
         [Required]
         public string FirstName { get; set; }
@@ -15,13 +15,5 @@
         [Required]
         [Email]
         public string Email { get; set; }
-
-        [Required]
-        public string Username { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
-        //public bool ReceivedEmailInvitation { get; set; }
     }
 }

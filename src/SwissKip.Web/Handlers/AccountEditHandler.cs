@@ -25,12 +25,12 @@
             Update(account);
         }
 
-        private static Account Find(int id)
+        private static User Find(int id)
         {
-            return Current.Connection.Get<Account>(id);
+            return Current.Connection.Get<User>(id);
         }
 
-        private static void Update(Account account)
+        private static void Update(User account)
         {
             Current.Connection.Update(account);
         }

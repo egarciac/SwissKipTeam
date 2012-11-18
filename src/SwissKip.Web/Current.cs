@@ -26,11 +26,11 @@
             }
         }
 
-        public static Account User
+        public static User User
         {
             get
             {
-                return Connection.Get<Account>(UserId);
+                return Connection.Get<User>(UserId);
             }
         }
 

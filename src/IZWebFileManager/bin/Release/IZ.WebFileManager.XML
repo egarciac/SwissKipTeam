@@ -4,16 +4,6 @@
         <name>IZ.WebFileManager</name>
     </assembly>
     <members>
-        <member name="P:IZ.WebFileManager.FileManagerController.AllowDelete">
-            <summary>
-            When is set true, Delete, Move and Rename are not allowed, Default value it true.
-            </summary>
-        </member>
-        <member name="P:IZ.WebFileManager.FileManagerControlBase.AllowDelete">
-            <summary>
-            When is set true, Delete, Move and Rename are not allowed, Default value it true.
-            </summary>
-        </member>
         <member name="M:IZ.WebFileManager.RootDirectory.ToString">
             <summary>
             Overridden
@@ -31,6 +21,16 @@
         <member name="P:IZ.WebFileManager.RootDirectory.Text">
             <summary>
             Gets or sets the text displayed for the node in the folder tree of FileManager control.
+            </summary>
+        </member>
+        <member name="P:IZ.WebFileManager.FileManagerController.AllowDelete">
+            <summary>
+            When is set true, Delete, Move and Rename are not allowed, Default value it true.
+            </summary>
+        </member>
+        <member name="P:IZ.WebFileManager.FileManagerControlBase.AllowDelete">
+            <summary>
+            When is set true, Delete, Move and Rename are not allowed, Default value it true.
             </summary>
         </member>
         <member name="T:System.IO.xDirectory">
@@ -174,60 +174,6 @@
             <param name="Overwrite">Whether or not to Overwrite a Destination File if it Exists.</param>
             <param name="FolderLimit">Iteration Limit - Total Number of Folders/SubFolders to Copy</param>
         </member>
-        <member name="T:Legend.Web.HtmlAttributeManager">
-            <summary>
-            Handles the writing of attributes to the HtmlTextWriter specified
-            in the constructor.
-            </summary>
-        </member>
-        <member name="M:Legend.Web.HtmlAttributeManager.#ctor(System.Web.UI.HtmlTextWriter)">
-            <summary>
-            Creates a new instance.
-            </summary>
-            <param name="writer">The writer to use for writing.</param>
-        </member>
-        <member name="M:Legend.Web.HtmlAttributeManager.Attr(System.Web.UI.HtmlTextWriterAttribute,System.String)">
-            <summary>
-            Applies the value to the specified attribute to the HtmlTextWriter
-            this instance contains.
-            </summary>
-            <param name="key">The attribute to set.</param>
-            <param name="value">The value to set to the attribute.</param>
-            <returns>The attribute manager.</returns>
-        </member>
-        <member name="M:Legend.Web.HtmlAttributeManager.Class(System.String)">
-            <summary>
-            Adds the class attribute to the tag being rendered.
-            </summary>
-            <param name="className">The name of the class.</param>
-            <returns>The attribute manager.</returns>
-        </member>
-        <member name="M:Legend.Web.HtmlAttributeManager.Class(System.String[])">
-            <summary>
-            Adds the class attribute to the tag being rendered.
-            </summary>
-            <param name="classNames">The names of the classes to set to the attribute.</param>
-            <returns>The attribute manager.</returns>
-        </member>
-        <member name="M:Legend.Web.HtmlAttributeManager.Id(System.String)">
-            <summary>
-            Adds the id attribute to the tag being rendered.
-            </summary>
-            <param name="elementId">The id to set.</param>
-            <returns>The attribute manager.</returns>
-        </member>
-        <member name="M:Legend.Web.HtmlAttributeManager.Name(System.String)">
-            <summary>
-            Adds the name attribute to the tag being rendered.
-            </summary>
-            <param name="elementName">The name to set.</param>
-            <returns>The attribute manager.</returns>
-        </member>
-        <member name="P:Legend.Web.HtmlAttributeManager.Writer">
-            <summary>
-            The writer this manager writes to.
-            </summary>
-        </member>
         <member name="T:Legend.Web.HtmlTextWriterExtensions">
             <summary>
             Provides extension methods for the HtmlTextWriterClass.
@@ -352,6 +298,60 @@
             the first parameter is the number of the call (starting with one), the
             second parameter is the writer to render to.</param>
             <returns>The writer.</returns>
+        </member>
+        <member name="T:Legend.Web.HtmlAttributeManager">
+            <summary>
+            Handles the writing of attributes to the HtmlTextWriter specified
+            in the constructor.
+            </summary>
+        </member>
+        <member name="M:Legend.Web.HtmlAttributeManager.#ctor(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="writer">The writer to use for writing.</param>
+        </member>
+        <member name="M:Legend.Web.HtmlAttributeManager.Attr(System.Web.UI.HtmlTextWriterAttribute,System.String)">
+            <summary>
+            Applies the value to the specified attribute to the HtmlTextWriter
+            this instance contains.
+            </summary>
+            <param name="key">The attribute to set.</param>
+            <param name="value">The value to set to the attribute.</param>
+            <returns>The attribute manager.</returns>
+        </member>
+        <member name="M:Legend.Web.HtmlAttributeManager.Class(System.String)">
+            <summary>
+            Adds the class attribute to the tag being rendered.
+            </summary>
+            <param name="className">The name of the class.</param>
+            <returns>The attribute manager.</returns>
+        </member>
+        <member name="M:Legend.Web.HtmlAttributeManager.Class(System.String[])">
+            <summary>
+            Adds the class attribute to the tag being rendered.
+            </summary>
+            <param name="classNames">The names of the classes to set to the attribute.</param>
+            <returns>The attribute manager.</returns>
+        </member>
+        <member name="M:Legend.Web.HtmlAttributeManager.Id(System.String)">
+            <summary>
+            Adds the id attribute to the tag being rendered.
+            </summary>
+            <param name="elementId">The id to set.</param>
+            <returns>The attribute manager.</returns>
+        </member>
+        <member name="M:Legend.Web.HtmlAttributeManager.Name(System.String)">
+            <summary>
+            Adds the name attribute to the tag being rendered.
+            </summary>
+            <param name="elementName">The name to set.</param>
+            <returns>The attribute manager.</returns>
+        </member>
+        <member name="P:Legend.Web.HtmlAttributeManager.Writer">
+            <summary>
+            The writer this manager writes to.
+            </summary>
         </member>
     </members>
 </doc>

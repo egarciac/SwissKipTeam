@@ -6,12 +6,12 @@
 
     public class AuthenticationService
     {
-        public static void SignIn(Account account)
+        public static void SignIn(User user)
         {
-            FormsAuthentication.SetAuthCookie(account.Id.ToString(), false);
+            FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
         }
 
-        public static Account GetUser()
+        public static User GetUser()
         {
             return Current.User;
         }

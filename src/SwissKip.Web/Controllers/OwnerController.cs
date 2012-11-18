@@ -34,10 +34,12 @@ namespace SwissKip.Web.Controllers
 
         public ActionResult AddRecipient()
         {
-            var ownerRecipient = Current.Connection.Get<OwnerRecipient>(Current.UserId);
-            if (ownerRecipient!=null)
+            //var user = AuthenticationService.GetUser();
+            //var ownerRecipient = new OwnersByRecipientQuery(user.Id).ExecuteNew();
+            var ownerRecipient = Current.Connection.Get<User>(Current.UserId);
+            if (ownerRecipient != null)
             {
-                var recipient = Current.Connection.Get<Account>(ownerRecipient.RecipientId);
+                var recipient = Current.Connection.Get<User>(ownerRecipient.Id);
                 var model = Mapper.Map<RecipientAddModel>(recipient);
                 return View(model);
             }
@@ -92,7 +94,7 @@ namespace SwissKip.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                new WitnessesAddHandler().Handle(Current.User, RemoveEmptyItems(witnesses));
+                //new WitnessesAddHandler().Handle(Current.User, RemoveEmptyItems(witnesses));
                 return RedirectToAction("EditWitness");
             }
             return this.View(witnesses);

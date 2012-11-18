@@ -11,24 +11,24 @@
 
     public class AccountCreateHandler
     {
-        public Account Handle(int? accountId, AccountCreateModel form)
+        public User Handle(int? accountId, AccountCreateModel form)
         {
             if (AccountReceivedEmailInvitation(accountId))
             {
                 //TODO: ¿Si el usuario no existe, significa que la url fue manipulada?
                 //TODO: ¿Si la cuenta ya tiene los datos completos?
-                var account = Current.Connection.Get<Account>(accountId);
+                var user = Current.Connection.Get<User>(accountId);
 
-                if (form.Email != account.Email && ExistsAccountWithSameEmail(form.Email))
+                if (form.Email != user.Email && ExistsAccountWithSameEmail(form.Email))
                     throw new ValidationException("Email", "Your Email already exists");
 
                 if (ExistsAccountWithSameUserName(form.Username))
                     throw new ValidationException("UserName", "Your UserName already exists");
 
-                account.Map(form, new[] { "Email" });
-                account.DoesNotNeedToConfirmEmail();
-                Update(account);
-                return account;
+                user.Map(form, new[] { "Email" });
+                //user.DoesNotNeedToConfirmEmail();
+                Update(user);
+                return user;
             }
             else
             {
@@ -38,9 +38,9 @@
                 if (ExistsAccountWithSameUserName(form.Username))
                     throw new ValidationException("UserName", "Your UserName already exists");
 
-                var owner = Account.CreateOwner(form.FirstName, form.LastName, form.Email, form.Username, form.Password);
+                var owner = User.CreateOwner(form.FirstName, form.LastName, form.Username, form.Password, form.Email, 0, System.DateTime.Now, 1, true, false, false);
                 Save(owner);
-                SendConfirmationEmail(owner);
+                //SendConfirmationEmail(owner);
                 return owner;
             }
 
@@ -54,8 +54,8 @@
 
         private bool ExistsAccountWithSameUserName(string userName)
         {
-            var predicate = Predicates.Field<Account>(f => f.UserName, Operator.Eq, userName);
-            return Current.Connection.Count<Account>(predicate) >= 1;
+            var predicate = Predicates.Field<User>(f => f.UserName, Operator.Eq, userName);
+            return Current.Connection.Count<User>(predicate) >= 1;
         }
 
         private bool AccountReceivedEmailInvitation(int? accountId)
@@ -63,21 +63,21 @@
             return accountId != null;
         }
 
-        private static void Save(Account account)
+        private static void Save(User user)
         {
-            Current.Connection.Insert(account);
+            Current.Connection.Insert(user);
         }
 
-        private static void Update(Account account)
+        private static void Update(User user)
         {
-            Current.Connection.Update(account);
+            Current.Connection.Update(user);
         }
 
-        private void SendConfirmationEmail(Account account)
-        {
-            var mailer = new DefaultMailer();
-            var msg = mailer.NewAccountConfirmation(account.Email, account.Id, account.FirstName);
-            msg.Send();
-        }
+        //private void SendConfirmationEmail(Account account)
+        //{
+        //    var mailer = new DefaultMailer();
+        //    var msg = mailer.NewAccountConfirmation(account.Email, account.Id, account.FirstName);
+        //    msg.Send();
+        //}
     }
 }

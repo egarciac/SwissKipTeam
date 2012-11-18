@@ -2,11 +2,11 @@
 @model SwissKip.Web.Models.AccountCreateModel
 @{
     ViewBag.Title = "New Account";
-    ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
 }
-
+<div align="center">
 <div class="interior1-contenido">
-    <div class="interior1-titulo black22">Create your SwissKip account</div>
+    <div class="interior1-titulo black22" align="left">Create your SwissKip account</div>
     @using (Html.BeginForm())
     {
         <div class="interior1-form-1">
@@ -48,14 +48,15 @@
             
         </div>
         
-        <div class="interior1-cont-cpt">
+        @*<div class="interior1-cont-cpt">
             <div class="interior1-form-text1 rojo20">Code</div>
             @ReCaptcha.GetHtml(theme: "red")
             <div style="margin-left:115px;">@Html.ValidationMessage("Catpcha")</div>
-        </div>
+        </div>*@
         
-        <div class="interior1-crear-c"><input type="image" value="Enviar" src="~/Content/images/creare-my-account.png"/></div>
+        <div class="interior1-crear-c" align="left"><input type="image" value="Enviar" src="/Content/images/creare-my-account.png"/></div>
         <div class="interior1-cr-txt textoform">by clicking this button, you agree to SwissKip's <a href="@Url.Action("Terms", "Home")" target="_blank"><strong>Terms of Use</strong></a></div>
     }
         
+  </div>
   </div>

@@ -18,16 +18,26 @@
             //Session["witnesses"] = witnesses;
         }
 
-        private Account Find(string email)
+        //private Account Find(string email)
+        //{
+        //    var predicate = Predicates.Field<Account>(f => f.Email, Operator.Eq, email);
+        //    return Current.Connection.GetList<Account>(predicate).SingleOrDefault();
+        //}
+
+        public static void Save(User user)
         {
-            var predicate = Predicates.Field<Account>(f => f.Email, Operator.Eq, email);
-            return Current.Connection.GetList<Account>(predicate).SingleOrDefault();
+            Current.Connection.Insert(user);
         }
 
-        public static void Save(User User)
+        public static void Save(User_UserType user_userType)
         {
-            Current.Connection.Insert(User);
-            //Current.Connection.Insert(User);
+            Current.Connection.Insert(user_userType);
+        }
+
+        public static User Find(string email)
+        {
+            var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
         private static void Update(Account account)

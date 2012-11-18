@@ -18,7 +18,7 @@ namespace SwissKip.Web.Controllers
     public class AuthenticationController : Controller
     {
         [AllowAnonymous]
-        public ActionResult SignIn()
+        public ActionResult SignIn(int? userId)
         {
             //Session["username"] = Current.User.UserName;
             return View();
@@ -26,20 +26,20 @@ namespace SwissKip.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult SignIn(SignInModel model, string returnUrl)
+        public ActionResult SignIn(int? userId, SignInModel model, string returnUrl)
         {
             //TODO: ¿Si aún no se confirmó el email?
-            if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
-            {
-                ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
-            }
+            //if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
+            //{
+            //    ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
+            //}
 
-            Account account = null;
+            User user = null;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    account=new SignInHandler().Handle(model);
+                    user=new SignInHandler().Handle(model);
                 }
                 catch (ValidationException e)
                 {
@@ -50,15 +50,15 @@ namespace SwissKip.Web.Controllers
             if (!ModelState.IsValid)
                 return this.View();
 
-            AuthenticationService.SignIn(account);
-            Session["username"]= account.UserName;
-            Session["path"] = "~/Swisskip/" + account.UserName;
+            AuthenticationService.SignIn(user);
+            //Session["username"]= user.UserName;
+            Session["path"] = Server.MapPath("~/Swisskip/") + user.UserName;
 
             if (!string.IsNullOrEmpty(returnUrl))
             {
                 return this.Redirect(returnUrl);
             }
-            return new RedirectToAccountType(account);
+            return new RedirectToAccountType(user);
         }
 
         public ActionResult SignOut()

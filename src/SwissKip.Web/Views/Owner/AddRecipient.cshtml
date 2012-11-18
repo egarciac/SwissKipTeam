@@ -1,4 +1,4 @@
-﻿@model SwissKip.Web.Models.RecipientAddModel
+﻿@model IEnumerable<SwissKip.Web.Models.RecipientAddModel>
 @{
     ViewBag.Title = "Recipient";
 }
@@ -13,41 +13,26 @@
                 &nbsp;&nbsp;&nbsp;
                 @Html.ActionLink("[+] Witness", "EditWitness", "Owner")
                 &nbsp;&nbsp;&nbsp;
-                @Html.ActionLink(" [+] Recipient","AddRecipient","Owner")
+                @Html.ActionLink(" [+] Dataheir", "AddRecipient", "Owner")
             </div>
         </div>
-        <div style="float: left; width: 738px; height: 1px; z-index: 1; margin-top: -3px;
-            background: #b5b5b3;">
-        </div>
+        <div style="float: left; width: 738px; height: 1px; z-index: 1; margin-top: -3px; background: #b5b5b3;"></div>
         @using (Html.BeginForm())
         {
-            <div style="float: left; padding-top: 20px;">
-                <div style="float: left; width: 580px;">
-                    <div style="float: left; width: 550px; padding-top: 8px;">
-                        <div style="float: left; width: 95px; padding-top: 8px;" class="negro13b">First Name:</div>
-                        <div style="float: left;">@Html.TextBoxFor(x => x.FirstName, new { @class = "caja400x23" })</div>
-                        <div style="float: left;">@Html.ValidationMessageFor(x => x.FirstName)</div>
-                    </div>
-                    <div style="float: left; width: 550px; padding-top: 8px;">
-                        <div style="float: left; width: 95px;" class="negro13b">Last Name:</div>
-                        <div style="float: left;">@Html.TextBoxFor(x => x.LastName, new { @class = "caja400x23" })</div>
-                        <div style="float: left;">@Html.ValidationMessageFor(x => x.LastName)</div>
-                    </div>
-                                        <div style="float: left; width: 550px; padding-top: 8px;">
-                        <div style="float: left; width: 95px;" class="negro13b">Email:</div>
-                        <div style="float: left;">@Html.TextBoxFor(x => x.Email, new { @class = "caja400x23" })</div>
-                        <div style="float: left;">@Html.ValidationMessageFor(x => x.Email)</div>
-                    </div>
-                </div>
+            <div id="recipient" style="float:left; width:738px;">
+            @foreach (var dataheir in Model)
+            {
+                Html.RenderPartial("_Recipient", dataheir);
+            }    
             </div>
             <div style="float: left; width: 738px; margin-top: 15px; height: 1px; background: #b5b5b3;">
             </div>
             <div style="float: left; width: 738px; padding-top: 4px;">
                 <div style="float: right;">
-                    <input type="image" name="Enviar" value="Enviar" src="~/Content/images/guardar.png" />
+                    <input type="image" name="Enviar" value="Enviar" src="/Content/images/guardar.png" />
                 </div>
                 <div style="float: right; padding-right: 5px;">
-                    <a href="@Url.Action("Index")"><img src="~/Content/images/volver.png" border="0"></a>
+                    <a href="@Url.Action("Index")"><img src="/Content/images/volver.png" border="0"></a>
                 </div>
             </div>
         }

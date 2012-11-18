@@ -29,7 +29,7 @@
             if (invitationId.HasValue)
             {
                 //TODO: ¿Si no existe la cuenta?
-                var invitation = Current.Connection.Get<Account>(invitationId.Value);
+                var invitation = Current.Connection.Get<User>(invitationId.Value);
                 var model = Mapper.Map<AccountCreateModel>(invitation, new[] { "UserName", "Password" });
                 return View(model);
             }
@@ -41,21 +41,23 @@
         [AllowAnonymous]
         public ActionResult Create(int? invitationId, AccountCreateModel form)
         {
-            if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
-            {
-                ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
-            }
+            //if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
+            //{
+            //    ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
+            //}
 
-            Account account = null;
+            User user = null;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    account = new AccountCreateHandler().Handle(invitationId, form);
+                    user = new AccountCreateHandler().Handle(invitationId, form);
                     var path = "~/Swisskip/" + form.Username;
-                    Directory.CreateDirectory(Server.MapPath(path));
+                    if (!Directory.Exists(Server.MapPath(path)))
+                        Directory.CreateDirectory(Server.MapPath(path));
+
                     Session["path"] = path;
-                    Session["username"] = form.Username;
+                    //Session["username"] = form.Username;
 
                     //Creating a default photo
                     string newFile = Server.MapPath("~/Content/images/") + form.Username + ".jpg";
@@ -74,8 +76,8 @@
 
             if (invitationId.HasValue)
             {
-                AuthenticationService.SignIn(account);
-                return new RedirectToAccountType(account);
+                AuthenticationService.SignIn(user);
+                return new RedirectToAccountType(user);
             }
             return RedirectToAction("ConfirmYourEmailAddress");
         }
@@ -115,7 +117,7 @@
         {
             if (ModelState.IsValid)
             {
-                new WitnessesAddHandler().Handle(Current.User, RemoveEmptyItems(witnesses));
+                //new WitnessesAddHandler().Handle(Current.User, RemoveEmptyItems(witnesses));
                 return RedirectToAction("Index", "Owner");
             }
             return this.View(witnesses);

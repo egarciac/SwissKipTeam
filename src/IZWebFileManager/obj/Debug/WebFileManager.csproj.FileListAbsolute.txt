@@ -18,3 +18,8 @@ F:\swisskip\sistema\swisskipteam2\SwissKipTeam\src\IZWebFileManager\bin\Debug\IZ
 F:\swisskip\sistema\swisskipteam2\SwissKipTeam\src\IZWebFileManager\obj\Debug\ResolveAssemblyReference.cache
 F:\swisskip\sistema\swisskipteam2\SwissKipTeam\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.dll
 F:\swisskip\sistema\swisskipteam2\SwissKipTeam\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.pdb
+C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Debug\IZ.WebFileManager.dll
+C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\bin\Debug\IZ.WebFileManager.pdb
+C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.dll
+C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\IZWebFileManager\obj\Debug\IZ.WebFileManager.pdb

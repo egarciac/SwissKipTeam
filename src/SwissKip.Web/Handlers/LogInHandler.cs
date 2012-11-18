@@ -10,23 +10,23 @@
 
     public class SignInHandler
     {
-         public Account Handle(SignInModel form)
+         public User Handle(SignInModel form)
          {
-             var account = this.Find(form.Username);
-             if (account!=null)
+             var user = this.Find(form.Username);
+             if (user!=null)
              {
-                 if (account.PasswordMatches(form.Password))
+                 if (user.PasswordMatches(form.Password))
                  {
-                     return account;
+                     return user;
                  }
              }
              throw new ValidationException("Invalid Username or Password");
          }
 
-        private Account Find(string userName)
+        private User Find(string userName)
         {
-            var predicate = Predicates.Field<Account>(f => f.UserName, Operator.Eq, userName);
-            return Current.Connection.GetList<Account>(predicate).SingleOrDefault();
+            var predicate = Predicates.Field<User>(f => f.UserName, Operator.Eq, userName);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
     }
 }

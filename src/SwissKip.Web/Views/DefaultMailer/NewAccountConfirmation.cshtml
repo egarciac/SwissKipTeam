@@ -1,7 +1,7 @@
 @using Mvc.Mailer
 @{
     this.Layout = null;
-    ViewBag.VerifyUrl = Url.Abs(Url.Action("Confirm", "NewAccount", new { accountId = ViewBag.AccountId }));
+    ViewBag.VerifyUrl = Url.Abs(Url.Action("SignIn", "Authentication", new { userId = ViewBag.AccountId }));
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,7 +22,7 @@
                 SwissKip Account Confirmation
             </h3>
             <div>
-                Hi @ViewBag.AccountFirstName,
+                Hi @ViewBag.FullName,
                 <br />
                 <br />
                 To verify your account, please click the following link:

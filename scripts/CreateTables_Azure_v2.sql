@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[User](
 	[Email] [nvarchar](100) NOT NULL,
 	[CountryId] [int] NULL,
 	[Birthday] [date] NULL,
-	[DateCreated] [date] NOT NULL,
+	[CreatedDate] [date] NOT NULL,
 	[Status] [bit] NOT NULL,
  CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
 (
@@ -25,10 +25,10 @@ CREATE TABLE [dbo].[User](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserTipo]    Script Date: 10/20/2012 01:19:13 ******/
+/****** Object:  Table [dbo].[UserType]    Script Date: 10/20/2012 01:19:13 ******/
 DROP TABLE [dbo].[UserType]
 GO
-/****** Object:  Table [dbo].[UserTipo]    Script Date: 10/20/2012 01:25:57 ******/
+/****** Object:  Table [dbo].[UserType]    Script Date: 10/20/2012 01:25:57 ******/
 CREATE TABLE [dbo].[UserType](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Description] [varchar] NOT NULL,
@@ -143,7 +143,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Log](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[MessageId] [nVarchar] (500) NOT NULL,
+	[UserId] [int] NOT NULL,
+	[MessageId] [int] NOT NULL,
+	[Detailed] [nVarchar] (500) NOT NULL,
 	[CreatedDate] [Date] NOT NULL,
 	[Status] [bit] NOT NULL,
  CONSTRAINT [PK_Log] PRIMARY KEY CLUSTERED 
@@ -452,13 +454,38 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[BankAccount](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[BankId] [int] NOT NULL,
 	[UserId] [int] NOT NULL,
+	[BankId] [int] NOT NULL,
 	[BankAccountNumber] [int] NOT NULL,
+	[Password] [nvarchar] (100) NOT NULL,
+	[CountryId] [int] NOT NULL,
+	[Status] [int] NOT NULL,
  CONSTRAINT [PK_BankAccount] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
 )
 GO
+/****** Object:  Table [dbo].[DigitalAccount]    Script Date: 10/20/2012 01:19:13 ******/
+DROP TABLE [dbo].[DigitalAccount]
+GO
+/****** Object:  Table [dbo].[DigitalAccount]    Script Date: 10/20/2012 16:17:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DigitalAccount](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NOT NULL,
+	[Website] [nvarchar] (100) NOT NULL,
+	[Username] [nvarchar] (100) NOT NULL,
+	[Password] [nvarchar] (100) NOT NULL,
+	[Status] [int] NOT NULL,
+ CONSTRAINT [PK_DigitalAccount] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+GO
+
 

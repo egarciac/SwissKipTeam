@@ -7,29 +7,29 @@
 
     public class RedirectToAccountType : ActionResult
     {
-        private readonly Account account;
+        private readonly User user;
 
-        public RedirectToAccountType(Account account)
+        public RedirectToAccountType(User user)
         {
-            this.account = account;
+            this.user = user;
         }
 
         public override void ExecuteResult(ControllerContext context)
         {
             RedirectToRouteResult result = null;
-            if (this.account.IsOwner)
+            if (this.user.IsOwner)
             {
                 result = new RedirectToRouteResult(new RouteValueDictionary {
                             { "Controller", "Owner" },
                             { "Action", "Index" } });
             }
-            else if (this.account.IsWitness)
+            else if (this.user.IsWitness)
             {
                 result = new RedirectToRouteResult(new RouteValueDictionary {
                             { "Controller", "Witness" },
                             { "Action", "Index" } });
             }
-            else if (this.account.IsRecipient)
+            else if (this.user.IsDataheir)
             {
                 result = new RedirectToRouteResult(new RouteValueDictionary {
                             { "Controller", "Recipient" },

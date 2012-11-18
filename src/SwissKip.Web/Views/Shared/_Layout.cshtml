@@ -15,7 +15,7 @@
                 <div id="logo"></div>
             </a>
             <div id="bienvenido" class="rojo">
-                @*@if (this.Context.User.Identity.IsAuthenticated)
+                @if (this.Context.User.Identity.IsAuthenticated)
                 {
                     <p>
                         Welcome <strong>@Current.User.FirstName </strong>
@@ -31,10 +31,10 @@
                         </strong>
                         /
                         <strong>
-                            @Html.ActionLink("Free Sign Up", "Create", "NewAccount", null, new { id = "registerLink", @class = "rojo" })
+                            @Html.ActionLink("Free Sign Up", "Signin1", "Registration", null, new { id = "registerLink", @class = "rojo" })
                         </strong>
                     </p>
-                }*@
+                }
 
             </div>
         </div>
@@ -46,7 +46,7 @@
                     <li><a href="/Home/TheProcess">The Process</a></li>
                     <!--li><a href="/Home/HowDoesItWork">How does it work?</a></li-->
                     <li><a href="/Home/Security">Security</a></li>
-                    <li><a href="/Registration/Signin1"><i>my</i>kip</a></li>
+                    <li><a href="/Owner"><i>my</i>kip</a></li>
                 </ul>
             </div>
         </div>
@@ -84,7 +84,7 @@
             </div>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval")
 </body>
 </html>

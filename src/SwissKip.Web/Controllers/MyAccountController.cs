@@ -28,15 +28,15 @@
         [HttpPost]
         public ActionResult Index(AccountEditModel model, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     if (file != null )
                     {
-                        Account account = Current.Connection.Get<Account>(Current.UserId); ;
-                        AuthenticationService.SignIn(account);
-                        var serverPath = Server.MapPath("~/Content/images/" + account.UserName + ".jpg");
+                        User user = Current.Connection.Get<User>(Current.UserId); ;
+                        AuthenticationService.SignIn(user);
+                        var serverPath = Server.MapPath("~/Content/images/" + user.UserName + ".jpg");
                         file.SaveAs(serverPath);
                     }
 
@@ -46,13 +46,13 @@
                 {
                     ModelState.AddModelError(e.Key, e.Message);
                 }
-            }
+            //}
 
-            if (!ModelState.IsValid)
-            {
-                ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
-                return this.View(model);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
+            //    return this.View(model);
+            //}
             return RedirectToAction("index","Owner");
         }
     }
