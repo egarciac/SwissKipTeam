@@ -33,14 +33,26 @@
             //}
         }
 
-        public void Handle2(User owner)
-        {
-            SendDeadReport(owner);
-        }
+        //public void Handle2(User owner)
+        //{
+        //    SendDeadReport(owner);
+        //}
 
         private User Find(string email)
         {
             var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
+        }
+
+        public User_UserType FindIdOwner(int currentId)
+        {
+            var predicate = Predicates.Field<User_UserType>(f => f.UserId, Operator.Eq, currentId);
+            return Current.Connection.GetList<User_UserType>(predicate).SingleOrDefault();
+        }
+
+        public User FindFatherInfo(int fatherId)
+        {
+            var predicate = Predicates.Field<User>(f => f.Id, Operator.Eq, fatherId);
             return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
@@ -88,13 +100,13 @@
             msg.Send();
         }
 
-        private static void SendDeadReport(User owner)
+        public void SendDeadReport(int UserId, User FatherInfo)
         {
             var mailer = new DefaultMailer();
-            var w = new OwnersByWitnessQuery(owner.Id).ExecuteNew();
+            var w = new OwnersByRecipientQuery(UserId, FatherInfo.Id).ExecuteNew2();
             for (int i = 0; i < w.Count; i++)
             {
-                var msg = mailer.SendWitnessDeadReport(owner.FullName(), w[i].FirstName + " " + w[i].LastName, w[i].Email);
+                var msg = mailer.SendWitnessDeadReport(FatherInfo.FullName(), w[i].FirstName + " " + w[i].LastName, w[i].Email);
                 msg.Send();
             }
         }

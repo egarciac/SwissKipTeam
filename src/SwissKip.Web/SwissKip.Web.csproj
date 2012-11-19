@@ -644,6 +644,8 @@
     <Content Include="Views\Home\Security.cshtml" />
     <Content Include="Views\Owner\_Recipient.cshtml" />
     <Content Include="Views\DefaultMailer\SendWitnessDeadReport.cshtml" />
+    <Content Include="Views\Witness\Message.cshtml" />
+    <Content Include="Views\Recipient\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IZWebFileManager\WebFileManager.csproj">

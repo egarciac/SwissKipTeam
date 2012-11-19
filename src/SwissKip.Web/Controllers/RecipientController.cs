@@ -1,12 +1,29 @@
 ﻿namespace SwissKip.Web.Controllers
 {
     using System.Web.Mvc;
-
+    using SwissKip.Web.Models;
+    using SwissKip.Web.Handlers;
     using SwissKip.Web.Queries;
 
     public class RecipientController : Controller
     {
         public ActionResult Index()
+        {
+            var owners = new OwnersByRecipientQuery(Current.UserId).Execute();
+            return View(owners);
+        }
+
+        [HttpPost]
+        public ActionResult Index(OwnerByRecipientModel dataheir)
+        {
+            var getOwner = new DataheirAddHandler().FindIdOwner(Current.UserId);
+            var userFather = new DataheirAddHandler().FindFatherInfo(getOwner.UserIdFather.Value);
+            var sent = new DataheirAddHandler();
+            sent.SendDeadReport(getOwner.UserIdFather.Value, userFather);
+            return RedirectToAction("Message", "Recipient");
+        }
+
+        public ActionResult Message()
         {
             var owners = new OwnersByRecipientQuery(Current.UserId).Execute();
             return View(owners);

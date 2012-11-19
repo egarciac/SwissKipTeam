@@ -10,6 +10,7 @@
     using SwissKip.Web.Core;
     using SwissKip.Web.Mailers;
     using SwissKip.Web.Models;
+    using SwissKip.Web.Queries;
 
     public class WitnessesAddHandler
     {
@@ -39,6 +40,18 @@
         private User Find(string email)
         {
             var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
+        }
+
+        public User_UserType FindIdOwner(int currentId)
+        {
+            var predicate = Predicates.Field<User_UserType>(f => f.UserId, Operator.Eq, currentId);
+            return Current.Connection.GetList<User_UserType>(predicate).SingleOrDefault();
+        }
+
+        public User FindFatherInfo(int fatherId)
+        {
+            var predicate = Predicates.Field<User>(f => f.Id, Operator.Eq, fatherId);
             return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
@@ -75,6 +88,17 @@
             var mailer = new DefaultMailer();
             var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, owner.FullName());
             msg.Send();
+        }
+
+        public void SendDeadReport(int UserId, User FatherInfo)
+        {
+            var mailer = new DefaultMailer();
+            var w = new OwnersByWitnessQuery(UserId, FatherInfo.Id).ExecuteNew2();
+            for (int i = 0; i < w.Count; i++)
+            {
+                var msg = mailer.SendWitnessDeadReport(FatherInfo.FullName(), w[i].FirstName + " " + w[i].LastName, w[i].Email);
+                msg.Send();
+            }
         }
     }
 }

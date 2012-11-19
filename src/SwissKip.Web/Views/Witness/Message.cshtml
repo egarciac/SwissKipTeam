@@ -1,0 +1,25 @@
+﻿@model List<SwissKip.Web.Models.OwnerByWitnessModel>
+@{
+    ViewBag.Title = "Witness";
+}
+
+<div id="contenido">
+  	<div style="float:left; padding-left:30px;">
+    @using (Html.BeginForm())
+    {
+    	<div style="z-index:0;">
+        	<div style="float:left;"><a href="#" onMouseDown="MM_swapImage('menu12','','/Content/images/owner-off.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/owner.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/owner-off.png" border="0" name="menu12"></a></div>
+            <div style="float:left; padding-left:8px;"><img src="/Content/images/mn-testigo-on.jpg" border="0"/></div>
+            <div style="float:left; padding-left:8px;"><img src="/Content/images/beneficiario.png" border="0"/></div>
+        </div>
+        <div style="float:left; margin-top:-1px;">
+    		<div style="float:left; width:955px; height:1px; background:#b5b5b3;"></div>
+        </div>
+        <div style="float:left; padding-left:17px; width:830px;">
+            <div style="float:left; padding-top:40px; width:700px;" class="negro14">Se ha enviado un mail reportando la muerte de su referido.<br /><br /> 
+            <a href="javascript:history.back();"><img src="/Content/images/btn-volver.jpg" border="0"/></a></div>
+        </div>
+        
+    }
+    </div>
+  </div>

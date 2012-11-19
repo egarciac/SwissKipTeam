@@ -5,6 +5,8 @@
 
 <div id="contenido">
   	<div style="float:left; padding-left:30px;">
+    @using (Html.BeginForm())
+    {
     	<div style="z-index:0;">
         	<div style="float:left;"><a href="#" onMouseDown="MM_swapImage('menu12','','/Content/images/owner-off.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/owner.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/owner-off.png" border="0" name="menu12"></a></div>
             <div style="float:left; padding-left:8px;"><img src="/Content/images/mn-testigo-on.jpg" border="0"/></div>
@@ -23,11 +25,12 @@
 
                 <div style="float:left; padding-left:17px; width:830px;">
                     <div style="float:left; padding-top:15px;" class="negro14"><strong>@witnessFromOwner.FullName</strong></div>
-                    <div style="float:left; padding-top:3px; width:850px;" class="negro14">El <strong>XXXXXX</strong> se le envió una alerta para confirmar que sigue siendo testigo activo. Esta se encuentra <strong>XXXXXX</strong>.</div>
+                    <div style="float:left; padding-top:3px; width:850px;" class="negro14">Usted es testigo de @witnessFromOwner.OwnerFullName.</div>
+                    @*<div style="float:left; padding-top:3px; width:850px;" class="negro14">El <strong>XXXXXX</strong> se le envió una alerta para confirmar que sigue siendo testigo activo. Esta se encuentra <strong>XXXXXX</strong>.</div>*@
                     <div style="float:left; padding-top:14px;">
-                        <div style="float:left;"><a href="#" onMouseDown="MM_swapImage('menu13','','/Content/images/reportar-muerte.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/reportar-muerte-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/reportar-muerte.png" border="0" name="menu13"></a>
+                        <div style="float:left;" id="Enviar">@*<a href="#" onMouseDown="MM_swapImage('menu13','','/Content/images/reportar-muerte.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/reportar-muerte-on.png',0)" onMouseOut="MM_swapImgRestore()">*@<input type="image" value="Enviar" src="/Content/images/reportar-muerte-on.png" border="0" name="menu13">
                         </div>
-                        <div style="float:left; padding-left:7px;"><img src="/Content/images/confirmar.png"></div>
+                        <div style="float:left; padding-left:7px;"><img src="/Content/images/confirmar.png" style="visibility:hidden"></div>
                     </div>
                 </div>
                 
@@ -37,5 +40,6 @@
                 }
             }
         </div>
+    }
     </div>
   </div>
