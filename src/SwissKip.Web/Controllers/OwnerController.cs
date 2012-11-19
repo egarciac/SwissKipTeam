@@ -34,16 +34,22 @@ namespace SwissKip.Web.Controllers
 
         public ActionResult AddRecipient()
         {
-            //var user = AuthenticationService.GetUser();
-            //var ownerRecipient = new OwnersByRecipientQuery(user.Id).ExecuteNew();
-            var ownerRecipient = Current.Connection.Get<User>(Current.UserId);
-            if (ownerRecipient != null)
-            {
-                var recipient = Current.Connection.Get<User>(ownerRecipient.Id);
-                var model = Mapper.Map<RecipientAddModel>(recipient);
-                return View(model);
-            }
-            return this.View();
+            var user = AuthenticationService.GetUser();
+            var ownerRecipient = new OwnersByRecipientQuery(user.Id).ExecuteNew();
+            //var ownerRecipient = Current.Connection.Get<User>(Current.UserId);
+            //if (ownerRecipient != null)
+            //{
+            //    var recipient = Current.Connection.Get<User>(ownerRecipient.Id);
+            //    var model = Mapper.Map<RecipientAddModel>(recipient);
+            //    return View(model);
+            //}
+            return this.View(ownerRecipient);
+
+            //var recipient = new List<RecipientAddModel>
+            //    {
+            //        new RecipientAddModel()
+            //    };
+            //return View(recipient);
         }
 
         [HttpPost]

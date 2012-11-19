@@ -52,7 +52,7 @@
                 try
                 {
                     user = new AccountCreateHandler().Handle(invitationId, form);
-                    var path = "~/Swisskip/" + form.Username;
+                    var path = "~/Swisskip/" + form.UserName;
                     if (!Directory.Exists(Server.MapPath(path)))
                         Directory.CreateDirectory(Server.MapPath(path));
 
@@ -60,9 +60,9 @@
                     //Session["username"] = form.Username;
 
                     //Creating a default photo
-                    string newFile = Server.MapPath("~/Content/images/") + form.Username + ".jpg";
+                    string newFile = Server.MapPath("~/Content/images/") + form.UserName + ".jpg";
                     if (!System.IO.File.Exists(newFile))
-                        System.IO.File.Copy(Server.MapPath("~/Content/images/unknown.jpg"), Server.MapPath("~/Content/images/") + form.Username + ".jpg");
+                        System.IO.File.Copy(Server.MapPath("~/Content/images/unknown.jpg"), Server.MapPath("~/Content/images/") + form.UserName + ".jpg");
                     
                 }
                 catch (ValidationException e)

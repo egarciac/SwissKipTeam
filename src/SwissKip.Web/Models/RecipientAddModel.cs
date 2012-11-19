@@ -4,6 +4,8 @@
 
     using DataAnnotationsExtensions;
 
+    using SwissKip.Web.Helpers.Attributes;
+
     public class RecipientAddModel
     {
         public int Id { get; set; }

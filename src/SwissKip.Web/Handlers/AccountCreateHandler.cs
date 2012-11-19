@@ -22,7 +22,7 @@
                 if (form.Email != user.Email && ExistsAccountWithSameEmail(form.Email))
                     throw new ValidationException("Email", "Your Email already exists");
 
-                if (ExistsAccountWithSameUserName(form.Username))
+                if (ExistsAccountWithSameUserName(form.UserName))
                     throw new ValidationException("UserName", "Your UserName already exists");
 
                 user.Map(form, new[] { "Email" });
@@ -35,10 +35,10 @@
                 if (ExistsAccountWithSameEmail(form.Email))
                     throw new ValidationException("Email", "Your Email already exists");
 
-                if (ExistsAccountWithSameUserName(form.Username))
+                if (ExistsAccountWithSameUserName(form.UserName))
                     throw new ValidationException("UserName", "Your UserName already exists");
 
-                var owner = User.CreateOwner(form.FirstName, form.LastName, form.Username, form.Password, form.Email, 0, System.DateTime.Now, 1, true, false, false);
+                var owner = User.CreateOwner(form.FirstName, form.LastName, form.UserName, form.Password, form.Email, 0, System.DateTime.Now, 1, true, false, false);
                 Save(owner);
                 //SendConfirmationEmail(owner);
                 return owner;

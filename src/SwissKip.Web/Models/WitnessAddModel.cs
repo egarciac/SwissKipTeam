@@ -6,7 +6,6 @@
 
     using SwissKip.Web.Helpers.Attributes;
 
-    //[WitnessAllRequired]
     public class WitnessAddModel
     {
         public int Id { get; set; }

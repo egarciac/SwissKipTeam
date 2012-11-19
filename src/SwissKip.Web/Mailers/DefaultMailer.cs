@@ -40,6 +40,17 @@ namespace SwissKip.Web.Mailers
             return mailMessage;
         }
 
+        public virtual MailMessage SendWitnessDeadReport(string ownerFullName, string witnessFullName, string witnessEmail)
+        {
+            var mailMessage = new MailMessage { Subject = "Confirmación de Reporte de Muerte" };
+            mailMessage.To.Add(witnessEmail);
+            ViewBag.witnessFullName = witnessFullName;
+            ViewBag.OwnerFullName = ownerFullName;
+            PopulateBody(mailMessage, viewName: "SendWitnessDeadReport");
+
+            return mailMessage;
+        }
+
         public virtual MailMessage BankAccountNumberEmail(string Email, int Id, string FirstName, string bankAccountNumber, string password)
         {
             var mailMessage = new MailMessage { Subject = "New Bank Account Number Created" };

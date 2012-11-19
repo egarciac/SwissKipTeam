@@ -9,6 +9,7 @@
     using SwissKip.Web.Core;
     using SwissKip.Web.Mailers;
     using SwissKip.Web.Models;
+    using SwissKip.Web.Queries;
 
     public class DataheirAddHandler
     {
@@ -30,6 +31,11 @@
                 //AddDataheirToOwner(owner.Id, user.Id);
                 //TODO: Tambien enviar email indicando que ha sido agregado como testigo
             //}
+        }
+
+        public void Handle2(User owner)
+        {
+            SendDeadReport(owner);
         }
 
         private User Find(string email)
@@ -80,6 +86,17 @@
             var mailer = new DefaultMailer();
             var msg = mailer.CreateAccountDataheirInvitation(dataheir.Email, dataheir.Id, dataheir.FirstName, owner.FullName());
             msg.Send();
+        }
+
+        private static void SendDeadReport(User owner)
+        {
+            var mailer = new DefaultMailer();
+            var w = new OwnersByWitnessQuery(owner.Id).ExecuteNew();
+            for (int i = 0; i < w.Count; i++)
+            {
+                var msg = mailer.SendWitnessDeadReport(owner.FullName(), w[i].FirstName + " " + w[i].LastName, w[i].Email);
+                msg.Send();
+            }
         }
     }
 }
