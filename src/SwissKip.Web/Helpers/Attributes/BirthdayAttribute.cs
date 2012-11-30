@@ -34,7 +34,7 @@ namespace SwissKip.Web.Helpers.Attributes
                     return DateTime.TryParse(string.Format("{0}-{1}-{2}", year.Value, month.Value, day.Value), out temp);
                 }
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }

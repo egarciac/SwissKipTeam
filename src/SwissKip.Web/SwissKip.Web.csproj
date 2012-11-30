@@ -275,6 +275,7 @@
     <Compile Include="Helpers\Attributes\BirthdayAttribute.cs" />
     <Compile Include="Models\BankAccountCreateModel.cs" />
     <Compile Include="Models\BankAccountModel.cs" />
+    <Compile Include="Models\DataheirCreateModel.cs" />
     <Compile Include="Models\DataheirAddModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\UserCreateModel.cs" />

@@ -13,7 +13,7 @@
 
     public class UsersAddHandler
     {
-        public void Handle(List<UserCreateModel> witnesses)
+        public void Handle(List<DataheirCreateModel> witnesses)
         {
             //Session["witnesses"] = witnesses;
         }
@@ -34,15 +34,15 @@
             Current.Connection.Insert(user_userType);
         }
 
-        public static User Find(string email)
+        public User Find(string email)
         {
             var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
             return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
-        private static void Update(Account account)
+        public void Update(User user)
         {
-            Current.Connection.Update(account);
+            Current.Connection.Update(user);
         }
 
         private static void AddWitnessToOwner(Account owner, Account witness)
