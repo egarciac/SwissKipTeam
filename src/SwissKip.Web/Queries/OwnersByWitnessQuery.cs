@@ -25,7 +25,7 @@
         public List<OwnerByWitnessModel> Execute()
         {
             var owners = Current.Connection.Query<OwnerByWitnessModel>(
-                "select uu.UserId, u.FirstName, u.LastName, u.Email, uu.UserIdFather, (select o.FirstName + ' ' + o.LastName from [user] o where o.Id= uu.UserIdFather) as 'OwnerFullName' " +
+                "select uu.UserId, u.FirstName, u.LastName, u.Email, u.IsOwner, u.IsWitness, u.IsDataheir, uu.UserIdFather, (select o.FirstName + ' ' + o.LastName from [user] o where o.Id= uu.UserIdFather) as 'OwnerFullName' " +
                 "from [user] u inner join [User_UserType] uu on u.Id=uu.UserId " +
                 "where u.Id=@witnessId and uu.UserTypeId=3", new { witnessId }).ToList();
             return owners;

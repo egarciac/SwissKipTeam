@@ -10,6 +10,12 @@
 
         public string Email { get; set; }
 
+        public bool IsOwner { get; set; }
+
+        public bool IsDataheir { get; set; }
+
+        public bool IsWitness { get; set; }
+        
         public int UserIdFather { get; set; }
 
         public string OwnerFullName { get; set; }

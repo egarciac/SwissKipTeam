@@ -32,7 +32,7 @@
 	            "u2.Id= uut.UserId " +
 	            "where UserIdFather=@id and UserTypeId=2) as 'Dataheir', " +
 	            "(select COUNT(*)*20 from [dbo].[User_UserType] " +
-	            "where UserIdFather = @id and UserTypeId=3 and EmailConfirmed=0) as 'Confirmed' " +
+	            "where UserIdFather = @id and UserTypeId=3 and EmailConfirmed=1) as 'Confirmed' " +
                 "From [dbo].[User] u " +
                 "where U.Id=@id ",
                 new { id = this.ownerId }).Single();
