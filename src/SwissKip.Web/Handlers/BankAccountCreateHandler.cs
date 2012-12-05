@@ -15,7 +15,7 @@
     {
         public BankAccount Handle(BankAccountCreateModel form)
         {
-            var bankaccount = BankAccount.CreateBankAccount(form.AccountId, form.BankName, form.BankAccountNumber, form.Password, form.Country);
+            var bankaccount = BankAccount.CreateBankAccount(form.UserId, form.BankName, form.BankAccountNumber, form.Password, form.CountryId, System.DateTime.Now, 1);
             Save(bankaccount);
             SendEmail(form);
             return bankaccount;
@@ -28,7 +28,7 @@
 
         private void SendEmail(BankAccountCreateModel bankaccount)
         {
-            var Id = bankaccount.AccountId;
+            var Id = bankaccount.UserId;
             var FirstName = AuthenticationService.GetUser().FirstName;
             var LastName = AuthenticationService.GetUser().LastName;
             var Email = AuthenticationService.GetUser().Email;

@@ -7,7 +7,7 @@
     public class BankAccountCreateModel
     {
         [Required]
-        public int AccountId { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         public string BankName { get; set; }
@@ -18,9 +18,10 @@
         [Required]
         public string Password { get; set; }
 
-        [Required]
-        public string Country { get; set; }
+        //[Required]
+        //public string Country { get; set; }
 
+        [Required]
         public int? CountryId { get; set; }
 
         public string BankAccountNumber1 { get; set; }

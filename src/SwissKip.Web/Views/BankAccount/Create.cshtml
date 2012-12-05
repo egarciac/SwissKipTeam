@@ -2,9 +2,8 @@
 @model SwissKip.Web.Models.BankAccountCreateModel
 @{
     ViewBag.Title = "Create";
-    ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
 }
-
 <div id="contenido">
   	<div style="float:left; padding-left:100px;">
     @using (Html.BeginForm())
@@ -78,15 +77,15 @@
                     </div>
                     <div style="float:left; padding-top:7px; width:480px;">
                         <div style="float:left; width:150px;" class="textonegrita15">Banco:</div>
-                        <div style="float:left;" id="BankName"><input name="BankName" type="text" class="caja245x23" /><!--Html.TextBoxFor(x => x.BankName, new { class = "caja245x23" })--> </div>
+                        <div style="float:left;" id="BankName">@Html.TextBoxFor(x => x.BankName, new { @class = "caja245x23" }) </div>
                     </div>
                     <div style="float:left; padding-top:7px; width:480px;">
                         <div style="float:left; width:150px;" class="textonegrita15">País:</div>
-                        <div style="float:left;" id="Country"><input name="Country" type="text" class="caja245x23" /></div>
-                        <!--<div style="float:left;" id="CountryId">Html.DropDownList("CountryId", null, "", new { class = "caja245x23" })
-                        </div>-->
+                        @*<div style="float:left;" id="Country"><input name="Country" type="text" class="caja245x23" /></div>*@
+                        <div style="float:left;">@Html.DropDownList("CountryId", ViewData["country_list"] as IEnumerable<SelectListItem>, "", new { @class = "caja245x23" })
+                        </div>
                     </div>
-                    <div style="float:left; padding-top:7px; width:500px;">
+                    @*<div style="float:left; padding-top:7px; width:500px;">
                         <div style="float:left; width:150px;" class="textonegrita15">Código:</div>
                         <div style="float:left;">
                             <div style="float:left; padding-left:0px;">
@@ -98,10 +97,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
         	</div>
-            <div style="float:left; width:90px;">
+            <div style="float:left; width:120px;">
             	<div style="float:left; padding-top:40px;">
             		<div style="float:left;"><a href="javascript:Assign(9);"><img src="/Content/images/9.png" /></a></div>
                 	<div style="float:left; padding-left:7px;"><a href="javascript:Assign(2);"><img src="/Content/images/2.png" /></a></div>
@@ -131,16 +130,18 @@
         <div style="float:left; width:738px; padding-top:4px;"><div style="float:right;" id="Enviar"><input type="image" value="Enviar" src="~/Content/images/guardar.png"/></div>
             <div style="float:right; padding-right:5px;"><a href="JavaScript:history.back(-1);"><img src="/Content/images/volver.png" border="0"></a></div>
         </div>
-        }
+    }
     </div>
   </div>
- 
+
   <script type="text/javascript">
       
-//      $(function () {
+//      $(function () { alert("uno");
 //          $("#Enviar").click(function () {
-//              var Values = getValues();
-//              var json = $.toJSON(Values);
+//                alert("dos");
+//                alert(document.forms[0].elements['BankName'].value);
+//                return false;
+//              }
 
 //              $.ajax({
 //                  url: '/BankAccount/Index',
@@ -183,6 +184,26 @@
 //          return { BankAccount1: BankAccount1, BankAccount2: BankAccount2, Clave1: Clave1, Clave2: Clave2, BankName: BankName, Country: Country };
 //      }
 
+      function clean() {
+          document.forms[0].elements['texto1'] ="";
+          document.forms[0].elements['texto2'] = "";
+          document.forms[0].elements['texto3'] = "";
+          document.forms[0].elements['texto4'] = "";
+          document.forms[0].elements['texto5'] = "";
+          document.forms[0].elements['texto6'] = "";
+          document.forms[0].elements['texto7'] = "";
+          document.forms[0].elements['texto8'] = "";
+          document.forms[0].elements['texto9'] = "";
+          document.forms[0].elements['texto0'] = "";
+
+          document.forms[0].elements['clave1'] = "";
+          document.forms[0].elements['clave2'] = "";
+          document.forms[0].elements['clave3'] = "";
+          document.forms[0].elements['clave4'] = "";
+          document.forms[0].elements['clave5'] = "";
+          document.forms[0].elements['clave6'] = "";
+      }
+    
       function Assign(valor) {
           var texto1 = document.forms[0].elements['texto1'];
           var texto2 = document.forms[0].elements['texto2'];

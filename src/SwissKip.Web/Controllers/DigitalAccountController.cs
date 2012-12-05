@@ -36,12 +36,12 @@
         [AllowAnonymous]
         public ActionResult Create(DigitalAccountCreateModel form)
         {
-            if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
-            {
-                ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
-            }
+            //if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
+            //{
+            //    ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
+            //}
 
-            form.AccountId = AuthenticationService.GetUser().Id;
+            form.UserId = AuthenticationService.GetUser().Id;
             form.Password = Change(form.Password);
             DigitalAccount digitalaccount = null;
             if (ModelState.IsValid)

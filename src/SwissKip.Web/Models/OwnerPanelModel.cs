@@ -13,11 +13,17 @@
 
         public string Email { get; set; }
 
+        public bool IsOwner { get; set; }
+
+        public bool IsDataheir { get; set; }
+
+        public bool IsWitness { get; set; }
+        
         public string Dataheir { get; set; }
 
-        public string Confirmation { get; set; }
+        public int Confirmed { get; set; }
         
-        public int Witness { get; set; }
+        //public int Witness { get; set; }
 
         public string FullName
         {

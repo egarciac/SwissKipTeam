@@ -179,7 +179,7 @@ namespace SwissKip.Web.Controllers
                     AuthenticationService.SignIn(user);
 
                     //Link new owner with Trial Mode - Status=1 : new owner
-                    var user_userType1 = User_UserType.CreateRelationUserAndUserType(0, user.Id, (int)UserRoles.Owner, 1);
+                    var user_userType1 = User_UserType.CreateRelationUserAndUserType(0, user.Id, (int)UserRoles.Owner, 0, System.DateTime.Now, 0, 0, 1);
                     UsersAddHandler.Save(user_userType1);
                     
                     DataheirCreateModel dataheirData = (DataheirCreateModel)Session["Signin2Store"];
@@ -208,7 +208,7 @@ namespace SwissKip.Web.Controllers
                     dataheirAddHandler.Handle(user, dataheir);
 
                     //Link new owner with Trial Mode
-                    var user_userType2 = User_UserType.CreateRelationUserAndUserType(user.Id, dataheir.Id, (int)UserRoles.Dataheir, 0);
+                    var user_userType2 = User_UserType.CreateRelationUserAndUserType(user.Id, dataheir.Id, (int)UserRoles.Dataheir, 0, System.DateTime.Now, 0, 0, 0);
                     UsersAddHandler.Save(user_userType2);
 
                     //Create Witness
@@ -237,7 +237,7 @@ namespace SwissKip.Web.Controllers
                         witnessAddHandler.Handle(user, witness);
 
                         //Link new owner with Trial Mode
-                        var user_userType3 = User_UserType.CreateRelationUserAndUserType(user.Id, witness.Id, (int)UserRoles.Witness, 0);
+                        var user_userType3 = User_UserType.CreateRelationUserAndUserType(user.Id, witness.Id, (int)UserRoles.Witness, 0, System.DateTime.Now, 0, 0, 0);
                         UsersAddHandler.Save(user_userType3);
                         witness = null;
                         ExistedUser1 = null;

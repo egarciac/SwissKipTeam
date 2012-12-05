@@ -6,23 +6,25 @@
     {
         public BankAccount() { }
 
-        private BankAccount(int accountId, string bankname, string bankaccountnumber, string password, string country)
+        private BankAccount(int userId, string bankname, string bankaccountnumber, string password, int? countryId, DateTime createdDate, int status)
         {
-            this.AccountId = accountId;
+            this.UserId = userId;
             this.BankName = bankname;
             this.BankAccountNumber = bankaccountnumber;
             this.Password = password;
-            this.Country = country;
+            this.CountryId = countryId;
+            this.CreatedDate = createdDate;
+            this.Status = status;
         }
 
-        public static BankAccount CreateBankAccount(int accountId, string bankname, string bankaccountnumber, string password, string country)
+        public static BankAccount CreateBankAccount(int userId, string bankname, string bankaccountnumber, string password, int? countryId, DateTime createdDate, int status)
         {
-            return new BankAccount(accountId, bankname, bankaccountnumber, password, country);
+            return new BankAccount(userId, bankname, bankaccountnumber, password, countryId, createdDate, status);
         }
 
         public int Id { get; set; }
 
-        public int AccountId { get; set; }
+        public int UserId { get; set; }
 
         public string BankName { get; set; }
 
@@ -30,17 +32,13 @@
 
         public string Password { get; set; }
 
-        public string Country { get; set; }
+        //public string Country { get; set; }
 
-        //public int? CountryId { get; set; }
+        public int? CountryId { get; set; }
 
-        //public string BankAccount1 { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        //public string BankAccount2 { get; set; }
-
-        //public string Clave1 { get; set; }
-
-        //public string Clave2 { get; set; }
+        public int Status { get; set; }
 
     }
 }

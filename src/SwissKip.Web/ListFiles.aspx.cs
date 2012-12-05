@@ -11,9 +11,12 @@ namespace SwissKip.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            IZ.WebFileManager.RootDirectory rootNew = new IZ.WebFileManager.RootDirectory(); 
-            FileManager1.RootDirectories.Add(rootNew);
-            FileManager1.RootDirectories[0].DirectoryPath = "~/SwissKip/" +  Session["username"] + "/"; 
+            if (!IsPostBack)
+            {
+                IZ.WebFileManager.RootDirectory rootNew = new IZ.WebFileManager.RootDirectory();
+                FileManager1.RootDirectories.Add(rootNew);
+                FileManager1.RootDirectories[0].DirectoryPath = "/SwissKip/" + Session["username"] + "/";
+            }
         }
     }
 }

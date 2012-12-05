@@ -15,7 +15,7 @@
     {
         public DigitalAccount Handle(DigitalAccountCreateModel form)
         {
-            var owner = DigitalAccount.CreateDigitalAccount(form.AccountId, form.WebSite, form.Username, form.Password);
+            var owner = DigitalAccount.CreateDigitalAccount(form.UserId, form.WebSite, form.Username, form.Password, System.DateTime.Now, 1);
             Save(owner);
             return owner;
         }
@@ -29,8 +29,6 @@
         {
             return Current.Connection.Get<DigitalAccount>(Accountid);
         }
-
-
 
     }
 }

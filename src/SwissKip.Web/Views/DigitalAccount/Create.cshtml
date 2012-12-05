@@ -1,8 +1,8 @@
-﻿@using System.Configuration
+﻿@*@using System.Configuration*@
 @model SwissKip.Web.Models.DigitalAccountCreateModel
 @{
     ViewBag.Title = "Create";
-    ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
 }
 
 <div id="contenido">
@@ -29,11 +29,11 @@
             	<div style="float:left; width:90px;" class="textonegrita15">Password:</div>
             	<div style="float:left;">@Html.PasswordFor(x => x.Password, new { @class = "caja245x23" })</div>
         	</div>
-            <div style="float:left; padding-top:7px; width:600px;">
+            @*<div style="float:left; padding-top:7px; width:600px;">
             	<div style="float:left; width:90px;" class="textonegrita15">Código:</div>
             	@ReCaptcha.GetHtml(theme: "clean")
                 @Html.ValidationMessage("Catpcha")
-        	</div>
+        	</div>*@
         </div>;
         <div style="float:left; width:738px; margin-top:40px; height:1px; background:#b5b5b3;"></div>
         <div style="float:left; width:738px; padding-top:4px;">

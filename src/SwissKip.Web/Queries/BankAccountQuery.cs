@@ -19,8 +19,9 @@
         public List<BankAccountModel> Execute()
         {
             var owners = Current.Connection.Query<BankAccountModel>(
-                "Select ba.Id, b.Description, ba.BankAccountNumber, ba.Password, ba.CountryId  " +
-                "From [dbo].[BankAccount] ba Inner Join [dbo].[Bank] b ON ba.BankId = b.BankId " +
+                "Select ba.Id, ba.BankName, ba.BankAccountNumber, ba.Password, c.Name as Country  " +
+                "From [dbo].[BankAccount] ba  " +
+                "inner join [dbo].[Country] c on ba.CountryId = c.Id  " +
                 "where UserId=@id",
                 new { id = this.AccountId }).ToList();
             return owners;
