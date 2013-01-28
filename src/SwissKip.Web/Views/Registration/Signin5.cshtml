@@ -1,38 +1,95 @@
 ﻿@using System.Configuration
-@model SwissKip.Web.Models.UserCreateModel
+@model SwissKip.Web.Models.AccountEditModel
 @{
-    ViewBag.Title = "Finish";
+    ViewBag.Title = "Account";
 }
 
 <div style="clear:both; height:25px;"></div>
 
-<div id="cajaregistro">
-    
-    <div class="interior-customize">
-            <div style="padding-bottom:10px;padding-top:15px;"><span class="rojo22">Step 5 of 5:</span> <span class="black22">Finnish and load your Kip</span></div>
-            <div class="textcustomize">
-            <span class="rojo17">Congratulations!</span><br /><br />            You have finished the Registration Process and your Swisskip is now up and ready for you to load your Kip with any kind of documents.<br /><br />            In the next days Swisskip will keep you informed of the status of your Data-Heir and your Passing Whitnesses. Should you need to make any change, just head up to your personal account page.<br /><br />    
-         </div>
+<div id="cajaregistro" align="center">
+    @using (Html.BeginForm())
+    {
+    <div class="interior700">
+            <div style="padding-bottom:10px;padding-top:15px;"><span class="rojo22">Step 5 of 6:</span> <span class="black22">Selecciona tus elementos</span></div>
+            <div style="padding-bottom:30px;padding-top:30px;"><span class="negro17">Como elementos extras de seguridad, deberás escoger: <span class="rojo17">ícono, frase personal y color.</span><br />            Estos 3 elementos aparecerán siempre en tu pantalla una vez que inicies sesión</span></div>
+            
+            <div style="padding-top:50px;">
+                <div style="width:200px; text-align:center; float:left;">
+                    <spa class="rojo14"><u>Icono</u></spa><br /><br />
+                    @*@foreach (var a in Model.Answers)
+                    {
+                        <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.IconSelected, x.IconId)</div>
+                        <div style="float:left;"><img src=@x.IconPath /></div>
+                        </div>
+                    }*@
+
+
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.IconId, 1)</div>
+                        <div style="float:left;"><img src="/content/images/candado.png" /></div>
+                    </div>
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.IconId, 2)</div>
+                        <div style="float:left;"><img src="/content/images/caja.png" /></div>
+                    </div>
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.IconId, 3)</div>
+                        <div style="float:left;"><img src="/content/images/camara.png" /></div>
+                    </div>
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.IconId, 4)</div>
+                        <div style="float:left;"><img src="/content/images/alto.png" /></div>
+                    </div>
+
+                </div>
+                <div style="width:300px; text-align:center; float:left;">
+                    <spa class="rojo14"><u>Frase personal</u></spa><br /><br /><br /><br />
+                    @Html.TextBoxFor(x => x.SecretPhrase, new { @class = "caja230x30", @value = "Escribe tu frase personal" })
+                
+                </div>
+
+                <div style="width:200px; text-align:center; float:left;">
+                    <spa class="rojo14"><u>Color</u></spa><br /><br />
+
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.ColourId, 1)</div>
+                        <div style="float:left;"><img src="/content/images/marron.png" /></div>
+                    </div>
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.ColourId, 2)</div>
+                        <div style="float:left;"><img src="/content/images/verde.png" /></div>
+                    </div>
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.ColourId, 3)</div>
+                        <div style="float:left;"><img src="/content/images/rojo.png" /></div>
+                    </div>
+                    <div style="width:70px; margin-left:15px; height:50px; margin-bottom:10px; float:left;">
+                        <div style="float:left; margin-top:15px;">@Html.RadioButtonFor(x => x.ColourId, 4)</div>
+                        <div style="float:left;"><img src="/content/images/azul.png" /></div>
+                    </div>
+                </div>
+            </div>
+
     </div>
 
-    <div style="float:right; margin-right:200px; margin-top:20px;margin-bottom:70px;">
-        <div style=" float:right;"><a href="/Owner"><input type="button" value="Go to your Kip" class="button red"></a></div>
-
+    <div style="float:right; margin-right:200px; margin-top:50px;margin-bottom:70px;">
+        <div style=" float:right;"><input type="image" value="NEXT" class="button red" /></div>
+        <div style="float:right;margin-right:10px;"><a href="javascript:history.back(-1);"><input type="button" value="BACK" class="button red" /></a></div>
     </div>
 
     <div style="clear:both;"></div>
     <div class="registropasos">
             <div style="float:left;"><img src="/content/images/processok.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
-            <div style="float:left;"><img src="/content/images/processok.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processno.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
     </div>
     }
 </div>
-
-  
+     

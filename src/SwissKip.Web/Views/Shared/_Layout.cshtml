@@ -19,7 +19,7 @@
                 @if (this.Context.User.Identity.IsAuthenticated)
                 {
                     <p>
-                        Welcome <strong>@Current.User.FirstName </strong>
+                        @*Welcome <strong>@Current.User.FirstName </strong>*@
                         <br/>
                         @Html.ActionLink("Sign Out","SignOut","Authentication")
                     </p>

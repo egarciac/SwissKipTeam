@@ -13,15 +13,24 @@
             return View(owners);
         }
 
-        [HttpPost]
-        public ActionResult Index(OwnerByRecipientModel dataheir)
+        public ActionResult MessageSent(int value)
         {
-            var getOwner = new DataheirAddHandler().FindIdOwner(Current.UserId);
-            var userFather = new DataheirAddHandler().FindFatherInfo(getOwner.UserIdFather.Value);
+            //var getOwner = new DataheirAddHandler().FindIdOwner(Current.UserId);
+            var userFather = new DataheirAddHandler().FindFatherInfo(value);
             var sent = new DataheirAddHandler();
-            sent.SendDeadReport(getOwner.UserIdFather.Value, userFather);
+            sent.SendDeadReport(value, userFather);
             return RedirectToAction("Message", "Recipient");
         }
+
+        //[HttpPost]
+        //public ActionResult Index(OwnerByRecipientModel dataheir)
+        //{
+        //    var getOwner = new DataheirAddHandler().FindIdOwner(Current.UserId);
+        //    var userFather = new DataheirAddHandler().FindFatherInfo(getOwner.UserIdFather.Value);
+        //    var sent = new DataheirAddHandler();
+        //    sent.SendDeadReport(getOwner.UserIdFather.Value, userFather);
+        //    return RedirectToAction("Message", "Recipient");
+        //}
 
         public ActionResult Message()
         {

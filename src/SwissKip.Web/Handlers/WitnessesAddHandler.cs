@@ -2,9 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using Dapper;
     using DapperExtensions;
-
     using Mvc.Mailer;
 
     using SwissKip.Web.Core;
@@ -49,6 +48,33 @@
             return Current.Connection.GetList<User_UserType>(predicate).SingleOrDefault();
         }
 
+        public User_UserType FindIdOwner2(int currentId)
+        {
+            var owner2 = Current.Connection.Query<User_UserType>(
+                "select * " +
+                "from [User_UserType] uu  " +
+                "where uu.UserId=@currentId and uu.UserTypeId=3", new { currentId }).First();
+
+            //var predicate = Predicates.Field<User_UserType>(f => f.UserId, Operator.Eq, currentId);
+            //return Current.Connection.GetList<User_UserType>(predicate).SingleOrDefault();
+            return owner2;
+        }
+
+        public List<User_UserType> FindDataheir(int idFather)
+        {
+            var dataheir = Current.Connection.Query<User_UserType>(
+                "select * " +
+                "from [User_UserType] uu  " +
+                "where uu.UserIdFather=@idFather and uu.UserTypeId=2", new { idFather }).ToList();
+            return dataheir;
+        }
+
+        //private int WitnessCount(int FatherId)
+        //{
+        //    var predicate = Predicates.Field<User_UserType>(f => f.UserIdFather, Operator.Eq, currentId);
+        //    return Current.Connection.Count<User_UserType>(predicate) >= 1;
+        //}
+
         public User FindFatherInfo(int fatherId)
         {
             var predicate = Predicates.Field<User>(f => f.Id, Operator.Eq, fatherId);
@@ -72,9 +98,14 @@
             Current.Connection.Insert(user);
         }
 
-        private static void Update(User user)
+        public void Update(User user)
         {
             Current.Connection.Update(user);
+        }
+
+        public void UpdateRelation(User_UserType user_UserType)
+        {
+            Current.Connection.Update(user_UserType);
         }
 
         private static void AddWitnessToOwner(User owner, User witness)
@@ -99,6 +130,15 @@
                 var msg = mailer.SendWitnessDeadReport(FatherInfo.FullName(), w[i].FirstName + " " + w[i].LastName, w[i].Email);
                 msg.Send();
             }
+        }
+
+        public void SendDataheirInfo(User FatherInfo, User dataheir)
+        {
+            //Sent Dataheir
+            var mailer1 = new DefaultMailer();
+            var msg1 = mailer1.SendDateToDataheir(dataheir.Email, FatherInfo.FullName(), dataheir.FirstName, FatherInfo.UserName, FatherInfo.Password);      
+            msg1.Send();
+
         }
     }
 }

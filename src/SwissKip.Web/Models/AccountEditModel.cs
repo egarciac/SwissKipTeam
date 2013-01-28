@@ -21,6 +21,12 @@
 
         public int? CountryId { get; set; }
 
+        public int? IconId { get; set; }
+
+        public int? ColourId { get; set; }
+
+        public string SecretPhrase { get; set; }
+
         public string fileName { get; set; }
 
         public string UserName { get; set; }

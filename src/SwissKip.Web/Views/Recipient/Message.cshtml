@@ -8,9 +8,20 @@
     @using (Html.BeginForm())
     {
     	<div style="z-index:0;">
-        	<div style="float:left;"><a href="#" onMouseDown="MM_swapImage('menu12','','/Content/images/owner-off.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/owner.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/owner-off.png" border="0" name="menu12"></a></div>
-            <div style="float:left; padding-left:8px;"><img src="/Content/images/testigo.png" border="0"/></div>
-            <div style="float:left; padding-left:8px;"><img src="/Content/images/bot_beneficiario_rojo.gif" border="0"/></div>
+        	@if (this.Model[0].IsOwner)
+            {    <div style="float:left;"><a href="/Owner/" onMouseDown="MM_swapImage('menu11','','/Content/images/owner-off.png',1)" onMouseOver="MM_swapImage('menu11','','/Content/images/owner.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/owner-off.png" border="0" name="menu11"></a></div>  }
+            else
+            {    <div style="float:left;"><img src="/Content/images/owner-off.png" border="0" name="menu11"></div>  }
+            
+            @if (this.Model[0].IsWitness)
+            {    <div style="float:left; padding-left:8px;"><a href="/Witness/" onMouseDown="MM_swapImage('menu12','','/Content/images/testigo.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/testigo-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/testigo.png" border="0" name="menu12"></a></div>  }
+            else
+            {    <div style="float:left; padding-left:8px;"><img src="/Content/images/testigo.png" border="0" name="menu12"></div>  }
+            
+            @if (this.Model[0].IsDataheir)
+            {    <div style="float:left; padding-left:8px;"><a href="/Recipient/" onMouseDown="MM_swapImage('menu13','','/Content/images/bot_beneficiario_rojo.gif',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/bot_beneficiario_rojo.gif',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/bot_beneficiario_rojo.gif" border="0" name="menu13"/></a></div>    }
+            else
+            {    <div style="float:left; padding-left:8px;"><img src="/Content/images/bot_beneficiario_rojo.gif" border="0"/></div>  }
         </div>
         <div style="float:left; margin-top:-1px;">
     		<div style="float:left; width:955px; height:1px; background:#b5b5b3;"></div>

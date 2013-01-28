@@ -28,18 +28,14 @@ namespace SwissKip.Web.Controllers
         [AllowAnonymous]
         public ActionResult SignIn(int? userId, SignInModel model, string returnUrl)
         {
-            //TODO: ¿Si aún no se confirmó el email?
-            //if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
-            //{
-            //    ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
-            //}
-
             User user = null;
             if (ModelState.IsValid)
             {
                 try
                 {
                     user=new SignInHandler().Handle(model);
+                    if (user.Blocked)
+                        return RedirectToAction("BlockedAccount");        
                 }
                 catch (ValidationException e)
                 {
@@ -51,14 +47,60 @@ namespace SwissKip.Web.Controllers
                 return this.View();
 
             AuthenticationService.SignIn(user);
-            //Session["username"]= user.UserName;
             Session["path"] = Server.MapPath("~/Swisskip/") + user.UserName;
 
-            if (!string.IsNullOrEmpty(returnUrl))
+            //Sent TOKEN by email
+            int newValue = SignInHandler.SendInvitation(user);
+
+            //Added Token into account
+            UsersAddHandler usersAddHandler = new UsersAddHandler();
+            user.TokenNumber = newValue;
+            usersAddHandler.Update(user);
+   
+            return RedirectToAction("Confirm");
+        }
+
+        public ActionResult Confirm()
+        {
+            var user = AuthenticationService.GetUser();
+            User user1 = new SignInHandler().Find3(user.Id);
+            if (user1.Banned)
             {
-                return this.Redirect(returnUrl);
+                if (user1.ModifiedDate <= System.DateTime.Now)
+                    return RedirectToAction("BannedAccount");
             }
-            return new RedirectToAccountType(user);
+            
+            var Token = new SwissKip.Web.Queries.TokenQuery(user.Id).ExecuteNew();
+            Session["Trying"] = Token[0];
+            return View(Token[0]);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Confirm(int? userId, BasicInfoModel form)
+        {
+            BasicInfoModel data = (BasicInfoModel)Session["Trying"];
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    User user = null;
+                    user = new SignInHandler().Handle3(form, data);
+                    if (user.Banned)
+                        return RedirectToAction("BannedAccount");
+                }
+                catch (ValidationException e)
+                {
+                    ModelState.AddModelError(e.Key, e.Message);
+                }
+            }
+
+            if (!ModelState.IsValid)
+            {
+                Session["Trying"] = data;
+                return this.View(data);
+            }
+            return RedirectToAction("Index", "Owner");
         }
 
         public ActionResult SignOut()
@@ -67,5 +109,43 @@ namespace SwissKip.Web.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("SignIn");
         }
+
+        [AllowAnonymous]
+        public ActionResult BannedAccount()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult BlockedAccount()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ChangePassword(SignInModel model, string returnUrl)
+        {
+            User user = null;
+            
+            try
+            {
+                user = new SignInHandler().Handle2(model);
+                return RedirectToAction("SignIn");
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError(e.Key, e.Message);
+                return this.View();
+            }
+            
+        }
+
     }
 }

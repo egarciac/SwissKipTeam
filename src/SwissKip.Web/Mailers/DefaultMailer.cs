@@ -51,6 +51,19 @@ namespace SwissKip.Web.Mailers
             return mailMessage;
         }
 
+        public virtual MailMessage SendDateToDataheir(string dataheirEmail, string ownerFullName, string dataheirFirstName, string user, string password)
+        {
+            var mailMessage = new MailMessage { Subject = "Owner fallecido" };
+            mailMessage.To.Add(dataheirEmail);
+            ViewBag.OwnerFullName = ownerFullName;
+            ViewBag.DataheirFirstName = dataheirFirstName;
+            ViewBag.User = user;
+            ViewBag.Password = password;
+            PopulateBody(mailMessage, viewName: "DataheirInformation");
+
+            return mailMessage;
+        }
+
         public virtual MailMessage BankAccountNumberEmail(string Email, int Id, string FirstName, string bankAccountNumber, string password)
         {
             var mailMessage = new MailMessage { Subject = "New Bank Account Number Created" };
@@ -60,6 +73,17 @@ namespace SwissKip.Web.Mailers
             ViewBag.BankAccountNumber = bankAccountNumber;
             ViewBag.Password = password;
             PopulateBody(mailMessage, viewName: "SendBankAccountNumber");
+
+            return mailMessage;
+        }
+
+        public virtual MailMessage TokenInformation(string Email, string FirstName, long newValue)
+        {
+            var mailMessage = new MailMessage { Subject = "Token Number Sent" };
+            mailMessage.To.Add(Email);
+            ViewBag.OwnerFistName = FirstName;
+            ViewBag.TokenNumber = newValue;
+            PopulateBody(mailMessage, viewName: "TokenInformation");
 
             return mailMessage;
         }

@@ -1,0 +1,32 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.BasicInfoModel
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<div style="clear:both; height:25px;"></div>
+@using (Html.BeginForm())
+{
+<div id="cajaregistro" align="center">
+    @Html.ValidationSummary(true)
+    <div class="interior700">
+            <div style='width:370px; background-color:@this.Model.Description2; overflow:hidden; padding-top:10px; padding-bottom:10px;'>
+                <div style="float:left; margin-left:20px;"><img src=@this.Model.Description1 /></div>
+                <div style="float:left; margin-left:20px; font-family:Arial; font-size:15px; color: #fff;">@this.Model.FullName<br />
+                Frase Personal: @this.Model.SecretPhrase<br />
+                </div>
+            </div>
+                        <div style="padding-bottom:30px;padding-top:60px;">                <div style="float:left; width:370px;"><span class="negro17">Una clave <span class="rojo17">Token</span> acaba de ser enviada a tu email,cópiala y pégala este campo: </span></div>                <div style="float:left; width:225px; margin-left:15px;">@Html.TextBoxFor(x => x.TokenNumberNew, new { @class = "cajatoken" })</div>            </div>            
+
+
+    </div>
+
+    <div style="float:right; margin-right:200px; margin-top:50px;margin-bottom:70px;">
+        <div style=" float:right;"><input type="image" value="PROCCED" class="button red" /></div>
+        
+    </div>
+
+    <div style="clear:both;"></div>
+
+</div>
+}     

@@ -159,7 +159,7 @@ namespace SwissKip.Web.Controllers
                     UserCreateModel usersData = (UserCreateModel)Session["Signin1Store"];
                     UserCreateHandler userCreateHandler = new UserCreateHandler();
 
-                    var user = Core.User.CreateOwner(usersData.FirstName, usersData.LastName, usersData.UserName, usersData.Password, usersData.Email, usersData.CountryId, System.DateTime.Now, 1, true, false, false);
+                    var user = Core.User.CreateOwner(usersData.FirstName, usersData.LastName, usersData.UserName, usersData.Password, usersData.Email, usersData.CountryId, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, true, false, false);
                     UsersAddHandler.Save(user);
                     userCreateHandler.Handle(user);
 
@@ -167,7 +167,7 @@ namespace SwissKip.Web.Controllers
                     var path = "~/Swisskip/" + user.UserName;
                     if (!System.IO.Directory.Exists(Server.MapPath(path)))
                         System.IO.Directory.CreateDirectory(Server.MapPath(path));
-                    
+
                     Session["path"] = path;
                     //Session["username"] = user.UserName;
 
@@ -181,15 +181,15 @@ namespace SwissKip.Web.Controllers
                     //Link new owner with Trial Mode - Status=1 : new owner
                     var user_userType1 = User_UserType.CreateRelationUserAndUserType(0, user.Id, (int)UserRoles.Owner, 0, System.DateTime.Now, 0, 0, 1);
                     UsersAddHandler.Save(user_userType1);
-                    
+
                     DataheirCreateModel dataheirData = (DataheirCreateModel)Session["Signin2Store"];
                     DataheirAddHandler dataheirAddHandler = new DataheirAddHandler();
 
                     //Validating Dataheir's Email already existed
                     UsersAddHandler usersAddHandler = new UsersAddHandler();
-                    User ExistedUser =  usersAddHandler.Find(dataheirData.Email);
+                    User ExistedUser = usersAddHandler.Find(dataheirData.Email);
                     User dataheir = new User();
-                    
+
                     //Find info already existed in DB
                     if (ExistedUser != null && ExistedUser.Email == dataheirData.Email)
                     {
@@ -200,7 +200,7 @@ namespace SwissKip.Web.Controllers
                     }
                     else
                     {
-                        dataheir = Core.User.CreateDataheir(dataheirData.FirstName, dataheirData.LastName, dataheirData.UserName, dataheirData.Password, dataheirData.Email, dataheirData.CountryId, System.DateTime.Now, 0, false, true, false);
+                        dataheir = Core.User.CreateDataheir(dataheirData.FirstName, dataheirData.LastName, dataheirData.UserName, dataheirData.Password, dataheirData.Email, dataheirData.CountryId, 0, 0, null, 0, System.DateTime.Now, 0, 0, false, false, false, true, false);
                         UsersAddHandler.Save(dataheir);
                     }
 
@@ -216,7 +216,7 @@ namespace SwissKip.Web.Controllers
                     WitnessesAddHandler witnessAddHandler = new WitnessesAddHandler();
                     User witness = new User();
 
-                    for (int i=0; i<witnessData.Count; i++)
+                    for (int i = 0; i < witnessData.Count; i++)
                     {
                         //Adding validations - new!
                         User ExistedUser1 = usersAddHandler.Find(witnessData[i].Email);
@@ -229,7 +229,7 @@ namespace SwissKip.Web.Controllers
                         }
                         else
                         {
-                            witness = Core.User.CreateWitness(witnessData[i].FirstName, witnessData[i].LastName, witnessData[i].UserName, witnessData[i].Password, witnessData[i].Email, witnessData[i].CountryId, System.DateTime.Now, 0, false, false, true);
+                            witness = Core.User.CreateWitness(witnessData[i].FirstName, witnessData[i].LastName, witnessData[i].UserName, witnessData[i].Password, witnessData[i].Email, witnessData[i].CountryId, 0, 0, null, 0, System.DateTime.Now, 0, 0, false, false, false, false, true);
                             UsersAddHandler.Save(witness);
                         }
 
@@ -267,6 +267,51 @@ namespace SwissKip.Web.Controllers
 
         [AllowAnonymous]
         public ActionResult Signin5()
+        {
+            Session["Signin1Store"] = Session["Signin1Store"];
+            Session["Signin2Store"] = Session["Signin2Store"];
+            Session["Signin3Store"] = Session["Signin3Store"];
+            Session["Signin4Store"] = Session["Signin4Store"];
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Signin5(AccountEditModel form)
+        {
+            //if (ModelState.IsValid)
+            //{
+                try
+                {
+
+                    UserCreateModel currentUser = (UserCreateModel)Session["Signin1Store"];
+                    UsersAddHandler usersAddHandler = new UsersAddHandler();
+                    User ExistedUser = usersAddHandler.Find(currentUser.Email);
+                    ExistedUser.ColourId = form.ColourId;
+                    ExistedUser.IconId = form.IconId;
+                    ExistedUser.SecretPhrase = form.SecretPhrase;
+                    usersAddHandler.Update(ExistedUser);
+                    
+                    Session["Signin1Store"] = Session["Signin1Store"];
+                    Session["Signin2Store"] = Session["Signin2Store"];
+                    Session["Signin3Store"] = Session["Signin3Store"];
+                    Session["Signin4Store"] = Session["Signin4Store"];
+                    return RedirectToAction("Signin6", "Registration");
+
+                }
+                catch (ValidationException e)
+                {
+                    ModelState.AddModelError(e.Key, e.Message);
+                    return this.View();
+                }
+            //}
+
+            return RedirectToAction("Signin6", "Registration");
+
+        }
+
+        [AllowAnonymous]
+        public ActionResult Signin6()
         {
             return View();
         }

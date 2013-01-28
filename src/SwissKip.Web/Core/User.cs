@@ -6,7 +6,7 @@
     {
         public User() { }
 
-        private User(string firstName, string lastName, string userName, string password, string email, int? countryId, DateTime createdDate, int status, bool isOwner, bool isDataheir, bool isWitness)
+        private User(string firstName, string lastName, string userName, string password, string email, int? countryId, int? iconId, int? colourId, string secretPhrase, int? tokenNumber, DateTime createdDate, int status, int tried, bool blocked, bool banned, bool isOwner, bool isDataheir, bool isWitness)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -14,29 +14,36 @@
             this.Password = password;
             this.Email = email;
             this.CountryId = countryId;
+            this.IconId = iconId;
+            this.ColourId = colourId;
+            this.SecretPhrase = secretPhrase;
+            this.TokenNumber = tokenNumber;
             this.CreatedDate = createdDate;
             this.Status = status;
+            this.Tried = tried;
+            this.Blocked = blocked;
+            this.Banned = banned;
             this.IsOwner = isOwner;
             this.IsDataheir = isDataheir;
             this.IsWitness = isWitness;
         }
 
         //Creating Trial User
-        public static User CreateOwner(string firstName, string lastName, string userName, string password, string email, int? countryId, DateTime createdDate, int status, bool isOwner, bool isDataheir, bool isWitness)
+        public static User CreateOwner(string firstName, string lastName, string userName, string password, string email, int? countryId, int? iconId, int? colourId, string secretPhrase, int? tokenNumber, DateTime createdDate, int status, int tried, bool blocked, bool banned, bool isOwner, bool isDataheir, bool isWitness)
         {
-            return new User(firstName, lastName, userName, password, email, countryId, createdDate, status, isOwner, isDataheir, isWitness);
+            return new User(firstName, lastName, userName, password, email, countryId, iconId, colourId, secretPhrase, tokenNumber, createdDate, status, tried, blocked, banned, isOwner, isDataheir, isWitness);
         }
 
         //Creating Witness
-        public static User CreateWitness(string firstName, string lastName, string userName, string password, string email, int? countryId, DateTime createdDate, int status, bool isOwner, bool isDataheir, bool isWitness)
+        public static User CreateWitness(string firstName, string lastName, string userName, string password, string email, int? countryId, int? iconId, int? colourId, string secretPhrase, int? tokenNumber, DateTime createdDate, int status, int tried, bool blocked, bool banned, bool isOwner, bool isDataheir, bool isWitness)
         {
-            return new User(firstName, lastName, userName, password, email, countryId, createdDate, status, isOwner, isDataheir, isWitness);
+            return new User(firstName, lastName, userName, password, email, countryId, iconId, colourId, secretPhrase, tokenNumber, createdDate, status, tried, blocked, banned, isOwner, isDataheir, isWitness);
         }
 
         //Creating Dataheir
-        public static User CreateDataheir(string firstName, string lastName, string userName, string password, string email, int? countryId, DateTime createdDate, int status, bool isOwner, bool isDataheir, bool isWitness)
+        public static User CreateDataheir(string firstName, string lastName, string userName, string password, string email, int? countryId, int? iconId, int? colourId, string secretPhrase, int? tokenNumber, DateTime createdDate, int status, int tried, bool blocked, bool banned, bool isOwner, bool isDataheir, bool isWitness)
         {
-            return new User(firstName, lastName, userName, password, email, countryId, createdDate, status, isOwner, isDataheir, isWitness);
+            return new User(firstName, lastName, userName, password, email, countryId, iconId, colourId, secretPhrase, tokenNumber, createdDate, status, tried, blocked, banned, isOwner, isDataheir, isWitness);
         }
 
         public int Id { get; set; }
@@ -53,11 +60,27 @@
 
         public int? CountryId { get; set; }
 
+        public int? IconId { get; set; }
+
+        public int? ColourId { get; set; }
+
+        public string SecretPhrase { get; set; }
+
+        public int? TokenNumber { get; set; }
+
         public DateTime? Birthday { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
+        public DateTime? ModifiedDate { get; set; }
+
         public int Status { get; set; }
+
+        public int Tried { get; set; }
+
+        public bool Blocked { get; set; }
+
+        public bool Banned { get; set; }
 
         public bool IsOwner { get; set; }
 
@@ -73,6 +96,11 @@
         public bool PasswordMatches(string password)
         {
             return this.Password == password;
+        }
+
+        public bool TokenMatches(int tokenNumber)
+        {
+            return this.TokenNumber == tokenNumber;
         }
 
         //public void DoesNotNeedToConfirmEmail()

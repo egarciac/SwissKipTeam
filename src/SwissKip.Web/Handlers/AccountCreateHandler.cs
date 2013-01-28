@@ -38,7 +38,7 @@
                 if (ExistsAccountWithSameUserName(form.UserName))
                     throw new ValidationException("UserName", "Your UserName already exists");
 
-                var owner = User.CreateOwner(form.FirstName, form.LastName, form.UserName, form.Password, form.Email, 0, System.DateTime.Now, 1, true, false, false);
+                var owner = User.CreateOwner(form.FirstName, form.LastName, form.UserName, form.Password, form.Email, 0, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, true, false, false);
                 Save(owner);
                 //SendConfirmationEmail(owner);
                 return owner;
