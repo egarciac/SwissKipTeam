@@ -220,6 +220,7 @@
     <Compile Include="Controllers\RecipientController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Core\BankAccount.cs" />
+    <Compile Include="Core\Master.cs" />
     <Compile Include="Core\Log.cs" />
     <Compile Include="Core\User_Usertype.cs" />
     <Compile Include="Core\UserType.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Content\images\9.jpg" />
     <Content Include="Content\images\9.png" />
     <Content Include="Content\images\addanother.png" />
+    <Content Include="Content\images\addmore.png" />
     <Content Include="Content\images\alto.png" />
     <Content Include="Content\images\amarillo.jpg" />
     <Content Include="Content\images\azul.png" />
@@ -338,6 +340,8 @@
     <Content Include="Content\images\btn-seguir.jpg" />
     <Content Include="Content\images\btn-ver-todo.jpg" />
     <Content Include="Content\images\btn-volver.jpg" />
+    <Content Include="Content\images\btn_back.gif" />
+    <Content Include="Content\images\btn_next.gif" />
     <Content Include="Content\images\bullet.gif" />
     <Content Include="Content\images\caja.png" />
     <Content Include="Content\images\camara.png" />
@@ -666,6 +670,7 @@
     <Content Include="Views\Authentication\BlockedAccount.cshtml" />
     <Content Include="Views\Authentication\ChangePassword.cshtml" />
     <Content Include="Views\Authentication\BannedAccount.cshtml" />
+    <Content Include="Views\NewAccount\SecretInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IZWebFileManager\WebFileManager.csproj">

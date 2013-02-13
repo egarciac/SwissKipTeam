@@ -4,52 +4,76 @@
     ViewBag.Title = "Registration";
 }
 
-<div style="clear:both; height:25px;"></div>
+<div style="clear:both; height:60px;"></div>
 
 <div id="cajaregistro">
-    <div class="registrofoto">
-        <div class="foto"><img src="/content/images/sinfoto.gif" /></div>
-        @*<div>change picture</div>*@
+    <div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Step 1 of 6:</span> <span class="black22">Complete your Personal Information.</span></div>
+    </div>
+    <div style="width:540px;margin:auto; margin-top:50px;">
+        <div class="registrofoto">
+            <div class="foto"><img src="/content/images/sinfoto.gif" /></div>
+            @*<div>change picture</div>*@
+        </div>
+
+        <div class="interior1-contenido">
+         @using (Html.BeginForm())
+         {
+                <div class="interior1-form-1">
+                    <div class="interior1-form-text1 negro14">First Name</div>
+                    <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })
+                    <div>@Html.ValidationMessageFor(x => x.FirstName)</div></div>
+                </div>
+                <div class="interior1-form-1">
+                    <div class="interior1-form-text1 negro14">Last Name</div>
+                    <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })
+                    <div>@Html.ValidationMessageFor(x => x.LastName)</div></div>
+                </div>
+                <div class="interior1-form-1">
+                    <div class="interior1-form-text1 negro14">Email</div>
+                    <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })
+                    <div>@Html.ValidationMessage("Email")</div></div>
+                </div>
+                <div class="interior1-form-1">
+                    <div class="interior1-form-text1 negro14">Username</div>
+                    <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.UserName, new { @class = "cajausername" })
+                    <div>@Html.ValidationMessageFor(x => x.UserName)</div></div>
+                </div>
+                <div class="interior1-form-1">
+                    <div class="interior1-form-text1 negro14">Password</div>
+                    <div class="interior1-form-inpt1">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })
+                    <div>@Html.ValidationMessageFor(x => x.Password)</div></div>
+                </div>
+                @*<div class="interior1-form-1">
+                    <div class="interior1-form-text1 negro14">Country</div>
+                    <div class="interior1-form-inpt1">@Html.DropDownList(x => x.CountryId, null, null, new { @class = "caja400x23" })</div>
+                </div>*@
+
+                <div style="clear:both;">
+                    <div style="float:right;margin-top:25px;"><input type="submit" value="Next" class="botonext" />
+                    </div>
+                </div>
+         }
+        </div>
+
+
+
     </div>
 
-    <div class="interior1-contenido">
-     @using (Html.BeginForm())
-     {
-            <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">First Name</div>
-                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })
-                <div>@Html.ValidationMessageFor(x => x.FirstName)</div></div>
-            </div>
-            <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">Last Name</div>
-                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })
-                <div>@Html.ValidationMessageFor(x => x.LastName)</div></div>
-            </div>
-            <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">Email</div>
-                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })
-                <div>@Html.ValidationMessage("Email")</div></div>
-            </div>
-            <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">Username</div>
-                <div class="interior1-form-inpt1">@Html.TextBoxFor(x => x.UserName, new { @class = "cajausername" })
-                <div>@Html.ValidationMessageFor(x => x.UserName)</div></div>
-            </div>
-            <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">Password</div>
-                <div class="interior1-form-inpt1">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })
-                <div>@Html.ValidationMessageFor(x => x.Password)</div></div>
-            </div>
-            @*<div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">Country</div>
-                <div class="interior1-form-inpt1">@Html.DropDownList(x => x.CountryId, null, null, new { @class = "caja400x23" })</div>
-            </div>*@
-
-            <div>
-                <div style="float:right;"><input type="image" value="NEXT" class="button red" /></div>
-            </div>
-     }
-    </div>
+    <div style="clear:both; height:70px;"></div>
+    <div class="registropasos">
+                <div style="float:left;"><img src="/content/images/processno.gif" /></div>
+                <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
+                <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+                <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+                <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+                <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+                <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+                <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+                <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+                <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+                <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
+   </div>
 </div>
 
   

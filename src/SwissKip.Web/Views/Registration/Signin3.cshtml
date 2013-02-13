@@ -4,135 +4,137 @@
     ViewBag.Title = "Witnesses";
 }
 
-<div style="clear:both; height:25px;"></div>
+<div style="clear:both; height:60px;"></div>
 
 <div id="cajaregistro" align="center">
     @using (Html.BeginForm())
     {
     <div class="interior-witnesses">
-            <div style="padding-bottom:10px;padding-top:15px;"><span class="rojo22">Step 3 of 6:</span> <span class="black22">Choose your Passing Witnesses</span></div>
+            <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Step 3 of 6:</span> <span class="black22">Choose your Passing Witnesses</span></div>
             <div style="padding-bottom:30px;"><a href="" class="gris13">Learn more about your Passing Witnesses</a></div>
             
-            <ul>
+            <div style="overflow:hidden;">
                 @using (Html.BeginCollectionItem("Witnesses"))
                 {            
-                <li>
-                    <div class="interior1-form-1">
+                <div class="itemwitnesses">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">First Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.FirstName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Last Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.LastName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Email</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.Email)</div>
                     </div>
-                </li>
+                </div>
                 }
 
                 @using (Html.BeginCollectionItem("Witnesses"))
                 {            
-                <li>
-                    <div class="interior1-form-1">
+                <div class="itemwitnesses">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">First Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.FirstName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Last Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.LastName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Email</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.Email)</div>
                     </div>
-                </li>
+                </div>
                 }
 
                 @using (Html.BeginCollectionItem("Witnesses"))
                 {            
-                <li>
-                    <div class="interior1-form-1">
+                <div class="itemwitnesses">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">First Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.FirstName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Last Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.LastName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Email</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.Email)</div>
                     </div>
-                </li>
+                </div>
                 }
 
                 @using (Html.BeginCollectionItem("Witnesses"))
                 {            
-                <li>
-                    <div class="interior1-form-1">
+                <div class="itemwitnesses">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">First Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.FirstName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Last Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.LastName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Email</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.Email)</div>
                     </div>
-                </li>
+                </div>
                 }
 
                 @using (Html.BeginCollectionItem("Witnesses"))
                 {            
-                <li>
-                    <div class="interior1-form-1">
+                <div class="itemwitnesses">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">First Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.FirstName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Last Name</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.LastName)</div>
                     </div>
-                    <div class="interior1-form-1">
+                    <div class="interior1-form-wit">
                         <div class="interior1-form-textwit negro14">Email</div>
-                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajawitnesses" })<br />
+                        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })<br />
                         @Html.ValidationMessageFor(x => x.Email)</div>
                     </div>
-                </li>
+                </div>
                 }
 
-                <li><br /><br />
-                    <table border=0><tr><td><a href="Javascript:history.back(-1);"><input type="button" value="BACK" class="button red" /></a>
-                    </td><td>@*<img src="/content/images/addanother.png" border="0" />*@
-                        <div><input type="image" value="NEXT" class="button red" /></div>
-                        </td></tr>
-                    </table>
-                </li>
-            </ul>
+                <div class="itemwitnesses">
+                    <img src="/content/images/addmore.png" />
+                </div>
+            
+            </div>
+
+
 
     </div>
 
-    @*<div style="float:right; margin-right:200px; margin-top:50px;margin-bottom:70px;">
-        
-    </div>*@
+     <div style="width:540px;margin:auto;overflow:hidden;">
+                <div style="float:right;margin-bottom:70px;">
+                    <div style=" float:right;"><input type="submit" value="Next" class="botonext" /></div>
+                    <div style="float:right;margin-right:10px;"><input type="button" value="Back" class="botonext" onclick="history.back();" /></div>
+                </div>
+     </div>
 
     <div style="clear:both;"></div>
     <div class="registropasos">
@@ -141,6 +143,8 @@
             <div style="float:left;"><img src="/content/images/processok.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
             <div style="float:left;"><img src="/content/images/processno.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
             <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>

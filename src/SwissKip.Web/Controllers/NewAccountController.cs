@@ -41,11 +41,6 @@
         [AllowAnonymous]
         public ActionResult Create(int? invitationId, AccountCreateModel form)
         {
-            //if (!ReCaptcha.Validate(ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]))
-            //{
-            //    ModelState.AddModelError("Catpcha", "The verification words are incorrect.");
-            //}
-
             User user = null;
             if (ModelState.IsValid)
             {
@@ -57,7 +52,7 @@
                         Directory.CreateDirectory(Server.MapPath(path));
 
                     Session["path"] = path;
-                    //Session["username"] = form.Username;
+                    Session["user"] = user;
 
                     //Creating a default photo
                     string newFile = Server.MapPath("~/Content/images/") + form.UserName + ".jpg";
@@ -77,7 +72,8 @@
             if (invitationId.HasValue)
             {
                 AuthenticationService.SignIn(user);
-                return new RedirectToAccountType(user);
+                //return new RedirectToAccountType(user);
+                return RedirectToAction("SecretInfo");
             }
             return RedirectToAction("ConfirmYourEmailAddress");
         }
@@ -86,6 +82,37 @@
         public ActionResult ConfirmYourEmailAddress()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult SecretInfo()
+        {
+            User user = (User)Session["user"];
+            Session["user"] = user;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult SecretInfo(AccountEditModel form)
+        {
+            try
+            {
+                User ExistedUser = (User)Session["user"]; 
+                ExistedUser.ColourId = form.ColourId;
+                ExistedUser.IconId = form.IconId;
+                ExistedUser.SecretPhrase = form.SecretPhrase;
+                UsersAddHandler usersAddHandler = new UsersAddHandler();
+                usersAddHandler.Update(ExistedUser);
+
+                return RedirectToAction("SignIn", "Authentication");
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError(e.Key, e.Message);
+                return this.View();
+            }
+
         }
 
         [AllowAnonymous]

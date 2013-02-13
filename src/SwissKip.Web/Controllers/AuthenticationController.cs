@@ -20,7 +20,21 @@ namespace SwissKip.Web.Controllers
         [AllowAnonymous]
         public ActionResult SignIn(int? userId)
         {
-            //Session["username"] = Current.User.UserName;
+            try
+            {
+                var user = AuthenticationService.GetUser();
+                User user1 = new SignInHandler().Find3(user.Id);
+
+                if (user1.Banned)
+                {
+                    if (user1.ModifiedDate <= System.DateTime.Now)
+                        return RedirectToAction("BannedAccount");
+                }
+            }
+            catch { 
+            
+            }
+            
             return View();
         }
 
@@ -34,8 +48,10 @@ namespace SwissKip.Web.Controllers
                 try
                 {
                     user=new SignInHandler().Handle(model);
-                    if (user.Blocked)
-                        return RedirectToAction("BlockedAccount");        
+                    if (user.Banned)
+                        return RedirectToAction("BannedAccount");
+                    //if (user.Blocked)
+                    //    return RedirectToAction("BlockedAccount");        
                 }
                 catch (ValidationException e)
                 {
@@ -64,13 +80,16 @@ namespace SwissKip.Web.Controllers
         {
             var user = AuthenticationService.GetUser();
             User user1 = new SignInHandler().Find3(user.Id);
+
             if (user1.Banned)
             {
                 if (user1.ModifiedDate <= System.DateTime.Now)
                     return RedirectToAction("BannedAccount");
             }
-            
+
+            Master master = new SignInHandler().Find4();
             var Token = new SwissKip.Web.Queries.TokenQuery(user.Id).ExecuteNew();
+            Token[0].TokenSeconds = master.TokenExpirationTime;
             Session["Trying"] = Token[0];
             return View(Token[0]);
         }
@@ -80,11 +99,11 @@ namespace SwissKip.Web.Controllers
         public ActionResult Confirm(int? userId, BasicInfoModel form)
         {
             BasicInfoModel data = (BasicInfoModel)Session["Trying"];
+            User user = null;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    User user = null;
                     user = new SignInHandler().Handle3(form, data);
                     if (user.Banned)
                         return RedirectToAction("BannedAccount");
@@ -100,6 +119,10 @@ namespace SwissKip.Web.Controllers
                 Session["Trying"] = data;
                 return this.View(data);
             }
+
+            if (!user.IsOwner)
+                return new RedirectToAccountType(user);   
+
             return RedirectToAction("Index", "Owner");
         }
 

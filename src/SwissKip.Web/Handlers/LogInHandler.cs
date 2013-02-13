@@ -1,7 +1,7 @@
 ﻿namespace SwissKip.Web.Handlers
 {
     using System.Linq;
-
+    using Dapper;
     using DapperExtensions;
 
     using SwissKip.Web.Core;
@@ -17,24 +17,33 @@
              var user = this.Find(form.Username);
              if (user!=null)
              {
-                 if (!user.Blocked)
+                 if (user.Banned)
                  {
-                     if (user.PasswordMatches(form.Password))
-                         return user;
-                     else
+                     if (user.ModifiedDate < System.DateTime.Now)
                      {
-                         user.Tried = user.Tried + 1;
+                         user.Banned = false;
+                         user.ModifiedDate = System.DateTime.Now;
+                         user.Tried = 0;
                          Current.Connection.Update(user);
-                         if (user.Tried >= 5)
-                         {
-                             user.Blocked = true;
-                             Current.Connection.Update(user);
-                             throw new ValidationException("Your account has been blocked");
-                         }
                      }
+                     else
+                         throw new ValidationException("Your account is still banned");
                  }
+
+                 if (user.PasswordMatches(form.Password))
+                    return user;
                  else
-                     return user;
+                 {
+                    user.Tried = user.Tried + 1;
+                    Current.Connection.Update(user);
+                    if (user.Tried >= 3) //Number of Tries
+                    {
+                        user.Banned = true;
+                        Current.Connection.Update(user);
+                        throw new ValidationException("Your account has been banned");
+                    }
+                 }
+                 
              }
              throw new ValidationException("Invalid Username or Password");
          }
@@ -64,10 +73,11 @@
 
             if (user.Banned)
             {
-                if (user.ModifiedDate > System.DateTime.Now)
+                if (user.ModifiedDate < System.DateTime.Now)
                 {
                     user.Banned = false;
                     user.ModifiedDate = System.DateTime.Now;
+                    user.Tried = 0;
                     Current.Connection.Update(user);
                 }
                 else
@@ -90,6 +100,7 @@
             {
                 user.Banned = false;
                 user.ModifiedDate = System.DateTime.Now;
+                user.Tried = 0;
                 Current.Connection.Update(user);
                 return user;
             }
@@ -124,5 +135,11 @@
             return Current.Connection.GetList<User>(predicate).SingleOrDefault();
         }
 
+        public Master Find4()
+        {
+            var master = Current.Connection.Query<Master>(
+                "select * from [Master] ").First();
+            return master;
+        }
     }
 }

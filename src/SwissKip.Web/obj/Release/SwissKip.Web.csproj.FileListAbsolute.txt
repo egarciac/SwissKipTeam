@@ -70,6 +70,7 @@ C:\users\ernesto\documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\System.Web.W
 C:\users\ernesto\documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\ResolveAssemblyReference.cache
 C:\users\ernesto\documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\SwissKip.Web.dll
 C:\users\ernesto\documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\SwissKip.Web.pdb
+C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\ResolveAssemblyReference.cache
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\SwissKip.Web.dll
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\SwissKip.Web.pdb
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\Antlr3.Runtime.dll
@@ -103,6 +104,5 @@ C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\System.Web.
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\System.Web.WebPages.xml
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\System.Web.WebPages.Deployment.xml
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\bin\System.Web.WebPages.Razor.xml
-C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\ResolveAssemblyReference.cache
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\SwissKip.Web.dll
 C:\Users\ergarcia\Documents\GitHub\SwissKipTeam\src\SwissKip.Web\obj\Release\SwissKip.Web.pdb

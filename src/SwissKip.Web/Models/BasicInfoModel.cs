@@ -31,5 +31,7 @@
 
         public int Count { get; set; }
 
+        public int TokenSeconds { get; set; }
+
     }
 }

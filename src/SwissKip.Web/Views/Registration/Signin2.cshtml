@@ -4,16 +4,20 @@
     ViewBag.Title = "DataHeir";
 }
 
-<div style="clear:both; height:25px;"></div>
+<div style="clear:both; height:60px;"></div>
 
 <div id="cajaregistro" align="center">
     @using (Html.BeginForm())
     {
-    <div class="interior1-contenido">
-            <div style="padding-bottom:10px;padding-top:15px;"><span class="rojo22">Step 2 of 6:</span> <span class="black22">Choose your Data-Heir</span></div>
-            <div style="padding-bottom:30px;"><a href="" class="gris13">Learn more about your Data-Heir</a></div>
-            
-            
+        
+    <div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Step 2 of 6:</span> <span class="black22">Choose your Data-Heir</span></div>
+        <div style="padding-bottom:30px;"><a href="" class="gris13">Learn more about your Data-Heir</a></div>
+    </div>
+        
+    <div style="width:540px;margin:auto; margin-top:50px; overflow:hidden;">
+        
+        <div style="overflow:hidden; width:380px;margin:auto;">            
             <div class="interior1-form-1">
                 <div class="interior1-form-text1 negro14">First Name</div>
                 <div class="interior1-form-inpt1" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })
@@ -29,18 +33,20 @@
                 <div class="interior1-form-inpt1" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })
                 <div>@Html.ValidationMessage("Email")</div></div>
             </div>
-    </div>
+        </div>
 
-    <div style="float:right; margin-right:200px; margin-top:50px;margin-bottom:70px;">
-        <div style=" float:right;"><input type="image" value="NEXT" class="button red" /></div>
-        <div style="float:right;margin-right:10px;"><a href="javascript:history.back(-1);"><input type="button" value="BACK" class="button red" /></a></div>
+        <div style="float:right; margin-top:50px;margin-bottom:70px;">
+            <div style=" float:right;"><input type="submit" value="Next" class="botonext" /></div>
+            <div style="float:right;margin-right:10px;"><input type="button" value="Back" class="botonext" onclick="history.back();" /></div>
+        </div>
     </div>
-
     <div style="clear:both;"></div>
     <div class="registropasos">
             <div style="float:left;"><img src="/content/images/processok.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocessok.gif" /></div>
             <div style="float:left;"><img src="/content/images/processno.gif" /></div>
+            <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
+            <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
             <div style="float:left;"><img src="/content/images/processvacio.gif" /></div>
             <div style="float:left;"><img src="/content/images/lineprocess.gif" /></div>
