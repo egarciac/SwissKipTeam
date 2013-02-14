@@ -47,7 +47,7 @@ namespace SwissKip.Web.Controllers
             {
                 try
                 {
-                    user=new SignInHandler().Handle(model);
+                    user = new SignInHandler().Handle(model);
                     if (user.Banned)
                         return RedirectToAction("BannedAccount");
                     //if (user.Blocked)
@@ -55,8 +55,13 @@ namespace SwissKip.Web.Controllers
                 }
                 catch (ValidationException e)
                 {
-                    ModelState.AddModelError(e.Key,e.Message);
+                    ModelState.AddModelError(e.Key, e.Message);
                 }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Forgot username or passoword");
+                return this.View();
             }
 
             if (!ModelState.IsValid)
