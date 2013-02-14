@@ -2,6 +2,13 @@
 @model SwissKip.Web.Models.MessageModel
 @{
     ViewBag.Title = "Customize";
+    if (Session["Signin1Store"] == null || Session["Signin2Store"] == null || Session["Signin3Store"] == null)
+    {
+        Session["Signin1Store"] = null;
+        Session["Signin2Store"] = null;
+        Session["Signin3Store"] = null;
+        Response.Redirect("Signin1");
+    }
 }
 
 <div style="clear:both; height:60px;"></div>

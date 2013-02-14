@@ -2,6 +2,10 @@
 @model SwissKip.Web.Models.DataheirCreateModel
 @{
     ViewBag.Title = "DataHeir";
+    if (Session["Signin1Store"] == null)
+    {
+        Response.Redirect("Signin1");
+    }
 }
 
 <div style="clear:both; height:60px;"></div>

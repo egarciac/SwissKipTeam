@@ -5,34 +5,34 @@
     //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
 }
 
-<div class="logueo-contenido">
+<div style="clear:both; height:60px;"></div>
+<div id="cajaregistro" align="center">
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true);
-    <div class="logueo-form-1">
-        <div class="logueo-form-1-tx rojo25">Username</div>
-        <div class="logueo-form-1-in">
-            <div class="logueo-input-1">@Html.TextBoxFor(x => x.Username, new{ @class="cajausername" })</div>
-            <!--div class="textoform logueo-texto-1">Forgot username</div-->
-        </div>
+    <div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Step 1 of 2:</span> <span class="black22"> Enter the username and password</span></div>
     </div>
-    <div class="logueo-form-2">
-        <div class="rojo25 logueo-form-1-tx">Password</div>
-        <div class="logueo-form-1-in">
-            <div class="logueo-input-1">@Html.PasswordFor(x => x.Password, new{ @class="cajausername" })</div>
-            <!--div class="textoform logueo-texto-2">Forgot password</div-->
+    
+    <div style="width:540px;margin:auto; margin-top:50px; overflow:hidden;">
+        
+        <div style="overflow:hidden; width:380px;margin:auto;">            
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">First Name</div>
+                <div class="interior1-form-inpt1" align="left">@Html.TextBoxFor(x => x.Username, new { @class = "cajausername" })
+                <div></div></div>
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Last Name</div>
+                <div class="interior1-form-inpt1" align="left">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })
+                <div></div></div>
+            </div>
         </div>
-    </div>
-    @*<div class="logueo-form-3">
-        <div class="rojo25 logueo-form-1-tx">Code</div>
-        <div class="logueo-captcha">
-            @ReCaptcha.GetHtml(theme:"red")
-            @Html.ValidationMessage("Catpcha")
+
+        <div style="float:right; margin-top:50px;margin-bottom:70px;">
+            <div style=" float:right;" class="textoform logueo-enviar-tex">Don't have an account? @Html.ActionLink("Sign Up", "Signin1", "Registration", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "" })</div>
+            <div style="float:right;margin-right:10px;" ><input type="submit" value="Log In" class="botonlogin" /></div>
         </div>
-    </div>*@
-    <div class="logueo-enviar">
-        <div class="logueo-enviar-img"><input type="image" value="Log In" src="/Content/images/log-in.png"/></div>
-        <div class="textoform logueo-enviar-tex">Don't have an account? @Html.ActionLink("Sign Up", "Signin1", "Registration", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "" })</div>
+        @Html.ValidationSummary(true);
     </div>
 }
 </div>

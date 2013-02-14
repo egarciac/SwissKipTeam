@@ -1,5 +1,6 @@
 ﻿namespace SwissKip.Web.Handlers
 {
+    using System;
     using System.Linq;
     using Dapper;
     using DapperExtensions;
@@ -19,7 +20,8 @@
              {
                  if (user.Banned)
                  {
-                     if (user.ModifiedDate < System.DateTime.Now)
+                     DateTime fecha = (DateTime)user.ModifiedDate;
+                     if (System.DateTime.Now > fecha.AddDays(1))
                      {
                          user.Banned = false;
                          user.ModifiedDate = System.DateTime.Now;
@@ -73,7 +75,8 @@
 
             if (user.Banned)
             {
-                if (user.ModifiedDate < System.DateTime.Now)
+                DateTime fecha = (DateTime)user.ModifiedDate;
+                if (System.DateTime.Now > fecha.AddDays(1))
                 {
                     user.Banned = false;
                     user.ModifiedDate = System.DateTime.Now;
@@ -84,7 +87,7 @@
                     return user;
             }
             
-            if (data.TokenNumber != form.TokenNumberNew)
+            if (data.TokenNumber.ToString() != form.TokenNumberNew)
             {
                 data.Count = data.Count + 1;
                 if (data.Count >= 3)

@@ -27,7 +27,7 @@
 
         public int TokenNumber { get; set; }
 
-        public int? TokenNumberNew { get; set; }
+        public string TokenNumberNew { get; set; }
 
         public int Count { get; set; }
 

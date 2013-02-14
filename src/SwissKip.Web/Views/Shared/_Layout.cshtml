@@ -7,7 +7,21 @@
     <title>@ViewBag.Title</title>
     <title>Swiss Kip</title>
     @Styles.Render("~/Content/themes/base/css", "~/Content/css")
+    <script type="text/javascript" src="/scripts/jquery-1.8.0.js"></script>
     <script src="/Content/js/menu.js" type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            $("#op4").hover(
+                function () {
+                    $("#textmy").css('color', '#fff')
+                }, function () {
+                    $("#textmy").css('color', '#cc0b1c')
+            });
+        });
+    </script>
+
+
 </head>
 <body>
     <div id="general">
@@ -16,27 +30,31 @@
                 <div id="logo"></div>
             </a>
             <div id="bienvenido" class="rojo">
-                @if (this.Context.User == null)
-                {    
+                @if (this.Context.User.ToString() != "")
+                {
                     if (this.Context.User.Identity.IsAuthenticated)
                     {
-                    <p>
-                        Welcome <strong>@Current.User.FirstName </strong>
-                        <br/>
-                        @Html.ActionLink("Sign Out", "SignOut", "Authentication")
-                    </p>
+                        <p>
+                            Welcome <strong>@Current.User.FirstName </strong>
+                            <br/>
+                            @Html.ActionLink("Sign Out", "SignOut", "Authentication")
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                                @Html.ActionLink("Sign In", "SignIn", "Authentication", null, new { id = "registerLink", @class = "rojo" })
+                            /
+                                @Html.ActionLink("Free Sign Up", "Signin1", "Registration", null, new { id = "registerLink", @class = "rojo" })
+                        </p>
                     }
                 }
                 else
                 {
                     <p>
-                        <strong>
                             @Html.ActionLink("Sign In", "SignIn", "Authentication", null, new { id = "registerLink", @class = "rojo" })
-                        </strong>
                         /
-                        <strong>
                             @Html.ActionLink("Free Sign Up", "Signin1", "Registration", null, new { id = "registerLink", @class = "rojo" })
-                        </strong>
                     </p>
                 }
 
@@ -46,11 +64,11 @@
         <div id="menutop">
             <div id="menucenter">
                 <ul>
-                    <li><a href="/Home/TheIdea">The idea</a></li>
-                    <li><a href="/Home/TheProcess">The Process</a></li>
+                    <li><a href="/Home/TheIdea" id="op1">The idea</a></li>
+                    <li><a href="/Home/TheProcess" id="op2">The process</a></li>
                     <!--li><a href="/Home/HowDoesItWork">How does it work?</a></li-->
-                    <li><a href="/Home/Security">Security</a></li>
-                    <li><a href="/Owner"><i>my</i>kip</a></li>
+                    <li><a href="/Home/Security" id="op3">Security</a></li>
+                    <li><a href="/Owner" id="op4"><i><span style="color:#CC0B1C" id="textmy">my</span></i>kip</a></li>
                 </ul>
             </div>
         </div>
@@ -89,6 +107,6 @@
         </footer>
     </div>
     @RenderSection("scripts", required: false)
-    
+    @*@Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval")*@
 </body>
 </html>

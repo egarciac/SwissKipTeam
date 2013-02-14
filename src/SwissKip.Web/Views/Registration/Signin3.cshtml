@@ -2,6 +2,13 @@
 @using SwissKip.Web.Helpers.Extensions
 @{
     ViewBag.Title = "Witnesses";
+    if (Session["Signin1Store"] == null || Session["Signin2Store"] == null)
+    {
+        Session["Signin1Store"] = null;
+        Session["Signin2Store"] = null;
+        Response.Redirect("Signin1");
+    }
+    
 }
 
 <div style="clear:both; height:60px;"></div>
