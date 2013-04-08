@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SwissKip.Web.Models.RecipientAddModel>
+﻿@model SwissKip.Web.Models.RecipientAddModel
 @{
     ViewBag.Title = "Recipient";
 }
@@ -20,10 +20,32 @@
         @using (Html.BeginForm())
         {
             <div id="dataheir" style="float:left; width:738px;">
-            @foreach (var dataheir in Model)
-            {
-                Html.RenderPartial("_Recipient", dataheir);
-            }    
+            @*@for (int index = 0; index < this.Model.Count; index++)
+            {*@
+                @*//Html.RenderPartial("_Recipient", dataheir);*@
+                
+                <div class="interior2-form-1">
+                @*@using (Html.BeginCollectionItem("recipient"))
+                {*@
+                    <div class="interior2-form-1-tx rojo18">First Name</div>
+                    <div class="interior2-form-1-ip2">@Html.TextBoxFor(x => x.FirstName, new { @class = "caja130x23" })<br />
+                    @Html.ValidationMessageFor(x => x.FirstName)</div>
+    
+                    <div class="interior2-form-1-tx rojo18">Last Name</div>
+                    <div class="interior2-form-1-ip2">@Html.TextBoxFor(x => x.LastName, new { @class = "caja130x23" })<br />
+                    @Html.ValidationMessageFor(x => x.LastName)</div>
+    
+                    <div class="interior2-form-1-tx rojo18">Email</div>
+                    <div class="interior2-form-1-ip2">@Html.TextBoxFor(x => x.Email, new { @class = "caja130x23" })<br />
+                    @Html.ValidationMessageFor(x => x.Email)</div>
+    
+                    <div class="interior2-form-1-tx" style="padding-top:8px;">
+                        @*<a href="#" class="deleteRow">delete</a>*@
+                    </div>
+    
+                @*}*@
+                </div>
+            @*}*@    
             </div>
             <div style="float: left; width: 738px; margin-top: 15px; height: 1px; background: #b5b5b3;">
             </div>

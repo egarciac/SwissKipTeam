@@ -42,7 +42,7 @@
             //}
 
             form.UserId = AuthenticationService.GetUser().Id;
-            form.Password = Change(form.Password);
+            //form.Password = form.Password;
             DigitalAccount digitalaccount = null;
             if (ModelState.IsValid)
             {

@@ -19,7 +19,9 @@
         {
             var user = Current.User;
             var model = Mapper.Map<AccountEditModel>(user);
-            model.Birthday = Birthday.CreateFrom(user.Birthday);
+            if (model.Birthday == null)
+                model.Birthday = Birthday.CreateFrom(user.Birthday);
+            
             model.fileName = "/Content/images/" + user.UserName + ".jpg"; 
             ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
             return View(model);

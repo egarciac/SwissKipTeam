@@ -1,6 +1,7 @@
 ﻿@using System.Configuration
 @model SwissKip.Web.Models.BasicInfoModel
 @{
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
     ViewBag.Title = "Confirm";
 }
 
@@ -42,6 +43,7 @@
         countdown = setInterval(function () {
             $("#contador").html("<b>"+ count + "</b> seconds remaining!");
             if (count == 0) {
+                window.alert("Su sesión ha expirado");
                 window.location = '/Authentication/signin';
             }
             count--;

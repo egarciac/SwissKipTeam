@@ -125,11 +125,13 @@
                     </div>
                 </div>
                 }
-
-                <div class="itemwitnesses">
-                    <img src="/content/images/addmore.png" />
+                
+                <div id="witnesses">
+                
+                    @*<div class="addRow">*@
+                        <img src='/content/images/addmore.png' alt='' class="" />
+                    @*</div>*@
                 </div>
-            
             </div>
 
 
@@ -160,4 +162,22 @@
     }
 </div>
 
-  
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".addRow").click(function () {
+                $.ajax({
+                    url: this.href,
+                    success: function (html) {
+                        $("#witnesses1").append(html);
+                        $("form").removeData("validator");
+                        $("form").removeData("unobtrusiveValidation");
+                        $.validator.unobtrusive.parse("form");
+                    }
+                });
+                return false;
+            });
+        });
+    </script>  
+}

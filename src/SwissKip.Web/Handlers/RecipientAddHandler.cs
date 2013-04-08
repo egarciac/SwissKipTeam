@@ -18,16 +18,18 @@
             var user = this.Find(form.Email);
             if (user == null)
             {
-                user = User.CreateDataheir(form.FirstName, form.LastName, null, null, form.Email, 0, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, false, true, false);
+                user = User.CreateDataheir(form.FirstName, form.LastName, null, null, form.Email, null, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, false, true, false);
                 Save(user);
                 AddRecipientToOwner(owner.Id, user.Id);
                 SendInvitation(owner.FullName(), user);
             }
             else
             {
-                user.AddRole(UserRoles.Dataheir);
+                //user.AddRole(UserRoles.Dataheir);
+                user.FirstName = form.FirstName;
+                user.LastName = form.LastName;
                 Update(user);
-                AddRecipientToOwner(owner.Id, user.Id);
+                //AddRecipientToOwner(owner.Id, user.Id);
                 //TODO: Tambien enviar email indicando que ha sido agregado como testigo
             }
         }

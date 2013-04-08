@@ -17,7 +17,7 @@
         {
             var bankaccount = BankAccount.CreateBankAccount(form.UserId, form.BankName, form.BankAccountNumber, form.Password, form.CountryId, System.DateTime.Now, 1);
             Save(bankaccount);
-            SendEmail(form);
+            //SendEmail(form);
             return bankaccount;
         }
 

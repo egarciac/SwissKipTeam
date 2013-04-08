@@ -1,0 +1,20 @@
+﻿@model SwissKip.Web.Models.OwnerByWitnessModel
+
+<div style="float: left; padding-left: 20px; padding-top: 15px;">
+    <div style="float: left; width: 130px;">
+        <div style="float: left;">
+            <img alt="" width="119" height="130" src=@String.Concat("/Content/images/", Session["username"], ".jpg")>
+        </div>
+    </div>
+    <div style="float:left; width:300px; padding-top:15px;">
+        <div class="negro12" >
+			<strong> Name:</strong> @Model.FullName
+		</div>
+        <div class="negro12" style="padding-top:5px;">
+			<strong> Email:</strong> @Model.Email
+		</div>
+        <div style="float:left; padding-left:211px; padding-top:23px;">
+            <img src="/Content/images/vertodo.png" border="0">
+        </div>
+    </div>
+</div>

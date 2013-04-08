@@ -1,5 +1,10 @@
 ﻿namespace SwissKip.Web.Models
 {
+    public class WitnessPanelModel
+    {
+        public OwnerByWitnessModel MyAccountWidget2 { get; set; }
+    }
+
     public class OwnerByWitnessModel
     {
         public int UserId { get; set; }

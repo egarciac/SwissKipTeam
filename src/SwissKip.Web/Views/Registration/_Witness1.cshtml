@@ -1,0 +1,23 @@
+﻿@model SwissKip.Web.Models.UserCreateModel
+@using SwissKip.Web.Helpers.Extensions
+
+@using (Html.BeginCollectionItem("Witnesses"))
+{            
+<div class="itemwitnesses">
+    <div class="interior1-form-wit">
+        <div class="interior1-form-textwit negro14">First Name</div>
+        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.FirstName, new { @class = "cajausername" })<br />
+        @Html.ValidationMessageFor(x => x.FirstName)</div>
+    </div>
+    <div class="interior1-form-wit">
+        <div class="interior1-form-textwit negro14">Last Name</div>
+        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.LastName, new { @class = "cajausername" })<br />
+        @Html.ValidationMessageFor(x => x.LastName)</div>
+    </div>
+    <div class="interior1-form-wit">
+        <div class="interior1-form-textwit negro14">Email</div>
+        <div class="interior1-form-inptwit" align="left">@Html.TextBoxFor(x => x.Email, new { @class = "cajausername" })<br />
+        @Html.ValidationMessageFor(x => x.Email)</div>
+    </div>
+</div>
+}

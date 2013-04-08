@@ -96,6 +96,12 @@ namespace SwissKip.Web.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult BlanckWitness()
+        {
+            return this.PartialView("_Witness1");
+        }
+
+        [AllowAnonymous]
         public ActionResult Signin3()
         {
             Session["Signin1Store"] = Session["Signin1Store"];
@@ -124,8 +130,8 @@ namespace SwissKip.Web.Controllers
                     
                     }
 
-                    Session["Signin1Store"] = Session["Signin1Store"];
-                    Session["Signin2Store"] = Session["Signin2Store"];
+                    Session["Signin1Store"] = user;
+                    Session["Signin2Store"] = dataheir;
                     Session["Signin3Store"] = witnesses;
                     return RedirectToAction("Signin4", "Registration");
                 }
@@ -151,97 +157,101 @@ namespace SwissKip.Web.Controllers
         [AllowAnonymous]
         public ActionResult Signin4(MessageModel form)
         {
+            UserCreateModel usersData = null ;
+            DataheirCreateModel dataheirData = null;
+            List<DataheirCreateModel> witnessData = null;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ////storing information about new user
-                    //UserCreateModel usersData = (UserCreateModel)Session["Signin1Store"];
-                    //UserCreateHandler userCreateHandler = new UserCreateHandler();
+                    //storing information about new user
+                    usersData = (UserCreateModel)Session["Signin1Store"];
+                    UserCreateHandler userCreateHandler = new UserCreateHandler();
 
-                    //var user = Core.User.CreateOwner(usersData.FirstName, usersData.LastName, usersData.UserName, usersData.Password, usersData.Email, usersData.CountryId, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, true, false, false);
-                    //UsersAddHandler.Save(user);
-                    //userCreateHandler.Handle(user);
+                    var user = Core.User.CreateOwner(usersData.FirstName, usersData.LastName, usersData.UserName, usersData.Password, usersData.Email, usersData.CountryId, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, true, false, false);
+                    UsersAddHandler.Save(user);
+                    userCreateHandler.Handle(user);
 
-                    ////Add path for new photo
-                    //var path = "~/Swisskip/" + user.UserName;
-                    //if (!System.IO.Directory.Exists(Server.MapPath(path)))
-                    //    System.IO.Directory.CreateDirectory(Server.MapPath(path));
+                    //Add path for new photo
+                    var path = "~/Swisskip/" + user.UserName;
+                    if (!System.IO.Directory.Exists(Server.MapPath(path)))
+                        System.IO.Directory.CreateDirectory(Server.MapPath(path));
 
-                    //Session["path"] = path;
-                    ////Session["username"] = user.UserName;
+                    Session["path"] = path;
+                    //Session["username"] = user.UserName;
 
-                    ////Creating a default photo
-                    //string newFile = Server.MapPath("~/Content/images/") + user.UserName + ".jpg";
-                    //if (!System.IO.File.Exists(newFile))
-                    //    System.IO.File.Copy(Server.MapPath("~/Content/images/unknown.jpg"), Server.MapPath("~/Content/images/") + user.UserName + ".jpg");
+                    //Creating a default photo
+                    string newFile = Server.MapPath("~/Content/images/") + user.UserName + ".jpg";
+                    if (!System.IO.File.Exists(newFile))
+                        System.IO.File.Copy(Server.MapPath("~/Content/images/unknown.jpg"), Server.MapPath("~/Content/images/") + user.UserName + ".jpg");
 
-                    //AuthenticationService.SignIn(user);
+                    AuthenticationService.SignIn(user);
 
-                    ////Link new owner with Trial Mode - Status=1 : new owner
-                    //var user_userType1 = User_UserType.CreateRelationUserAndUserType(0, user.Id, (int)UserRoles.Owner, 0, System.DateTime.Now, 0, 0, 1);
-                    //UsersAddHandler.Save(user_userType1);
+                    //Link new owner with Trial Mode - Status=1 : new owner
+                    var user_userType1 = User_UserType.CreateRelationUserAndUserType(0, user.Id, (int)UserRoles.Owner, 0, System.DateTime.Now, 0, 0, 1);
+                    UsersAddHandler.Save(user_userType1);
 
-                    //DataheirCreateModel dataheirData = (DataheirCreateModel)Session["Signin2Store"];
-                    //DataheirAddHandler dataheirAddHandler = new DataheirAddHandler();
+                    dataheirData = (DataheirCreateModel)Session["Signin2Store"];
+                    DataheirAddHandler dataheirAddHandler = new DataheirAddHandler();
 
-                    ////Validating Dataheir's Email already existed
-                    //UsersAddHandler usersAddHandler = new UsersAddHandler();
-                    //User ExistedUser = usersAddHandler.Find(dataheirData.Email);
-                    //User dataheir = new User();
+                    //Validating Dataheir's Email already existed
+                    UsersAddHandler usersAddHandler = new UsersAddHandler();
+                    User ExistedUser = usersAddHandler.Find(dataheirData.Email);
+                    User dataheir = new User();
 
-                    ////Find info already existed in DB
-                    //if (ExistedUser != null && ExistedUser.Email == dataheirData.Email)
-                    //{
-                    //    ExistedUser.IsDataheir = true;
-                    //    usersAddHandler.Update(ExistedUser);
-                    //    dataheir = ExistedUser;
-                    //    ExistedUser = null;
-                    //}
-                    //else
-                    //{
-                    //    dataheir = Core.User.CreateDataheir(dataheirData.FirstName, dataheirData.LastName, dataheirData.UserName, dataheirData.Password, dataheirData.Email, dataheirData.CountryId, 0, 0, null, 0, System.DateTime.Now, 0, 0, false, false, false, true, false);
-                    //    UsersAddHandler.Save(dataheir);
-                    //}
+                    //Find info already existed in DB
+                    if (ExistedUser != null && ExistedUser.Email == dataheirData.Email)
+                    {
+                        ExistedUser.IsDataheir = true;
+                        usersAddHandler.Update(ExistedUser);
+                        dataheir = ExistedUser;
+                        ExistedUser = null;
+                    }
+                    else
+                    {
+                        dataheir = Core.User.CreateDataheir(dataheirData.FirstName, dataheirData.LastName, dataheirData.UserName, dataheirData.Password, dataheirData.Email, dataheirData.CountryId, 0, 0, null, 0, System.DateTime.Now, 0, 0, false, false, false, true, false);
+                        UsersAddHandler.Save(dataheir);
+                    }
 
-                    ////Sent Confirmation
-                    //dataheirAddHandler.Handle(user, dataheir);
+                    //Sent Confirmation
+                    dataheirAddHandler.Handle(user, dataheir);
 
-                    ////Link new owner with Trial Mode
-                    //var user_userType2 = User_UserType.CreateRelationUserAndUserType(user.Id, dataheir.Id, (int)UserRoles.Dataheir, 0, System.DateTime.Now, 0, 0, 0);
-                    //UsersAddHandler.Save(user_userType2);
+                    //Link new owner with Trial Mode
+                    var user_userType2 = User_UserType.CreateRelationUserAndUserType(user.Id, dataheir.Id, (int)UserRoles.Dataheir, 0, System.DateTime.Now, 0, 0, 0);
+                    UsersAddHandler.Save(user_userType2);
 
-                    ////Create Witness
-                    //var witnessData = (List<DataheirCreateModel>)Session["Signin3Store"];
-                    //WitnessesAddHandler witnessAddHandler = new WitnessesAddHandler();
-                    //User witness = new User();
+                    //Create Witness
+                    witnessData = (List<DataheirCreateModel>)Session["Signin3Store"];
+                    WitnessesAddHandler witnessAddHandler = new WitnessesAddHandler();
+                    User witness = new User();
 
-                    //for (int i = 0; i < witnessData.Count; i++)
-                    //{
-                    //    //Adding validations - new!
-                    //    User ExistedUser1 = usersAddHandler.Find(witnessData[i].Email);
+                    for (int i = 0; i < witnessData.Count; i++)
+                    {
+                        //Adding validations - new!
+                        User ExistedUser1 = usersAddHandler.Find(witnessData[i].Email);
 
-                    //    if (ExistedUser1 != null && ExistedUser1.Email == witnessData[i].Email)
-                    //    {
-                    //        ExistedUser1.IsWitness = true;
-                    //        usersAddHandler.Update(ExistedUser1);
-                    //        witness = ExistedUser1;
-                    //    }
-                    //    else
-                    //    {
-                    //        witness = Core.User.CreateWitness(witnessData[i].FirstName, witnessData[i].LastName, witnessData[i].UserName, witnessData[i].Password, witnessData[i].Email, witnessData[i].CountryId, 0, 0, null, 0, System.DateTime.Now, 0, 0, false, false, false, false, true);
-                    //        UsersAddHandler.Save(witness);
-                    //    }
+                        if (ExistedUser1 != null && ExistedUser1.Email == witnessData[i].Email)
+                        {
+                            ExistedUser1.IsWitness = true;
+                            usersAddHandler.Update(ExistedUser1);
+                            witness = ExistedUser1;
+                        }
+                        else
+                        {
+                            witness = Core.User.CreateWitness(witnessData[i].FirstName, witnessData[i].LastName, witnessData[i].UserName, witnessData[i].Password, witnessData[i].Email, witnessData[i].CountryId, 0, 0, null, 0, System.DateTime.Now, 0, 0, false, false, false, false, true);
+                            UsersAddHandler.Save(witness);
+                        }
 
-                    //    //Sent Confirmation
-                    //    witnessAddHandler.Handle(user, witness);
+                        //Sent Confirmation
+                        witnessAddHandler.Handle(user, witness);
 
-                    //    //Link new owner with Trial Mode
-                    //    var user_userType3 = User_UserType.CreateRelationUserAndUserType(user.Id, witness.Id, (int)UserRoles.Witness, 0, System.DateTime.Now, 0, 0, 0);
-                    //    UsersAddHandler.Save(user_userType3);
-                    //    witness = null;
-                    //    ExistedUser1 = null;
-                    //}
+                        //Link new owner with Trial Mode
+                        var user_userType3 = User_UserType.CreateRelationUserAndUserType(user.Id, witness.Id, (int)UserRoles.Witness, 0, System.DateTime.Now, 0, 0, 0);
+                        UsersAddHandler.Save(user_userType3);
+                        witness = null;
+                        ExistedUser1 = null;
+                    }
 
                 }
                 catch (ValidationException e)
@@ -261,6 +271,9 @@ namespace SwissKip.Web.Controllers
             //    return new RedirectToAccountType(user);
             //}
 
+            Session["Signin1Store"] = usersData;
+            Session["Signin2Store"] = dataheirData;
+            Session["Signin3Store"] = witnessData;
             return RedirectToAction("Signin5", "Registration");
 
         }
@@ -271,7 +284,6 @@ namespace SwissKip.Web.Controllers
             Session["Signin1Store"] = Session["Signin1Store"];
             Session["Signin2Store"] = Session["Signin2Store"];
             Session["Signin3Store"] = Session["Signin3Store"];
-            Session["Signin4Store"] = Session["Signin4Store"];
             return View();
         }
 
@@ -291,11 +303,11 @@ namespace SwissKip.Web.Controllers
                     ExistedUser.IconId = form.IconId;
                     ExistedUser.SecretPhrase = form.SecretPhrase;
                     usersAddHandler.Update(ExistedUser);
-                    
-                    Session["Signin1Store"] = Session["Signin1Store"];
+
+                    Session["Signin1Store"] = currentUser;
                     Session["Signin2Store"] = Session["Signin2Store"];
                     Session["Signin3Store"] = Session["Signin3Store"];
-                    Session["Signin4Store"] = Session["Signin4Store"];
+                    //Session["Signin4Store"] = Session["Signin4Store"];
                     return RedirectToAction("Signin6", "Registration");
 
                 }
@@ -313,6 +325,9 @@ namespace SwissKip.Web.Controllers
         [AllowAnonymous]
         public ActionResult Signin6()
         {
+            Session["Signin1Store"] = Session["Signin1Store"];
+            Session["Signin2Store"] = Session["Signin2Store"];
+            Session["Signin3Store"] = Session["Signin3Store"];
             return View();
         }
 

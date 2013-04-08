@@ -59,7 +59,7 @@
 
         public ActionResult Message()
         {
-            var owners = new OwnersByWitnessQuery(Current.UserId).Execute();
+            var owners = new OwnersByWitnessQuery(Current.UserId).Execute1();
             return View(owners);
         }
     }

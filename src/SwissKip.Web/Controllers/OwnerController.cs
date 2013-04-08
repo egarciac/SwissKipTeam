@@ -34,7 +34,7 @@ namespace SwissKip.Web.Controllers
 
         public ActionResult AddRecipient()
         {
-            var user = AuthenticationService.GetUser();
+            var user = Current.User;
             var ownerRecipient = new OwnersByRecipientQuery(user.Id).ExecuteNew();
             //var ownerRecipient = Current.Connection.Get<User>(Current.UserId);
             //if (ownerRecipient != null)
@@ -55,20 +55,21 @@ namespace SwissKip.Web.Controllers
         [HttpPost]
         public ActionResult AddRecipient(RecipientAddModel model)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     new RecipientAddHandler().Handle(Current.User,model);
+
                 }
                 catch (ValidationException e)
                 {
                     ModelState.AddModelError(e.Key, e.Message);
                 }
-            }
+            //}
 
-            if (!ModelState.IsValid)
-                return this.View();
+            //if (!ModelState.IsValid)
+            //    return this.View();
 
             return RedirectToAction("Index", "MyAccount");
         }
@@ -77,6 +78,7 @@ namespace SwissKip.Web.Controllers
         public ActionResult Delete(int? id)
         {
             var idremoved = id;
+
             return RedirectToAction("Index", "MyAccount");
         }
 
@@ -155,7 +157,7 @@ namespace SwissKip.Web.Controllers
         //[HttpPost]
         //public ActionResult Delete(WitnessAddModel model)
         //{
-        //    var id = model.id; 
+        //    var id = model.Id;
         //    //if (ModelState.IsValid)
         //    //{
         //    //    try

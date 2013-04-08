@@ -34,7 +34,7 @@
                 &nbsp;&nbsp;&nbsp;
                 @Html.ActionLink("[+] Witness", "EditWitness", "Owner")
                 &nbsp;&nbsp;&nbsp;
-                @Html.ActionLink(" [+] Recipient","AddRecipient","Owner")
+                @Html.ActionLink(" [+] Dataheir", "AddRecipient", "Owner")
             </div>
         </div>
         <div style="float:left; width:738px; height:1px; z-index:1; margin-top:-3px; background:#b5b5b3;"></div>
@@ -56,12 +56,12 @@
                         <div style="float:left;">@Html.TextBoxFor(x => x.LastName, new { @class = "caja400x23" })</div>
                         <div style="float:left;">@Html.ValidationMessageFor(x => x.LastName)</div>
                     </div>
-                    <div style="float:left; width:550px; padding-top:8px;">
+                    @*<div style="float:left; width:550px; padding-top:8px;">
                         <div style="float:left; width:95px;" class="negro13b">Birthday:</div>
                         <div style="float:left;">@Html.EditorFor(x => x.Birthday)
                         </div>
                         <div style="float:left;">@Html.ValidationMessageFor(x => x.Birthday)</div>
-                    </div>
+                    </div>*@
                     <div style="float:left; width:550px; padding-top:8px;">
                         <div style="float:left; width:95px;" class="negro13b">Country:</div>
                         <div style="float:left;">@Html.DropDownList("CountryId", null, "", new { @class = "caja400x23" })</div>

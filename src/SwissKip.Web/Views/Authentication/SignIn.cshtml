@@ -1,6 +1,7 @@
 ﻿@using System.Configuration
 @model SwissKip.Web.Models.SignInModel
 @{
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
     ViewBag.Title = "Log In";
     //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
 }
@@ -18,12 +19,12 @@
         
         <div style="overflow:hidden; width:380px;margin:auto;">            
             <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">First Name</div>
+                <div class="interior1-form-text1 negro14">Username</div>
                 <div class="interior1-form-inpt1" align="left">@Html.TextBoxFor(x => x.Username, new { @class = "cajausername" })</div>
                 @*<div align="right">Don't Forget username&nbsp;&nbsp;</div>*@
             </div>
             <div class="interior1-form-1">
-                <div class="interior1-form-text1 negro14">Last Name</div>
+                <div class="interior1-form-text1 negro14">Password</div>
                 <div class="interior1-form-inpt1" align="left">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })</div>
                 @*<div align="right">Don't Forget password&nbsp;&nbsp;</div>*@
             </div>

@@ -1,5 +1,10 @@
 ﻿namespace SwissKip.Web.Models
 {
+    public class RecipientPanelModel
+    {
+        public OwnerByRecipientModel MyAccountWidget1 { get; set; }
+    }
+
     public class OwnerByRecipientModel
     {
         public int Id { get; set; }
@@ -9,6 +14,8 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string Email { get; set; }
 
         public bool IsOwner { get; set; }
 

@@ -10,6 +10,7 @@
         public ActionResult Index()
         {
             var owners = new OwnersByRecipientQuery(Current.UserId).Execute();
+            Session["username"] = Current.User.UserName;
             return View(owners);
         }
 
@@ -34,7 +35,7 @@
 
         public ActionResult Message()
         {
-            var owners = new OwnersByRecipientQuery(Current.UserId).Execute();
+            var owners = new OwnersByRecipientQuery(Current.UserId).Execute1();
             return View(owners);
         }
     }

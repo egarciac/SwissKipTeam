@@ -294,7 +294,7 @@
     <Compile Include="Core\OwnerWitness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\BankAccountQuery.cs" />
-    <Compile Include="Queries\TokenQuery.cs" />
+    <Compile Include="Scripts\TokenQuery.cs" />
     <Compile Include="Queries\DigitalAccountQuery.cs" />
     <Compile Include="Queries\OwnerByRecipientQuery.cs" />
     <Compile Include="Queries\OwnerPanelQuery.cs" />
@@ -509,7 +509,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutNotLogged.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\WhatIsIt.cshtml" />
@@ -671,6 +671,11 @@
     <Content Include="Views\Authentication\ChangePassword.cshtml" />
     <Content Include="Views\Authentication\BannedAccount.cshtml" />
     <Content Include="Views\NewAccount\SecretInfo.cshtml" />
+    <Content Include="Views\Registration\_Witness.cshtml" />
+    <Content Include="Views\Registration\_Witness1.cshtml" />
+    <Content Include="Views\Recipient\_MyAccountWidget.cshtml" />
+    <Content Include="Views\Witness\_MyAccountWidget.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IZWebFileManager\WebFileManager.csproj">

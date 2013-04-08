@@ -2,12 +2,11 @@
 @model SwissKip.Web.Models.UserCreateModel
 @{
     ViewBag.Title = "Finish";
-    if (Session["Signin1Store"] == null || Session["Signin2Store"] == null || Session["Signin3Store"] == null || Session["Signin4Store"] == null)
+    if (Session["Signin1Store"] == null || Session["Signin2Store"] == null || Session["Signin3Store"] == null)
     {
         Session["Signin1Store"] = null;
         Session["Signin2Store"] = null;
         Session["Signin3Store"] = null;
-        Session["Signin4Store"] = null;
         Response.Redirect("Signin1");
     }
 }

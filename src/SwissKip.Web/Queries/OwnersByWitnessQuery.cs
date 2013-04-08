@@ -22,7 +22,23 @@
             this.ownerId = ownerId;
         }
 
-        public List<OwnerByWitnessModel> Execute()
+        public WitnessPanelModel Execute()
+        {
+            return new WitnessPanelModel
+            {
+                MyAccountWidget2 = this.MyAccountWidgetQuery2()
+            };
+        }
+
+        private OwnerByWitnessModel MyAccountWidgetQuery2()
+        {
+            return Current.Connection.Query<OwnerByWitnessModel>(
+                "select uu.UserId, u.FirstName, u.LastName, u.Email, u.IsOwner, u.IsWitness, u.IsDataheir, uu.UserIdFather, (select o.FirstName + ' ' + o.LastName from [user] o where o.Id= uu.UserIdFather) as 'OwnerFullName' " +
+                "from [user] u inner join [User_UserType] uu on u.Id=uu.UserId " +
+                "where u.Id=@witnessId and uu.UserTypeId=3", new { witnessId }).Single();
+        }
+
+        public List<OwnerByWitnessModel> Execute1()
         {
             var owners = Current.Connection.Query<OwnerByWitnessModel>(
                 "select uu.UserId, u.FirstName, u.LastName, u.Email, u.IsOwner, u.IsWitness, u.IsDataheir, uu.UserIdFather, (select o.FirstName + ' ' + o.LastName from [user] o where o.Id= uu.UserIdFather) as 'OwnerFullName' " +

@@ -10,7 +10,7 @@
     {
     	<div class="rojo25" style="float:left; z-index:0;">
         	<div style="float:left; padding-bottom:2px;">My stuff</div>
-        	<div style="float:left; padding-left:235px;"><a href="/FileManager/Index" onMouseDown="MM_swapImage('menu11','','/Content/images/documentos.png',1)" onMouseOver="MM_swapImage('menu11','','images/documentos-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/documentos.png" border="0" name="menu11"></a></div>
+        	<div style="float:left; padding-left:235px;"><a href="/FileManager/ListFiles" onMouseDown="MM_swapImage('menu11','','/Content/images/documentos.png',1)" onMouseOver="MM_swapImage('menu11','','images/documentos-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/documentos.png" border="0" name="menu11"></a></div>
             <div style="float:left; padding-left:8px;"><img src="/Content/images/cuentas-bancarias.png"></div>
             <div style="float:left; padding-left:8px;"><a href="/DigitalAccount/Index" onMouseDown="MM_swapImage('menu12','','/Content/images/cuentas-digitales.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/cuentas-digitales-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/cuentas-digitales.png" border="0" name="menu12"></a></div>
         </div>
@@ -24,7 +24,8 @@
                     <div style="float:left; width:480px;">
                         <div style="float:left; width:150px; padding-top:4px;" class="textonegrita15">Número de cuenta:</div>
                         <div style="float:left;">
-                        	<div style="float:left;"><input name="texto1" type="text" class="caja23x23" readonly /></div>
+                        @Html.TextBoxFor(x => x.BankAccountNumber, new { @class = "caja245x23" })
+                        	@*<div style="float:left;"><input name="texto1" type="text" class="caja23x23" readonly /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
                             <div style="float:left;"><input name="texto3" type="text" class="caja23x23" readonly /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
@@ -34,10 +35,10 @@
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
                             <div style="float:left;"><input name="texto9" runat="server" type="text" readonly class="caja23x23" /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
-                            <div style="float:left; width:29px; padding-top:3px;" align="center" class="rojo15">(1)</div>
+                            <div style="float:left; width:29px; padding-top:3px;" align="center" class="rojo15">(1)</div>*@
                         </div>
                     </div>
-                    <div style="float:left; width:480px;">
+                    @*<div style="float:left; width:480px;">
                         <div style="float:left; padding-left:150px; padding-top:4px;">
                         	<div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
                             <div style="float:left;"><input name="texto2" type="text" class="caja23x23" readonly /></div>
@@ -51,20 +52,21 @@
                             <div style="float:left;"><input name="texto0" type="text" class="caja23x23" readonly /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="rojo15">(2)</div>
                         </div>
-                    </div>
+                    </div>*@
                     <div style="float:left; width:480px; padding-top:7px;">
                         <div style="float:left; width:150px; padding-top:4px;" class="textonegrita15">Clave:</div>
                         <div style="float:left;">
-                        	<div style="float:left;"><input name="clave1" type="text" class="caja23x23" readonly /></div>
+                        @Html.TextBoxFor(x => x.Password, new { @class = "caja245x23" })
+                        	@*<div style="float:left;"><input name="clave1" type="text" class="caja23x23" readonly /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
                             <div style="float:left;"><input name="clave3" type="text" class="caja23x23" readonly /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
                             <div style="float:left;"><input name="clave5" type="text" class="caja23x23" readonly /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
-                            <div style="float:left; width:29px; padding-top:3px;" align="center" class="rojo15">(1)</div>
+                            <div style="float:left; width:29px; padding-top:3px;" align="center" class="rojo15">(1)</div>*@
                         </div>
                     </div>
-                    <div style="float:left; width:480px;">
+                    @*<div style="float:left; width:480px;">
                         <div style="float:left; padding-left:150px; padding-top:4px;">
                         	<div style="float:left; width:29px; padding-top:3px;" align="center" class="textonegrita24">*</div>
                             <div style="float:left;"><input name="clave2" type="text" class="caja23x23" /></div>
@@ -74,7 +76,7 @@
                             <div style="float:left;"><input name="clave6" type="text" class="caja23x23" /></div>
                             <div style="float:left; width:29px; padding-top:3px;" align="center" class="rojo15">(2)</div>
                         </div>
-                    </div>
+                    </div>*@
                     <div style="float:left; padding-top:7px; width:480px;">
                         <div style="float:left; width:150px;" class="textonegrita15">Banco:</div>
                         <div style="float:left;" id="BankName">@Html.TextBoxFor(x => x.BankName, new { @class = "caja245x23" }) </div>
@@ -100,7 +102,7 @@
                     </div>*@
                 </div>
         	</div>
-            <div style="float:left; width:120px;">
+            @*<div style="float:left; width:120px;">
             	<div style="float:left; padding-top:40px;">
             		<div style="float:left;"><a href="javascript:Assign(9);"><img src="/Content/images/9.png" /></a></div>
                 	<div style="float:left; padding-left:7px;"><a href="javascript:Assign(2);"><img src="/Content/images/2.png" /></a></div>
@@ -120,7 +122,7 @@
             		<div style="float:left;"><a href="#" onClick="javascript:Assign(0);"><img src="/Content/images/0.png"></a></div>
                 	<div style="float:left; padding-left:7px;" class="negro11"><a href="javascript:clean();">borrar</a> </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div style="float:left; width:730px;">
             	<div style="float:left; padding-left:5px; width:600px; padding-top:45px;" class="negro11"><span class="rojo15">(1)</span> Estos datos se guardan en SwissKip</div>
@@ -134,7 +136,7 @@
     </div>
   </div>
 
-  <script type="text/javascript">
+  @*<script type="text/javascript">
       
 //      $(function () { alert("uno");
 //          $("#Enviar").click(function () {
@@ -257,4 +259,4 @@
               clave6.value = valor;
       }
       
-  </script>
+  </script>*@
