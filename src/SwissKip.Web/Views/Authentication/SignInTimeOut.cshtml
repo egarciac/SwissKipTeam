@@ -1,0 +1,18 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.SignInModel
+@{
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
+    ViewBag.Title = "Log In";
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+<script type="text/javascript">
+    alert("Your Swisskip session has expired after 10 minutes of inactivity. Please log in again.");
+    top.location="SignIn";
+</script> 
+
+<div style="clear:both; height:60px;"></div>
+<div id="cajaregistro" align="center">
+
+   
+    
+</div>

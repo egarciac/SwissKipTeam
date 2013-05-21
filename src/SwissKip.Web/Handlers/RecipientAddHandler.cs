@@ -18,10 +18,10 @@
             var user = this.Find(form.Email);
             if (user == null)
             {
-                user = User.CreateDataheir(form.FirstName, form.LastName, null, null, form.Email, null, 0, 0, null, 0, System.DateTime.Now, 1, 0, false, false, false, true, false);
+                user = User.CreateDataheir(form.FirstName, form.LastName, null, null, form.Email, null, null, null, null, 0, 0, null, 0, System.DateTime.Now, 1, 0, null, false, false, false, true, false);
                 Save(user);
                 AddRecipientToOwner(owner.Id, user.Id);
-                SendInvitation(owner.FullName(), user);
+                SendInvitation(owner.FullName(), user, "");
             }
             else
             {
@@ -65,10 +65,10 @@
             }
         }
 
-        private static void SendInvitation(string ownerFullName, User recipient)
+        private static void SendInvitation(string ownerFullName, User recipient, string message)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.CreateAccountDataheirInvitation(recipient.Email, recipient.Id, recipient.FirstName, ownerFullName);
+            var msg = mailer.CreateAccountDataheirInvitation(recipient.Email, recipient.Id, recipient.FirstName, ownerFullName, message);
             msg.Send();
         }
     }

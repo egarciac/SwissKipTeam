@@ -20,11 +20,13 @@
             background: #b5b5b3;">
         </div>
         <div style="float: left; padding-top: 20px;">
-            <div style="float: left; width: 580px; background-color:Silver">
-                <div style="width: 550px; height: 35px;">
+            <div style="float: left; width: 680px; background-color:Silver">
+                <div style="width: 650px; height: 35px;">
                     <div style="float: left; width: 125px;" class="negro13b">First Name</div>
                     <div style="float: left; width: 125px;" class="negro13b">Last Name</div>
-                    <div style="float: left; width: 300px;" class="negro13b">Email</div>
+                    <div style="float: left; width: 180px;" class="negro13b">Email</div>
+                    <div style="float: left; width: 120px;" class="negro13b">Confirmó</div>
+                    <div style="float: left; width: 80px;" class="negro13b">Eliminar</div>
                 </div>
 
             </div>
@@ -35,12 +37,20 @@
             {
                 var witness = this.Model[index];
                     <div style="float: left; padding-top: 20px;">
-                        <div style="float: left; width: 580px;">
-                            <div style="float: left; width: 550px; padding-top: 8px;">
+                        <div style="float: left; width: 680px;">
+                            <div style="float: left; width: 650px; padding-top: 8px;">
                                 <div style="float: left; width: 125px;" class="negro13b">@witness.FirstName</div>
                                 <div style="float: left; width: 125px;" class="negro13b">@witness.LastName</div>
                                 <div style="float: left; width: 200px;" class="negro13b">@witness.Email</div>
-                                <div style="float: left; width: 100px;" class="negro13b">@Html.ActionLink("Remove", "Delete", new { id= witness.Id })</div>
+                                @if (witness.EmailConfirmed == 0)
+                                {
+                                    <div style="float: left; width: 100px;" class="negro13b"><img src="/Content/images/rojo.jpg" border="0"></div>
+                                }
+                                else
+                                {
+                                    <div style="float: left; width: 100px;" class="negro13b"><img src="/Content/images/verde.jpg" border="0"></div>
+                                }
+                                <div style="float: left; width: 50px;" class="negro13b">@Html.ActionLink("Remove", "Delete", new { id= witness.Id })</div>
                             </div>
                         </div>
                     </div>
@@ -51,10 +61,10 @@
         <div style="float: left; width: 738px; padding-top: 4px;">
         @Html.ActionLink("Add new witness", "AddWitnesses", null, new { @class = "addRow" })
         <div style="float: right;">
-                <input type="image" name="Enviar" value="Enviar" src="~/Content/images/guardar.png" />
+                <input type="image" name="Enviar" value="Enviar" src="../../Content/images/btn_save.png" />
         </div>
             <div style="float: right; padding-right: 5px;">
-                <a href="@Url.Action("Index")"><img src="~/Content/images/volver.png" border="0"></a>
+                <a href="@Url.Action("Index")"><img src="../../Content/images/btn_back.gif" border="0"></a>
             </div>
         </div>
         }

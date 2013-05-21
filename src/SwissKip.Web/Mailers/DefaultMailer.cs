@@ -5,36 +5,47 @@ namespace SwissKip.Web.Mailers
 {
     public class DefaultMailer : MailerBase
     {
-        public virtual MailMessage NewAccountConfirmation(string userEmail, int userId, string userFullName)
+        public virtual MailMessage NewAccountConfirmation(string userEmail, string userUrl, string userFullName)
         {
             var mailMessage = new MailMessage { Subject = "Registration Confirmation" };
             mailMessage.To.Add(userEmail);
-            ViewBag.AccountId = userId;
+            ViewBag.AccountId = userUrl;
             ViewBag.FullName = userFullName;
             PopulateBody(mailMessage, viewName: "NewAccountConfirmation");
 
             return mailMessage;
         }
 
-        public virtual MailMessage CreateAccountWitnessInvitation(string witnessEmail, int invitationId, string witnessFirstName, string ownerFullName)
+        public virtual MailMessage SendConfirmationMail(string Email, string FullName)
+        {
+            var mailMessage = new MailMessage { Subject = "Invitation to confirm your e-mail" };
+            mailMessage.To.Add(Email);
+            ViewBag.OwnerFullName = FullName;
+            PopulateBody(mailMessage, viewName: "ConfirmationEmail");
+
+            return mailMessage;
+        }
+        public virtual MailMessage CreateAccountWitnessInvitation(string witnessEmail, int invitationId, string witnessFirstName, string ownerFullName, string message)
         {
             var mailMessage = new MailMessage { Subject = "Invitation to be a Witness" };
             mailMessage.To.Add(witnessEmail);
             ViewBag.InvitationId = invitationId;
             ViewBag.WitnessFirstName = witnessFirstName;
             ViewBag.OwnerFullName = ownerFullName;
+            ViewBag.Message = message;
             PopulateBody(mailMessage, viewName: "CreateAccountWitnessInvitation");
 
             return mailMessage;
         }
 
-        public virtual MailMessage CreateAccountDataheirInvitation(string dataheirEmail, int invitationId, string dataheirFirstName, string ownerFullName)
+        public virtual MailMessage CreateAccountDataheirInvitation(string dataheirEmail, int invitationId, string dataheirFirstName, string ownerFullName, string message)
         {
             var mailMessage = new MailMessage { Subject = "Invitation to be a Dataheir" };
             mailMessage.To.Add(dataheirEmail);
             ViewBag.InvitationId = invitationId;
             ViewBag.RecipientFirstName = dataheirFirstName;
             ViewBag.OwnerFullName = ownerFullName;
+            ViewBag.Message = message;
             PopulateBody(mailMessage, viewName: "CreateAccountRecipientInvitation");
 
             return mailMessage;

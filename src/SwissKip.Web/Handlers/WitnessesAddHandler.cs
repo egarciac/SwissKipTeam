@@ -13,7 +13,7 @@
 
     public class WitnessesAddHandler
     {
-        public void Handle(User owner, User witness)
+        public void Handle(User owner, User witness, string message)
         {
             //foreach (var witnessForm in witnessesForm)
             //{
@@ -24,7 +24,7 @@
             //        user = User.CreateWitness(witnessForm.FirstName, witnessForm.LastName, null, null, witnessForm.Email, 0, System.DateTime.Now, 1, false, false, true);
             //        Save(user);
             //        AddWitnessToOwner(owner, user);
-                    SendInvitation(owner, witness);
+            SendInvitation(owner, witness, message);
                 //}
                 //else
                 //{
@@ -114,10 +114,10 @@
             Current.Connection.Insert(ownerWitness);
         }
 
-        private static void SendInvitation(User owner, User witness)
+        private static void SendInvitation(User owner, User witness, string message)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, owner.FullName());
+            var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, owner.FullName(), message);
             msg.Send();
         }
 

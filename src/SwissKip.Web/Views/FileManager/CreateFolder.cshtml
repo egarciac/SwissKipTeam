@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div id="contenido">
+  	<div style="float:left; padding-left:100px;">
+    	<div class="rojo25" style="float:left; z-index:0;">
+        	<div style="float:left; padding-bottom:2px;">My stuff</div>
+        	<div style="float:left; padding-left:235px;"><img src="/Content/images/documentos-on.png"></div>
+            <div style="float:left; padding-left:8px;"><a href="/BankAccount/Index" onMouseDown="MM_swapImage('menu12','','/Content/images/cuentas-bancarias-off.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/cuentas-bancarias.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/cuentas-bancarias-off.png" border="0" name="menu12"></a></div>
+            <div style="float:left; padding-left:8px;"><a href="/DigitalAccount/Index" onMouseDown="MM_swapImage('menu13','','/Content/images/cuentas-digitales.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/cuentas-digitales-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/cuentas-digitales.png" border="0" name="menu13"></a></div>
+        </div>
+    	<div style="float:left; width:738px; height:1px; z-index:1; margin-top:-7px; background:#b5b5b3;"></div>
+        <div style="float:left; padding-left:4px; width:738px; padding-top:40px;">
+        @using (Html.BeginForm())
+        {
+        	@*<div style="float:left; width:95px;">
+                <div style="float:left;"><a href="ListFiles"><img src="/Content/images/carpetas.png" border="0"></a></div>
+                <div style="float:left; padding-left:20px; padding-top:3px;" class="rojo14">Fotos</div>
+            </div>
+            <div style="float:left; padding-left:70px; width:95px;">
+                <div style="float:left;"><a href="ListFiles"><img src="/Content/images/carpetas.png" border="0"></a></div>
+                <div style="float:left; padding-left:15px; padding-top:3px;" class="rojo14">Archivos</div>
+            </div>
+            <div style="float:left; padding-left:70px; width:95px;">
+                <div style="float:left;"><a href="ListFiles"><img src="/Content/images/carpetas.png" border="0"></a></div>
+                <div style="float:left; padding-left:20px; padding-top:3px;" class="rojo14">Videos</div>
+            </div>*@
+            <div style="float:left;"><b>Folder Name</b> <input type="text" id="folder" name="folder" size="20px" style="height: 22px" /><br /> <br />
+            <input type="submit" value="GRABAR" class="botonext" /></div>
+        }    
+        </div>
+        <div style="float:left; width:738px; margin-top:150px; height:1px; background:#b5b5b3;"></div>
+        <div style="float:left; width:738px; padding-top:4px;">
+            <div style="float:right; padding-right:5px;"><a href="javascript:history.back(-1);"><img src="/Content/images/volver.png" border="0"></a></div>
+        </div>
+    </div>
+  </div>

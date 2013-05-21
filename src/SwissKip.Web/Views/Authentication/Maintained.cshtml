@@ -1,0 +1,40 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.SignInModel
+@{
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
+    ViewBag.Title = "Log In";
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+
+<div style="clear:both; height:60px;"></div>
+<div id="cajaregistro" align="center">
+@using (Html.BeginForm())
+{
+    
+    <div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Internal Error detected</span> <span class="black22"></span></div>
+    </div>
+    
+    <div style="width:540px;margin:auto; margin-top:50px; overflow:hidden;">
+        
+        <div style="overflow:hidden; width:380px;margin:auto;">            
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Username</div>
+                <div class="interior1-form-inpt1" align="left">@Html.TextBoxFor(x => x.Username, new { @class = "cajausername" })</div>
+                @*<div align="right">Don't Forget username&nbsp;&nbsp;</div>*@
+            </div>
+            <div class="interior1-form-1">
+                <div class="interior1-form-text1 negro14">Password</div>
+                <div class="interior1-form-inpt1" align="left">@Html.PasswordFor(x => x.Password, new { @class = "cajausername" })</div>
+                @*<div align="right">Don't Forget password&nbsp;&nbsp;</div>*@
+            </div>
+        </div>
+        @Html.ValidationSummary(true)
+        <div style="float:right; margin-top:50px;margin-bottom:70px;">
+            <div style=" float:right;" class="textoform logueo-enviar-tex">Don't have an account? @Html.ActionLink("Sign Up", "Signin1", "Registration", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "" })</div>
+            <div style="float:right;margin-right:10px;" ><input type="submit" value="Log In" class="botonlogin" /></div>
+        </div>
+        
+    </div>
+}
+</div>

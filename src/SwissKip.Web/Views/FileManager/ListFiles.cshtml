@@ -1,9 +1,8 @@
-﻿@using System.Configuration
-@using IZ
+﻿@model SwissKip.Web.Models.FileManagerModel
 @{
-    ViewBag.Title = "File Manager Content";
-
+    ViewBag.Title = "Index";
 }
+
 <div id="contenido">
   	<div style="float:left; padding-left:100px;">
     	<div class="rojo25" style="float:left; z-index:0;">
@@ -13,13 +12,25 @@
             <div style="float:left; padding-left:8px;"><a href="/DigitalAccount/Index" onMouseDown="MM_swapImage('menu13','','/Content/images/cuentas-digitales.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/cuentas-digitales-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/cuentas-digitales.png" border="0" name="menu13"></a></div>
         </div>
     	<div style="float:left; width:738px; height:1px; z-index:1; margin-top:-7px; background:#b5b5b3;"></div>
-        <div style="float:left; padding-left:13px; width:830px; padding-top:40px;">
-            <iframe src="/ListFiles.aspx" width="620" height="420" marginwidth=0 marginheight=0 frameborder=0></iframe>
+        <div style="float:left; padding-left:4px; width:738px; padding-top:40px;">
+            @for (int i = 0; i < Model.Files.Length; i++ )
+            {
+                <div style="float:left; width:630px;">
+                    <div style="float:left; width:80px;"><img src="/Content/images/file.gif" with=50 height=50 alt="" border="0" /></div>
+                    <div style="float:left; width:250px;" class="rojo14">@Model.Folders[i]</div>
+                    <div style="float:left; width:300px;" class="negro13b"> @Html.ActionLink("Download", "Download", new { file = Model.Folders[i] }) | @Html.ActionLink("Remove", "Remove", new { file = @Model.Folders[i] }, new { onclick = "return confirm('Are you sure you want to remove this file?')" })</div>
+                </div>
+            }
+            
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            <div style="float:right;" id="Enviar"><a href=@Url.Action("UploadFile", new { folder = (string)Session["Folder"] })><input type="image" value="Enviar" src="/Content/images/cargar-archivo.png" border="0" /></a></div>
         </div>
-        <div style="float:left; width:738px; margin-top:20px; height:1px; background:#b5b5b3;"></div>
+        <div style="float:left; width:738px; margin-top:80px; height:1px; background:#b5b5b3;"></div>
         <div style="float:left; width:738px; padding-top:4px;">
-            <div style="float:right;"><!-- <a href="#"><img src="images/guardar.png" border="0"></a> --></div>
-            <div style="float:right; padding-right:5px;"><a href="javascript:history.back(-1);"><img src="/Content/images/volver.png" border="0"></a></div>
+            <div style="float:right; padding-right:5px;"><a href=@Url.Action("Index")><img src="/Content/images/volver.png" border="0"></a></div>
         </div>
     </div>
   </div>

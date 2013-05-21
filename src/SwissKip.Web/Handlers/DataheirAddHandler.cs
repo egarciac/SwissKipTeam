@@ -13,7 +13,7 @@
 
     public class DataheirAddHandler
     {
-        public void Handle(User owner, User dataheir)
+        public void Handle(User owner, User dataheir, string message)
         {
             //TODO: No se puede agregar como beneficiario a uno mismo
             //var user = this.Find(dataheir.Email);
@@ -22,7 +22,7 @@
                 //user = User.CreateDataheir(form.FirstName, form.LastName, null, null, form.Email, 0, System.DateTime.Now, 1, false, true, false);
                 //Save(user);
                 //AddDataheirToOwner(owner.Id, user.Id);
-                SendInvitation(owner, dataheir);
+                SendInvitation(owner, dataheir, message);
             //}
             //else
             //{
@@ -93,10 +93,10 @@
             //}
         }
 
-        private static void SendInvitation(User owner, User dataheir)
+        private static void SendInvitation(User owner, User dataheir, string message)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.CreateAccountDataheirInvitation(dataheir.Email, dataheir.Id, dataheir.FirstName, owner.FullName());
+            var msg = mailer.CreateAccountDataheirInvitation(dataheir.Email, dataheir.Id, dataheir.FirstName, owner.FullName(), message);
             msg.Send();
         }
 

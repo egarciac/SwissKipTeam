@@ -42,6 +42,7 @@
                         file.SaveAs(serverPath);
                     }
 
+                    model.Birthday = null;
                     new AccountEditHandler().Handle(Current.UserId, model);
                 }
                 catch (ValidationException e)
@@ -56,6 +57,94 @@
             //    return this.View(model);
             //}
             return RedirectToAction("index","Owner");
+        }
+
+        public ActionResult Index2()
+        {
+            var user = Current.User;
+            var model = Mapper.Map<AccountEditModel>(user);
+            if (model.Birthday == null)
+                model.Birthday = Birthday.CreateFrom(user.Birthday);
+
+            model.fileName = "/Content/images/" + user.UserName + ".jpg";
+            ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index2(AccountEditModel model, HttpPostedFileBase file)
+        {
+            //if (ModelState.IsValid)
+            //{
+            try
+            {
+                if (file != null)
+                {
+                    User user = Current.Connection.Get<User>(Current.UserId); ;
+                    AuthenticationService.SignIn(user);
+                    var serverPath = Server.MapPath("~/Content/images/" + user.UserName + ".jpg");
+                    file.SaveAs(serverPath);
+                }
+
+                model.Birthday = null; 
+                new AccountEditHandler().Handle(Current.UserId, model);
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError(e.Key, e.Message);
+            }
+            //}
+
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
+            //    return this.View(model);
+            //}
+            return RedirectToAction("Index", "Recipient");
+        }
+
+        public ActionResult Index3()
+        {
+            var user = Current.User;
+            var model = Mapper.Map<AccountEditModel>(user);
+            if (model.Birthday == null)
+                model.Birthday = Birthday.CreateFrom(user.Birthday);
+
+            model.fileName = "/Content/images/" + user.UserName + ".jpg";
+            ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index3(AccountEditModel model, HttpPostedFileBase file)
+        {
+            //if (ModelState.IsValid)
+            //{
+            try
+            {
+                if (file != null)
+                {
+                    User user = Current.Connection.Get<User>(Current.UserId); ;
+                    AuthenticationService.SignIn(user);
+                    var serverPath = Server.MapPath("~/Content/images/" + user.UserName + ".jpg");
+                    file.SaveAs(serverPath);
+                }
+
+                model.Birthday = null;
+                new AccountEditHandler().Handle(Current.UserId, model);
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError(e.Key, e.Message);
+            }
+            //}
+
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewBag.CountryId = Current.Connection.GetList<Country>().ToSelectList(model.CountryId.ToString());
+            //    return this.View(model);
+            //}
+            return RedirectToAction("Index", "Witness");
         }
     }
 }

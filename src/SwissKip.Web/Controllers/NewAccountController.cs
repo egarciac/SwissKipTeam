@@ -28,10 +28,17 @@
         {
             if (invitationId.HasValue)
             {
-                //TODO: ¿Si no existe la cuenta?
-                var invitation = Current.Connection.Get<User>(invitationId.Value);
-                var model = Mapper.Map<AccountCreateModel>(invitation, new[] { "UserName", "Password" });
-                return View(model);
+                try
+                {
+                    //TODO: ¿Si no existe la cuenta?
+                    var invitation = Current.Connection.Get<User>(invitationId.Value);
+                    var model = Mapper.Map<AccountCreateModel>(invitation, new[] { "UserName", "Password" });
+                    return View(model);
+                }
+                catch (Exception ex)
+                {
+                    return RedirectToAction("Maintained", "Authentication"); 
+                }
             }
 
             return View();

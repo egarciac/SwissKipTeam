@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     <div>
-        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Step 2 of 2:</span> <span class="black22"> Enter the token</span></div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Step 2 of 2:</span> <span class="black22"> INSERT YOUR SECURITY TOKEN</span></div>
     </div>
     
     
@@ -21,14 +21,14 @@
                 <b>Frase Personal</b>: @this.Model.SecretPhrase<br />
                 </div>
             </div>
-                        <div style="padding-bottom:30px;padding-top:90px;">                <div style="float:left; width:370px; text-align:left;"><span class="negro17">Una clave <span class="rojo17">Token</span> acaba de ser enviada a tu email,cópiala y pégala este campo: </span></div>                <div style="float:left; width:225px; margin-left:15px;">@Html.TextBoxFor(x => x.TokenNumberNew, new { @class = "cajatoken" })                    <div id="contador" class="negro12" style="text-align:right; margin-top:5px; margin-right:5px;"></div>                </div>            </div>            
+                        <div style="padding-bottom:30px;padding-top:50px;">                <div style="float:left; width:370px; text-align:left;"><span class="negro17">An email has sent to you including a <span class="rojo17">Security Token</span> for this session. Go to your e-mail, copy the six digit number and paste it in the token field:<br /><br />                Swisskip Security Tokens expire after 2 minutes. If your token has expired you need to log in again. </span></div>                <div style="float:left; width:225px; margin-left:15px;">@Html.TextBoxFor(x => x.TokenNumberNew, new { @class = "cajatoken" })                    <div id="contador" class="negro12" style="text-align:right; margin-top:5px; margin-right:5px;"></div>                </div>            </div>            
 
 
     </div>
 
-    <div style="margin-top:50px;">
-        <div>@Html.ValidationSummary(true);</div>
-        <div style="margin-bottom:70px;"><input type="submit" value="PROCCED" class="botonlogin" /></div>
+    <div style="margin-top:20px;">
+        <div>@Html.ValidationSummary(true)</div>
+        <div style="margin-bottom:70px;"><input type="submit" value="ENTER" class="botonlogin" /></div>
     </div>
     
     <div style="clear:both;"></div>
@@ -43,8 +43,8 @@
         countdown = setInterval(function () {
             $("#contador").html("<b>"+ count + "</b> seconds remaining!");
             if (count == 0) {
-                window.alert("Su sesión ha expirado");
-                window.location = '/Authentication/signin';
+                window.alert("Your session has expired. Please log in again.");
+                window.location = '/Authentication/SignIn';
             }
             count--;
         }, 1000);

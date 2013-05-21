@@ -261,13 +261,6 @@
     <Compile Include="Helpers\Extensions\ListExtensions.cs" />
     <Compile Include="Helpers\Mapper.cs" />
     <Compile Include="Helpers\Extensions\StringExtensions.cs" />
-    <Compile Include="ListFiles.aspx.cs">
-      <DependentUpon>ListFiles.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListFiles.aspx.designer.cs">
-      <DependentUpon>ListFiles.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Mailers\DefaultMailer.cs" />
     <Compile Include="Core\Account.cs" />
     <Compile Include="Helpers\ModelBinders\BirthdayModelBinder.cs" />
@@ -277,6 +270,7 @@
     <Compile Include="Models\BankAccountCreateModel.cs" />
     <Compile Include="Models\BankAccountModel.cs" />
     <Compile Include="Models\BasicInfoModel.cs" />
+    <Compile Include="Models\FileManagerModel.cs" />
     <Compile Include="Models\IconsModel.cs" />
     <Compile Include="Models\User_UserTypeModel.cs" />
     <Compile Include="Models\DataheirCreateModel.cs" />
@@ -328,13 +322,17 @@
     <Content Include="Content\images\amarillo.jpg" />
     <Content Include="Content\images\azul.png" />
     <Content Include="Content\images\beneficiario.png" />
+    <Content Include="Content\images\beneficiario1.png" />
+    <Content Include="Content\images\bot_beneficiario1_rojo.png" />
     <Content Include="Content\images\bot_beneficiario_rojo.gif" />
     <Content Include="Content\images\btn-agregar.jpg" />
     <Content Include="Content\images\btn-confirmar-on.jpg" />
     <Content Include="Content\images\btn-confirmar.jpg" />
     <Content Include="Content\images\btn-documentos-off.jpg" />
     <Content Include="Content\images\btn-editar-info.jpg" />
+    <Content Include="Content\images\btn-grabar.png" />
     <Content Include="Content\images\btn-guardar.jpg" />
+    <Content Include="Content\images\btn-next.png" />
     <Content Include="Content\images\btn-reportar-muerte-on.jpg" />
     <Content Include="Content\images\btn-reportar-muerte.jpg" />
     <Content Include="Content\images\btn-seguir.jpg" />
@@ -342,18 +340,21 @@
     <Content Include="Content\images\btn-volver.jpg" />
     <Content Include="Content\images\btn_back.gif" />
     <Content Include="Content\images\btn_next.gif" />
+    <Content Include="Content\images\btn_save.png" />
     <Content Include="Content\images\bullet.gif" />
     <Content Include="Content\images\caja.png" />
     <Content Include="Content\images\camara.png" />
     <Content Include="Content\images\candado.png" />
     <Content Include="Content\images\captcha.jpg" />
     <Content Include="Content\images\captcha.png" />
+    <Content Include="Content\images\cargar-archivo.png" />
     <Content Include="Content\images\carpeta.jpg" />
     <Content Include="Content\images\carpetas.png" />
     <Content Include="Content\images\comprar-version-completa.jpg" />
     <Content Include="Content\images\comprar-version-completa.png" />
     <Content Include="Content\images\confirmar-off.png" />
     <Content Include="Content\images\confirmar.png" />
+    <Content Include="Content\images\crear.png" />
     <Content Include="Content\images\creare-my-account.jpg" />
     <Content Include="Content\images\creare-my-account.png" />
     <Content Include="Content\images\cuentas-bancarias-off.png" />
@@ -395,6 +396,8 @@
     <Content Include="Content\images\owner-.jpg" />
     <Content Include="Content\images\owner-off.png" />
     <Content Include="Content\images\owner.png" />
+    <Content Include="Content\images\owner1-off.png" />
+    <Content Include="Content\images\owner1.png" />
     <Content Include="Content\images\paypar.jpg" />
     <Content Include="Content\images\pool.jpg" />
     <Content Include="Content\images\process1.gif" />
@@ -416,13 +419,17 @@
     <Content Include="Content\images\sinfoto.gif" />
     <Content Include="Content\images\testigo-on.png" />
     <Content Include="Content\images\testigo.png" />
+    <Content Include="Content\images\testigo1-on.png" />
+    <Content Include="Content\images\testigo1.png" />
     <Content Include="Content\images\unknown.jpg" />
     <Content Include="Content\images\verde.jpg" />
     <Content Include="Content\images\verde.png" />
     <Content Include="Content\images\vertodo.png" />
+    <Content Include="Content\images\vertodo1.png" />
     <Content Include="Content\images\video.png" />
     <Content Include="Content\images\visa.jpg" />
     <Content Include="Content\images\volver.png" />
+    <Content Include="Content\images\your-account.png" />
     <Content Include="Content\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -439,7 +446,6 @@
     <Content Include="Content\jquery-ui\jquery-ui.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ListFiles.aspx" />
     <Content Include="Scripts\App\MyAccount.Index.js" />
     <Content Include="Scripts\jquery-1.8.0-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
@@ -561,7 +567,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FileManager\Index.cshtml" />
-    <Content Include="Views\FileManager\ListFiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DigitalAccount\Create.cshtml" />
@@ -641,9 +646,6 @@
     <Content Include="Views\DefaultMailer\SendBankAccountNumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IZWebFileManagerThumbnailHandler.ashx" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\PublishProfiles\swisskip - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\swisskip - Web Deploy.pubxml" />
     <Content Include="Views\Owner\EditWitness.cshtml" />
@@ -676,12 +678,18 @@
     <Content Include="Views\Recipient\_MyAccountWidget.cshtml" />
     <Content Include="Views\Witness\_MyAccountWidget.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IZWebFileManager\WebFileManager.csproj">
-      <Project>{7B6305F4-FE54-4888-8200-C6D3076FEF0F}</Project>
-      <Name>WebFileManager</Name>
-    </ProjectReference>
+    <Content Include="Views\MyAccount\Index2.cshtml" />
+    <Content Include="Views\MyAccount\Index3.cshtml" />
+    <Content Include="Views\Authentication\Maintained.cshtml" />
+    <Content Include="Views\Authentication\SignInTimeOut.cshtml" />
+    <Content Include="Views\FileManager\CreateFolder.cshtml" />
+    <Content Include="Views\FileManager\UploadFile.cshtml" />
+    <Content Include="Views\DefaultMailer\ConfirmationEmail.cshtml" />
+    <Content Include="Views\Authentication\MailVerification.cshtml" />
+    <Content Include="Views\Owner\Index1.cshtml" />
+    <Content Include="Views\FileManager\ListFiles.cshtml" />
+    <Content Include="Views\Authentication\Reminder.cshtml" />
+    <Content Include="Views\Authentication\MissingInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Swisskip\" />

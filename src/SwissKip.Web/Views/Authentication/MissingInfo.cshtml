@@ -1,0 +1,25 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.SignInModel
+@{
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
+    ViewBag.Title = "Log In";
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+
+<div style="clear:both; height:60px;"></div>
+<div id="cajaregistro" align="center">
+@using (Html.BeginForm())
+{
+    
+    <div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">Internal Error detected</span><br /><br /> 
+        <span class="negro17">You have not completed all steps yet. Please, click <a href=@Url.Action("SecretInfo", "NewAccount")>HERE</a> to continue with the following steps.</span></div>
+    </div>
+    
+    <div style="width:540px;margin:auto; margin-top:50px; overflow:hidden;">
+        
+        
+        
+    </div>
+}
+</div>

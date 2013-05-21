@@ -22,7 +22,14 @@
         {
             get
             {
-                return Int32.Parse(Context.User.Identity.Name);
+                try
+                {
+                    return Int32.Parse(Context.User.Identity.Name);
+                }
+                catch
+                {
+                    return 1;
+                }
             }
         }
 

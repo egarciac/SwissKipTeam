@@ -30,7 +30,7 @@
                 <div id="logo"></div>
             </a>
             <div id="bienvenido" class="rojo">
-                @if (this.Context.User.ToString() != "")
+                @if (Current.User != null && Session["username"] != null && Session["AccessDenied"] != null && (int)Session["AccessDenied"] != 1)
                 {
                     if (this.Context.User.Identity.IsAuthenticated)
                     {

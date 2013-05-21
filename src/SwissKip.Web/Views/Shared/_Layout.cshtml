@@ -30,7 +30,7 @@
                 <div id="logo"></div>
             </a>
             <div id="bienvenido" class="rojo">
-                @if (this.Context.User.ToString() != "")
+                @if (Current.User != null && Session["username"] != null)
                 {
                     if (this.Context.User.Identity.IsAuthenticated)
                     {
@@ -68,7 +68,7 @@
                     <li><a href="/Home/TheProcess" id="op2">The process</a></li>
                     <!--li><a href="/Home/HowDoesItWork">How does it work?</a></li-->
                     <li><a href="/Home/Security" id="op3">Security</a></li>
-                    <li><a href="/Owner" id="op4"><i><span style="color:#CC0B1C" id="textmy">my</span></i>kip</a></li>
+                    <li><a href="/Owner/Index1" id="op4"><i><span style="color:#CC0B1C" id="textmy">my</span></i>kip</a></li>
                 </ul>
             </div>
         </div>

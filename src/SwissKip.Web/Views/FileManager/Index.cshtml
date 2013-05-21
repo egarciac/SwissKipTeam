@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SwissKip.Web.Models.FileManagerModel
+@{
     ViewBag.Title = "Index";
 }
 
@@ -11,24 +12,25 @@
             <div style="float:left; padding-left:8px;"><a href="/DigitalAccount/Index" onMouseDown="MM_swapImage('menu13','','/Content/images/cuentas-digitales.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/cuentas-digitales-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/cuentas-digitales.png" border="0" name="menu13"></a></div>
         </div>
     	<div style="float:left; width:738px; height:1px; z-index:1; margin-top:-7px; background:#b5b5b3;"></div>
-        <div style="float:left; padding-left:13px; width:830px; padding-top:40px;">
-        	<div style="float:left; width:95px;">
-                <div style="float:left;"><a href="ListFiles"><img src="/Content/images/carpetas.png" border="0"></a></div>
-                <div style="float:left; padding-left:20px; padding-top:3px;" class="rojo14">Fotos</div>
-            </div>
-            <div style="float:left; padding-left:70px; width:95px;">
-                <div style="float:left;"><a href="ListFiles"><img src="/Content/images/carpetas.png" border="0"></a></div>
-                <div style="float:left; padding-left:15px; padding-top:3px;" class="rojo14">Archivos</div>
-            </div>
-            <div style="float:left; padding-left:70px; width:95px;">
-                <div style="float:left;"><a href="ListFiles"><img src="/Content/images/carpetas.png" border="0"></a></div>
-                <div style="float:left; padding-left:20px; padding-top:3px;" class="rojo14">Videos</div>
-            </div>
+        <div style="float:left; padding-left:4px; width:738px; padding-top:40px;">
+            @for (int i = 0; i < Model.Folders.Length; i++ )
+            {
+                <div style="float:left; width:120px;">
+                    <div style="float:left;"><a href=@Url.Action("ListFiles", new { folder = Model.Folders[i] })><img src="/Content/images/carpetas.png" alt="" border="0"></a></div>
+                    <div style="float:left; padding-top:3px;" class="rojo14">@Model.Folders[i]</div>
+                    <div style="float:left; width:80px;"></div>
+                </div>
+            }
+            
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            <div style="float:right;" id="Enviar"><a href=@Url.Action("CreateFolder")><input type="image" value="Enviar" src="/Content/images/crear.png" border="0" /></a></div>
         </div>
-        <div style="float:left; width:738px; margin-top:150px; height:1px; background:#b5b5b3;"></div>
+        <div style="float:left; width:738px; margin-top:80px; height:1px; background:#b5b5b3;"></div>
         <div style="float:left; width:738px; padding-top:4px;">
-            <div style="float:right;"><!-- <a href="#"><img src="images/guardar.png" border="0"></a> --></div>
-            <div style="float:right; padding-right:5px;"><a href="javascript:history.back(-1);"><img src="/Content/images/volver.png" border="0"></a></div>
+            <div style="float:right; padding-right:5px;"><a href=@Url.Action("Index", "Owner")><img src="/Content/images/volver.png" border="0"></a></div>
         </div>
     </div>
   </div>

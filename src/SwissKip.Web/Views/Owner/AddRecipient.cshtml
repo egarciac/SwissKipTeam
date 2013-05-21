@@ -28,20 +28,32 @@
                 @*@using (Html.BeginCollectionItem("recipient"))
                 {*@
                     <div class="interior2-form-1-tx rojo18">First Name</div>
-                    <div class="interior2-form-1-ip2">@Html.TextBoxFor(x => x.FirstName, new { @class = "caja130x23" })<br />
+                    <div>@Html.TextBoxFor(x => x.FirstName, new { @class = "caja190x23" })<br />
                     @Html.ValidationMessageFor(x => x.FirstName)</div>
-    
+                    <br />
                     <div class="interior2-form-1-tx rojo18">Last Name</div>
-                    <div class="interior2-form-1-ip2">@Html.TextBoxFor(x => x.LastName, new { @class = "caja130x23" })<br />
+                    <div>@Html.TextBoxFor(x => x.LastName, new { @class = "caja190x23" })<br />
                     @Html.ValidationMessageFor(x => x.LastName)</div>
     
+                    <br />
                     <div class="interior2-form-1-tx rojo18">Email</div>
-                    <div class="interior2-form-1-ip2">@Html.TextBoxFor(x => x.Email, new { @class = "caja130x23" })<br />
+                    <div>@Html.TextBoxFor(x => x.Email, new { @class = "caja245x23" })<br />
                     @Html.ValidationMessageFor(x => x.Email)</div>
     
+                    <br />
                     <div class="interior2-form-1-tx" style="padding-top:8px;">
                         @*<a href="#" class="deleteRow">delete</a>*@
                     </div>
+
+                    <div class="interior2-form-1-tx rojo18">Confirmed </div>
+                    @if (Model.EmailConfirmed == 0)
+                    {
+                        <div style="float: left; width: 50px;" class="negro13b">&nbsp;&nbsp;&nbsp;<img src="/Content/images/rojo.jpg" border="0"></div>
+                    }
+                    else
+                    {
+                        <div style="float: left; width: 50px;" class="negro13b">&nbsp;&nbsp;&nbsp;<img src="/Content/images/verde.jpg" border="0"></div>
+                    }
     
                 @*}*@
                 </div>
@@ -51,10 +63,10 @@
             </div>
             <div style="float: left; width: 738px; padding-top: 4px;">
                 <div style="float: right;">
-                    <input type="image" name="Enviar" value="Enviar" src="/Content/images/guardar.png" />
+                    <input type="image" name="Enviar" value="Enviar" src="../../Content/images/btn_save.png" />
                 </div>
                 <div style="float: right; padding-right: 5px;">
-                    <a href="@Url.Action("Index")"><img src="/Content/images/volver.png" border="0"></a>
+                    <a href="@Url.Action("Index")"><img src="../../Content/images/btn_back.gif" border="0"></a>
                 </div>
             </div>
         }

@@ -1,0 +1,24 @@
+﻿@using System.Configuration
+@model SwissKip.Web.Models.SignInModel
+@{
+    Layout = "~/Views/Shared/_LayoutNotLogged.cshtml";
+    ViewBag.Title = "Log In";
+    //ReCaptcha.PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+
+<div style="clear:both; height:60px;"></div>
+<div id="cajaregistro" align="center">
+@using (Html.BeginForm())
+{
+    
+    <div>
+        <div style="padding-bottom:10px;padding-top:7px;"><span class="rojo22">E-Mail Verification</span> 
+        <br><br><br>
+        <span class="negro17">An e-mail has been sent to you to validate and confirm your e-mail address.</span></div>
+        <br><br>
+        <br><br>
+    </div>
+    
+    
+}
+</div>

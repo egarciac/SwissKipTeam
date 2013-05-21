@@ -34,6 +34,12 @@
             Current.Connection.Insert(user_userType);
         }
 
+        public User Find2(string userId, string type)
+        {
+            var predicate = Predicates.Field<User>(f => f.Url, Operator.Eq, userId);
+            return Current.Connection.GetList<User>(predicate).SingleOrDefault();
+        }
+
         public User Find(string email)
         {
             var predicate = Predicates.Field<User>(f => f.Email, Operator.Eq, email);
@@ -51,10 +57,17 @@
             Current.Connection.Insert(ownerWitness);
         }
 
-        private static void SendInvitation(string ownerFullName, Account witness)
+        private static void SendInvitation(string ownerFullName, Account witness, string message)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, ownerFullName);
+            var msg = mailer.CreateAccountWitnessInvitation(witness.Email, witness.Id, witness.FirstName, ownerFullName, message);
+            msg.Send();
+        }
+
+        public void SendConfirmationMail(UserCreateModel model)
+        {
+            var mailer = new DefaultMailer();
+            var msg = mailer.SendConfirmationMail(model.FirstName + "" + model.LastName, model.Email);
             msg.Send();
         }
     }

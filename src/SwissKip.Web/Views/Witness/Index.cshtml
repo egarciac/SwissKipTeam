@@ -9,19 +9,19 @@
     {
     	<div style="z-index:0;">
         	@if (this.Model.MyAccountWidget2.IsOwner)
-            {    <div style="float:left;"><a href="/Owner/" onMouseDown="MM_swapImage('menu11','','/Content/images/owner-off.png',1)" onMouseOver="MM_swapImage('menu11','','/Content/images/owner.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/owner-off.png" border="0" name="menu11"></a></div>  }
+            {    <div style="float:left;"><a href="/Owner/" onMouseDown="MM_swapImage('menu11','','/Content/images/owner1-off.png',1)" onMouseOver="MM_swapImage('menu11','','/Content/images/owner1.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/owner1-off.png" border="0" name="menu11"></a></div>  }
          else
-         {    <div style="float:left;"><img src="/Content/images/owner-off.png" border="0" name="menu11"></div>  }
+         {    <div style="float:left;"><img src="/Content/images/owner1-off.png" border="0" name="menu11"></div>  }
             
             @if (this.Model.MyAccountWidget2.IsWitness)
-            {    <div style="float:left; padding-left:8px;"><a href="/Witness/" onMouseDown="MM_swapImage('menu12','','/Content/images/testigo-on.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/testigo-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/testigo-on.png" border="0" name="menu12"></a></div>  }
+            {    <div style="float:left; padding-left:8px;"><a href="/Witness/" onMouseDown="MM_swapImage('menu12','','/Content/images/testigo1-on.png',1)" onMouseOver="MM_swapImage('menu12','','/Content/images/testigo1-on.png',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/testigo1-on.png" border="0" name="menu12"></a></div>  }
             else
-            {    <div style="float:left; padding-left:8px;"><img src="/Content/images/testigo-on.png" border="0" name="menu12"></div>  }
+            {    <div style="float:left; padding-left:8px;"><img src="/Content/images/testigo1-on.png" border="0" name="menu12"></div>  }
             
             @if (this.Model.MyAccountWidget2.IsDataheir)
-            {    <div style="float:left; padding-left:8px;"><a href="/Recipient/" onMouseDown="MM_swapImage('menu13','','/Content/images/beneficiario.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/bot_beneficiario_rojo.gif',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/beneficiario.png" border="0" name="menu13"/></a></div>    }
+            {    <div style="float:left; padding-left:8px;"><a href="/Recipient/" onMouseDown="MM_swapImage('menu13','','/Content/images/beneficiario1.png',1)" onMouseOver="MM_swapImage('menu13','','/Content/images/bot_beneficiario1_rojo.gif',0)" onMouseOut="MM_swapImgRestore()"><img src="/Content/images/beneficiario1.png" border="0" name="menu13"/></a></div>    }
             else
-            {    <div style="float:left; padding-left:8px;"><img src="/Content/images/beneficiario.png" border="0"/></div>  }
+            {    <div style="float:left; padding-left:8px;"><img src="/Content/images/beneficiario1.png" border="0"/></div>  }
         </div>
         <div style="float:left; margin-top:-1px;">
     		<div style="float:left; width:955px; height:1px; background:#b5b5b3;"></div>
@@ -29,7 +29,7 @@
         
         @Html.Partial("_MyAccountWidget", Model.MyAccountWidget2)
         <div style="float:left; padding-left:17px; width:830px;">
-            <div style="float:left; padding-top:40px; width:700px;" class="negro14">You are witness of <strong>1 owner(s):</strong></div>
+            <div style="float:left; padding-top:40px; width:700px;" class="negro14">You have been trusted as a Passing Witness of:</div>
         </div>
         <div>
             @*@for (int index = 0; index < this.Model.Count; index++)
@@ -38,8 +38,8 @@
                 var linkeo = witnessFromOwner.UserIdFather;*@
 
                 <div style="float:left; padding-left:17px; width:830px;">
-                    <div style="float:left; padding-top:15px;" class="negro14"><strong>@Model.MyAccountWidget2.FullName</strong></div>
-                    <div style="float:left; padding-top:3px; width:850px;" class="negro14">Usted es testigo de @Model.MyAccountWidget2.OwnerFullName.</div>
+                    @*<div style="float:left; padding-top:15px;" class="negro14"><strong>@Model.MyAccountWidget2.FullName</strong></div>*@
+                    <div style="float:left; padding-top:3px; width:850px;" class="negro14">@Model.MyAccountWidget2.OwnerFullName @if (@Model.MyAccountWidget2.Confirmed) { <div>Confirmed</div> } else { <div>No Confirmed yet</div> } </div>
                     @*<div style="float:left; padding-top:3px; width:850px;" class="negro14">El <strong>XXXXXX</strong> se le envió una alerta para confirmar que sigue siendo testigo activo. Esta se encuentra <strong>XXXXXX</strong>.</div>*@
                     <div style="float:left; padding-top:14px;">
                         <div style="float:left;"> 

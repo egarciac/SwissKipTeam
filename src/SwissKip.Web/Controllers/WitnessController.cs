@@ -12,6 +12,7 @@
         public ActionResult Index()
         {
             var owners = new OwnersByWitnessQuery(Current.UserId).Execute();
+            Session["username"] = owners.MyAccountWidget2.UserName;
             return View(owners);
         }
 

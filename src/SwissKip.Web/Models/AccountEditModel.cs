@@ -16,10 +16,18 @@
         [Required]
         public string LastName { get; set; }
 
+        public string Age { get; set; }
+
+        public string City { get; set; }
+
+        public string MaritalStatus { get; set; }
+
         [Birthday]
         public Birthday Birthday { get; set; }
 
         public int? CountryId { get; set; }
+
+        public string Url { get; set; }
 
         public int? IconId { get; set; }
 

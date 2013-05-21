@@ -20,5 +20,6 @@
         [Email]
         public string Email { get; set; }
 
+        public int EmailConfirmed { get; set; }
     }
 }

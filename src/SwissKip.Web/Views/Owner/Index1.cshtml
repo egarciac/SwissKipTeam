@@ -1,0 +1,32 @@
+﻿@model SwissKip.Web.Models.OwnerPanelModel
+@{
+    ViewBag.Title = "Owner";
+}
+<div id="contenido">
+    
+  	<div style="float:left; width:1000px;">
+    	<div style="z-index:0;">
+            @if (Session["AccessDenied"] != null && (int)Session["AccessDenied"] != 1)
+            {
+        	    if (this.Model.MyAccountWidget.IsOwner)
+                {
+                     <script type="text/javascript">window.location = '/Owner/'</script>
+                }
+            
+                if (this.Model.MyAccountWidget.IsWitness)
+                {
+                    <script type="text/javascript">window.location = '/Witness/'</script>
+                }
+            
+                if (this.Model.MyAccountWidget.IsDataheir)
+                {
+                    <script type="text/javascript">window.location = '/Recipient/'</script>
+                }
+            }
+            else
+            {
+                <script type="text/javascript">window.location = '/Authentication/SignIn'</script>
+            }
+        </div>
+    </div>
+  </div>

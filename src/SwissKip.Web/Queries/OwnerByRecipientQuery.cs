@@ -53,7 +53,7 @@
         public RecipientAddModel ExecuteNew()
         {
             var owners = Current.Connection.Query<RecipientAddModel>(
-                "SELECT u.Id, u.FirstName, u.LastName, u.Email " +
+                "SELECT u.Id, u.FirstName, u.LastName, u.Email, uu.EmailConfirmed " +
                 "FROM User_UserType uu INNER JOIN [User] u ON uu.UserId = u.Id " +
                 "WHERE UserIdFather=@id AND UserTypeId=2",
                 new { id = Current.UserId }).Single();

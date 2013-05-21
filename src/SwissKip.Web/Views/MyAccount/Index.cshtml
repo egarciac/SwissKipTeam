@@ -41,9 +41,9 @@
         @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div style="float:left; padding-top:20px;">
-                <div style="float:left; width:130px;">
-                    <div class="custom-input-file" style="float:left;"><img id="photo" runat="server" src='@Model.fileName' alt="" width="119" height="130" /><br />
-                    <input type="file" name="file" id="file" class="input-file" /></div>
+                <div style="float:left; width:180px;">
+                    <div class="custom-input-file" style="float:left; padding-top:10px;"><img id="photo" runat="server" src='@Model.fileName' alt="" width="160" height="190" /><br />
+                    <input type="file" name="file" id="file"/></div>
                 </div>
                 <div style="float:left; width:580px;">
                     <div style="float:left; width:550px; padding-top:8px;">
@@ -63,18 +63,33 @@
                         <div style="float:left;">@Html.ValidationMessageFor(x => x.Birthday)</div>
                     </div>*@
                     <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px;" class="negro13b">Age:</div>
+                        <div style="float:left;">@Html.TextBoxFor(x => x.Age, new { @class = "caja400x23" })</div>
+                        <div style="float:left;">@Html.ValidationMessageFor(x => x.Age)</div>
+                    </div>
+                    <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px;" class="negro13b">City:</div>
+                        <div style="float:left;">@Html.TextBoxFor(x => x.City, new { @class = "caja400x23" })</div>
+                        <div style="float:left;">@Html.ValidationMessageFor(x => x.City)</div>
+                    </div>
+                    <div style="float:left; width:550px; padding-top:8px;">
                         <div style="float:left; width:95px;" class="negro13b">Country:</div>
                         <div style="float:left;">@Html.DropDownList("CountryId", null, "", new { @class = "caja400x23" })</div>
+                    </div>
+                    <div style="float:left; width:550px; padding-top:8px;">
+                        <div style="float:left; width:95px;" class="negro13b">Marital Status:</div>
+                        <div style="float:left;">@Html.TextBoxFor(x => x.MaritalStatus, new { @class = "caja400x23" })</div>
+                        <div style="float:left;">@Html.ValidationMessageFor(x => x.MaritalStatus)</div>
                     </div>
                 </div>
             </div>
             <div style="float:left; width:738px; margin-top:15px; height:1px; background:#b5b5b3;"></div>
             <div style="float:left; width:738px; padding-top:4px;">
                 <div id="Enviar" style="float:right;">
-                    <input type="image" id="Enviar" name="Enviar" value="Enviar" src="/Content/images/guardar.png" />
+                    <input type="image" id="Enviar" name="Enviar" src="../../Content/images/btn_save.png" />
                 </div>
                 <div style="float:right; padding-right:5px;">
-                    <a href="@Url.Action("Index")"><img src="/Content/images/volver.png" border="0"></a>
+                    <a href="@Url.Action("Index1", "Owner")"><img src="../../Content/images/btn_back.gif" border="0"></a>
                 </div>
             </div>
         }

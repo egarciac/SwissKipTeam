@@ -23,7 +23,9 @@
 
         public int Confirmed { get; set; }
         
-        //public int Witness { get; set; }
+        public string Size { get; set; }
+
+        public string MaxSize { get; set; }
 
         public string FullName
         {

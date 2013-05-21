@@ -1,7 +1,7 @@
 @using Mvc.Mailer
 @{
     this.Layout = null;
-    ViewBag.VerifyUrl = Url.Abs(Url.Action("SignIn", "Authentication", new { userId = ViewBag.AccountId }));
+    ViewBag.VerifyUrl = Url.Abs(Url.Action("SignIn", "Authentication", new { V = ViewBag.AccountId, type = ViewBag.AccountId.Substring(5,5) }));
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

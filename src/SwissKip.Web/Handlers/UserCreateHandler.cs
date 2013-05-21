@@ -79,7 +79,7 @@
         public void SendConfirmationEmail(User user)
         {
             var mailer = new DefaultMailer();
-            var msg = mailer.NewAccountConfirmation(user.Email, user.Id, user.FullName());
+            var msg = mailer.NewAccountConfirmation(user.Email, user.Url, user.FullName());
             msg.Send();
         }
     }

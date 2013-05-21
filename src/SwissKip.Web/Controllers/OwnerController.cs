@@ -15,10 +15,25 @@ namespace SwissKip.Web.Controllers
     using System.Web.UI;
     using System.Linq;
     using System.Collections.Generic;
+    using System.IO;
+    using System;
     
     public class OwnerController : Controller
     {
         public ActionResult Index()
+        {
+            var ownerPanelModel = new OwnerPanelQuery(Current.UserId).Execute();
+            Session["username"] = Current.User.UserName;
+            var folder = Server.MapPath("~/Swisskip/" + Current.User.UserName);
+            
+            //Getting Max. MB per trial version
+            Master master = new SignInHandler().Find4();
+            ownerPanelModel.MyAccountWidget.MaxSize = master.Size + "MB";
+            ownerPanelModel.MyAccountWidget.Size = ((CalculateFolderSize(folder) / 1000) / (master.Size * 1024)).ToString("####0.00") +"%";
+            return View(ownerPanelModel);
+        }
+
+        public ActionResult Index1()
         {
             var ownerPanelModel = new OwnerPanelQuery(Current.UserId).Execute();
             Session["username"] = Current.User.UserName;
@@ -152,6 +167,97 @@ namespace SwissKip.Web.Controllers
                 return this.View();
 
             return RedirectToAction("Index", "MyAccount");
+        }
+
+        public ActionResult ChangePassword2()
+        {
+            var user = Current.User;
+            var model = Mapper.Map<AccountEditModel>(user);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword2(AccountEditModel form)
+        {
+            try
+            {
+                new AccountEditHandler().Handle2(Current.UserId, form);
+
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError(e.Key, e.Message);
+            }
+
+
+            if (!ModelState.IsValid)
+                return this.View();
+
+            return RedirectToAction("Index2", "MyAccount");
+        }
+
+        public ActionResult ChangePassword3()
+        {
+            var user = Current.User;
+            var model = Mapper.Map<AccountEditModel>(user);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword3(AccountEditModel form)
+        {
+            try
+            {
+                new AccountEditHandler().Handle2(Current.UserId, form);
+
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError(e.Key, e.Message);
+            }
+
+
+            if (!ModelState.IsValid)
+                return this.View();
+
+            return RedirectToAction("Index3", "MyAccount");
+        }
+
+        protected static float CalculateFolderSize(string folder)
+        {
+            float folderSize = 0.0f;
+            try
+            {
+                //Checks if the path is valid or not
+                if (!Directory.Exists(folder))
+                    return folderSize;
+                else
+                {
+                    try
+                    {
+                        foreach (string file in Directory.GetFiles(folder))
+                        {
+                            if (System.IO.File.Exists(file))
+                            {
+                                FileInfo finfo = new FileInfo(file);
+                                folderSize += finfo.Length;
+                            }
+                        }
+
+                        foreach (string dir in Directory.GetDirectories(folder))
+                            folderSize += CalculateFolderSize(dir);
+                    }
+                    catch (NotSupportedException e)
+                    {
+                        Console.WriteLine("Unable to calculate folder size: {0}", e.Message);
+                    }
+                }
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Console.WriteLine("Unable to calculate folder size: {0}", e.Message);
+            }
+            return folderSize;
         }
 
         //[HttpPost]
